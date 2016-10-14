@@ -1,0 +1,693 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,angularjs," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="AngularJs  总结之一很久都没有更新点自己的博客了，最近忙于工作，参与到两个项目中，其中之一就是继续搞搞angular，虽然感觉依旧是小打小闹，不过重新用起angular，还是收获满满，现在分享点自己的小总结和小经验吧。
+Angular http interceptors  需要对所有的网络请求和响应进行拦截，统一处理  比如500 401 403 等消息，我们多数情况不会在每一个fail">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular 总结之一">
+<meta property="og:url" content="http://nonumber1989.github.io/2016/09/03/JavaScript/AngularJs/AngularJs-Part01/index.html">
+<meta property="og:site_name" content="Steven的博客">
+<meta property="og:description" content="AngularJs  总结之一很久都没有更新点自己的博客了，最近忙于工作，参与到两个项目中，其中之一就是继续搞搞angular，虽然感觉依旧是小打小闹，不过重新用起angular，还是收获满满，现在分享点自己的小总结和小经验吧。
+Angular http interceptors  需要对所有的网络请求和响应进行拦截，统一处理  比如500 401 403 等消息，我们多数情况不会在每一个fail">
+<meta property="og:updated_time" content="2016-10-13T01:59:13.103Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular 总结之一">
+<meta name="twitter:description" content="AngularJs  总结之一很久都没有更新点自己的博客了，最近忙于工作，参与到两个项目中，其中之一就是继续搞搞angular，虽然感觉依旧是小打小闹，不过重新用起angular，还是收获满满，现在分享点自己的小总结和小经验吧。
+Angular http interceptors  需要对所有的网络请求和响应进行拦截，统一处理  比如500 401 403 等消息，我们多数情况不会在每一个fail">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://nonumber1989.github.io/2016/09/03/JavaScript/AngularJs/AngularJs-Part01/"/>
+
+
+  <title> Angular 总结之一 | Steven的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Steven的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Angular 总结之一
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-03T17:41:55+08:00" content="2016-09-03">
+              2016-09-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="AngularJs-总结之一"><a href="#AngularJs-总结之一" class="headerlink" title="AngularJs  总结之一"></a>AngularJs  总结之一</h2><p>很久都没有更新点自己的博客了，最近忙于工作，参与到两个项目中，其中之一就是继续搞搞angular，虽然感觉依旧是小打小闹，不过重新用起angular，还是收获满满，现在分享点自己的小总结和小经验吧。</p>
+<h3 id="Angular-http-interceptors"><a href="#Angular-http-interceptors" class="headerlink" title="Angular http interceptors"></a>Angular http interceptors</h3><p>  需要对所有的网络请求和响应进行拦截，统一处理<br>  比如500 401 403 等消息，我们多数情况不会在每一个fail回调中处理，而是统一给客户提示，这就需要http拦截器<br>  $httpProvider.interceptors.push(‘XXXInterceptor’);<br>  该拦截器也是一个普通的service了</p>
+<pre><code>return {
+  request: function(config) {
+    $rootScope.$broadcast(&apos;loading:show&apos;);
+    return config;
+  },
+  response: function(response) {
+    $rootScope.$broadcast(&apos;loading:hide&apos;);
+    return response;
+  },
+  responseError: function(rejection) {
+    $rootScope.$broadcast(&apos;loading:hide&apos;);
+    console.log(JSON.stringify(rejection));
+    if (rejection.data === null) {
+      showDialog($rootScope);
+    } else if (rejection.status === 401) {
+      $injector.invoke(function($state) {
+        console.log($state.current.name);
+        $state.go(&apos;tachi.account.signIn&apos;);
+      });
+    } else if (rejection.status === 403) {
+    } else if (rejection.status === 404) {
+    } else if (rejection.status === 500) {
+    }
+  }
+};
+</code></pre><h3 id="Angular-with-localstorage"><a href="#Angular-with-localstorage" class="headerlink" title="Angular with localstorage"></a>Angular with localstorage</h3><p>   关于localstorage与sessionstorage的问题，其实挺让我伤心的，公司的UI5框架使用JQuery封装了web storage的操作但是却又出guidline不让使用，这很让人痛心啊<br>   首先 抛开业务谈及web storage的安全问题，这是html5的规范，符合同源策略，就算你怕用户localstorage保存下来有问题，可以考虑sessionstorage啊<br>   与其他同事沟通下来觉得公司禁用的原因可能在于，公司一个域名下会存在多个application，而多个application可能存在命名冲突问题，比如我命名user 你也命名user…</p>
+<p>   抛开这些吧，我用angular选用的是ngStorage，仅仅是简单封装而已<br>   put get delete操作而已本身并没有什么其他的难度</p>
+<h3 id="Angular-with-jwt"><a href="#Angular-with-jwt" class="headerlink" title="Angular with jwt"></a>Angular with jwt</h3><p>   应用中使用了JWT，那么token的存储呢？ 必然就放localstorage了</p>
+<pre><code>jwtOptionsProvider.config({
+authPrefix: &apos;Bearer &apos;,
+tokenGetter: [&apos;jwtHelper&apos;, &apos;$localStorage&apos;, function(jwtHelper, $localStorage) {
+  var theUserToken = $localStorage.userToken;
+  if (theUserToken instanceof Object) {
+    var date = jwtHelper.getTokenExpirationDate(theUserToken.token);
+    var bool = jwtHelper.isTokenExpired(theUserToken.token);
+    return theUserToken.token;
+  } else {
+    //do nothing with rejected with 401 Unauthorized error
+  }
+}],
+whiteListedDomains: [&apos;http://127.0.0.1:3000&apos;]
+  });
+$httpProvider.interceptors.push(&apos;jwtInterceptor&apos;);
+</code></pre><h3 id="Angular-event-emit-and-listners"><a href="#Angular-event-emit-and-listners" class="headerlink" title="Angular event emit and listners"></a>Angular event emit and listners</h3><p>  采用$rootscope 进行事件发射和监听<br>  往购物车添加一件商品，需要更新下菜单栏的购物车badge数字<br>  购物车badge所在的view与对应的controller与进行添加动作的controller肯定不在一个中，则在添加时候才哟哦那个$rootscope发射事件和数据，在badge对应得controller监听</p>
+<pre><code>function deleteBroadcast() {
+    $rootScope.$broadcast(&apos;ShoppingCart&apos;, {&quot;action&quot;: &quot;delete&quot;});
+}
+//----------------------------------------------------------------
+$scope.$on(&apos;ShoppingCart&apos;, function (event, data) {
+   if (data.action === &quot;add&quot;) {
+     $scope.itemNumber++;
+     console.log($scope.itemNumber);
+   } else if (data.action === &quot;delete&quot;) {
+     $scope.itemNumber--;
+   } else if (data.action === &quot;clear&quot;) {
+     $scope.itemNumber = 0;
+   }});
+</code></pre><h3 id="Angular-with-UI-Router"><a href="#Angular-with-UI-Router" class="headerlink" title="Angular with UI Router"></a>Angular with UI Router</h3><p>  也许你用angular做了一些小的项目，采用angular自身提供的router机制，但是我觉得更多的人还是愿意选择更加强大和方便的UI-Router来帮助自己。<br>  <a href="https://github.com/angular-ui/ui-router" target="_blank" rel="external">angular-ui/ui-router</a><br>   其中大名鼎鼎的ionic就把UI-Router作为默认的路由配置。</p>
+<pre><code>$stateProvider
+  .state(&apos;crafts&apos;, {
+    url: &quot;/crafts&quot;,
+    abstract: true,
+    templateUrl: &quot;views/crafts.html&quot;,
+    controller: &apos;MainController&apos;
+  })
+  .state(&apos;crafts.introduction&apos;, {
+    url: &quot;/introduction&quot;,
+    views: {
+      &apos;craftsContent&apos;: {
+        templateUrl: &quot;views/introduction.html&quot;,
+        controller: &apos;IntroductionController&apos;
+      }
+    }
+  })
+ .state(&apos;crafts.orders.details&apos;, {
+    url: &quot;/:id&quot;,
+    views: {
+      &apos;craftsContent@crafts&apos;: {
+        templateUrl: &quot;views/orderDetails.html&quot;,
+        controller: &apos;OrderDetailsController&apos;
+      }
+    }
+  })
+  .state(&apos;home&apos;, {
+    url: &quot;/&quot;,
+    templateUrl: &quot;views/main.html&quot;,
+    controller: &quot;MainController&quot;
+  });
+</code></pre><ul>
+<li>one application multiple routers<br> 直白的讲就是把应用划分路由,比如上述代码把应用或分为tachi部分和introduction部分，表现在URL上为 <a href="http://localhost:9000/#/crafts" target="_blank" rel="external">http://localhost:9000/#/crafts</a> 、<a href="http://localhost:9000/#/home" target="_blank" rel="external">http://localhost:9000/#/home</a>  ，而且crafts部分又继续细分<br> 我home页面仅仅是展示一些信息，引导注册和登录，菜单栏上只有少部分内容<br> 而crafts想到于用户登录之后的整个功能应用，菜单栏齐全<br> 按照功能区分路由，crafts下面是功能部分个小小feature的路由</li>
+<li>abstract router<br> 把crafts设置为abstract可以把一些公用的数据放入controller控制,比如菜单栏点击事件（国际化切换中英文 $rootscope的事件监听）</li>
+<li>parameter<br> 可以URL传值 也可以直接采用state发送自定义数据进行router间传递，state parameter可以取得</li>
+<li><p>如果子路由和父路由采用同一个view </p>
+<pre><code>views: {
+    &apos;craftsContent@crafts&apos;: {
+      templateUrl: &quot;views/orderDetails.html&quot;,
+      controller: &apos;OrderDetailsController&apos;
+    }
+</code></pre><p>  注意content路径的配置 上述代码为使用views配置下的绝对路径</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/angularjs/" rel="tag">#angularjs</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/24/java/javaException/" rel="next" title="Java Exception">
+                <i class="fa fa-chevron-left"></i> Java Exception
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/13/welcome/" rel="prev" title="欢迎来到我的博客">
+                欢迎来到我的博客 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/katana.jpg"
+               alt="steven xu" />
+          <p class="site-author-name" itemprop="name">steven xu</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AngularJs-总结之一"><span class="nav-number">1.</span> <span class="nav-text">AngularJs  总结之一</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Angular-http-interceptors"><span class="nav-number">1.1.</span> <span class="nav-text">Angular http interceptors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Angular-with-localstorage"><span class="nav-number">1.2.</span> <span class="nav-text">Angular with localstorage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Angular-with-jwt"><span class="nav-number">1.3.</span> <span class="nav-text">Angular with jwt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Angular-event-emit-and-listners"><span class="nav-number">1.4.</span> <span class="nav-text">Angular event emit and listners</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Angular-with-UI-Router"><span class="nav-number">1.5.</span> <span class="nav-text">Angular with UI Router</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">steven xu</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

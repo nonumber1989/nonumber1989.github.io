@@ -1,0 +1,618 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="coding,html," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="HTML 基础的学习与理解作为一个前端技术的小菜，之前虽然写html，却从来没有仔细的去理解html基础细节甚至是原理等，借此博客补习一下。
+概览12345678910111213&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt;  &amp;lt;head&amp;gt;  &amp;lt;meta charset=&amp;quot;utf-8&amp;quot; /&amp;gt;  &amp;lt;meta name=&amp;quo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML 基础学习与理解">
+<meta property="og:url" content="http://nonumber1989.github.io/2016/01/04/html/html-basic/index.html">
+<meta property="og:site_name" content="Steven的博客">
+<meta property="og:description" content="HTML 基础的学习与理解作为一个前端技术的小菜，之前虽然写html，却从来没有仔细的去理解html基础细节甚至是原理等，借此博客补习一下。
+概览12345678910111213&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt;  &amp;lt;head&amp;gt;  &amp;lt;meta charset=&amp;quot;utf-8&amp;quot; /&amp;gt;  &amp;lt;meta name=&amp;quo">
+<meta property="og:updated_time" content="2016-10-13T01:59:13.107Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML 基础学习与理解">
+<meta name="twitter:description" content="HTML 基础的学习与理解作为一个前端技术的小菜，之前虽然写html，却从来没有仔细的去理解html基础细节甚至是原理等，借此博客补习一下。
+概览12345678910111213&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt;  &amp;lt;head&amp;gt;  &amp;lt;meta charset=&amp;quot;utf-8&amp;quot; /&amp;gt;  &amp;lt;meta name=&amp;quo">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://nonumber1989.github.io/2016/01/04/html/html-basic/"/>
+
+
+  <title> HTML 基础学习与理解 | Steven的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Steven的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                HTML 基础学习与理解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-01-04T11:21:55+08:00" content="2016-01-04">
+              2016-01-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/html/" itemprop="url" rel="index">
+                    <span itemprop="name">html</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="HTML-基础的学习与理解"><a href="#HTML-基础的学习与理解" class="headerlink" title="HTML 基础的学习与理解"></a>HTML 基础的学习与理解</h1><p>作为一个前端技术的小菜，之前虽然写html，却从来没有仔细的去理解html基础细节甚至是原理等，借此博客补习一下。</p>
+<h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line"> &lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">  &lt;meta charset=&quot;utf-8&quot; /&gt;</div><div class="line">  &lt;meta name=&quot;keywords&quot; content=&quot;html learning&quot; /&gt;</div><div class="line">  &lt;meta name=&quot;description&quot; content=&quot;it is learning blog&quot; /&gt;</div><div class="line">  &lt;title&gt;Steven HTML Blog&lt;/title&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">   &lt;div&gt;</div><div class="line">   &lt;/div&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line"> &lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="DOCTYPE"><a href="#DOCTYPE" class="headerlink" title="!DOCTYPE"></a>!DOCTYPE</h3><p>可能这个是最容易被人忽略的一点吧，其实对于html来说还是挺重要的。<br>!DOCTYPE 放在<html>前面，告诉浏览器文档使用哪种html或者xhtml规范。 第一，它告诉用户代理和校验器这个文档是按照什么DTD写的。这个动作是被动的，也就是说，每次页面加载时，浏览器并不会下载DTD并检查合法性，只有当手动校验页面时才启用。<br>第二个，对于实际操作，最重要的目的是通知浏览器读取文档时用哪种解析算法。浏览器有三种方式解析HTML文档：非怪异（标准）模式、怪异模式、部分怪异（几乎标准）模式。<br><strong>如果缺少doctype 或者格式不正确，那么怪异模式会被触发，页面以老的并且不正确的方式渲染。</strong></html></p>
+<h3 id="HEAD-细节"><a href="#HEAD-细节" class="headerlink" title="HEAD 细节"></a>HEAD 细节</h3><p>内部的meta提供页面元数据定义，元数据总是以名称/值的形式存储</p>
+<blockquote>
+<p> 用不同的属性名来划分，这两种属性名为：name属性类型，http-equiv属性类型。<br> <code>&lt;meta name=”某个设置值” content=”对该设置值进行具体补充说明的信息”&gt;</code><br> <code>&lt;meta http-equiv=”某个设置值” content=”对该设置值进行具体补充说明的信息”&gt;</code><br><strong>name=”keywords”</strong>: “keywords” 是一个经常被用到的名称。它为文档定义了一组关键字.content中有多个关键字的时候用逗号分隔<br><strong>name=”description”</strong>:会把content中的内容最为网页文件的简要描述添加到搜索引擎当中。很多的搜索引擎都会把description中的内容显示在所述索引显示超链接的下面。<br><strong>name=”robots”</strong>:content的设置值：</p>
+<pre><code>+ index（允许搜索引擎检索收录）
++ noindex（不允许搜索引擎检索收录）
++ follow（允许索引引擎检索收录并且顺着超链接继续查找）
++ nofollow（允许索引引擎检索收录但是不允许顺着超链接继续查找）
++ all（允许搜索引擎检索收录也能，也允许顺着超链接继续查找）
++ none（不允许搜索引擎查检索收录找也不允许顺着超链接继续查找）
+</code></pre><p><strong>name=”generator”</strong>:网页的编辑软件名称。<br><strong>name=”autor”</strong>:网页的作者名称。<br><strong>name=”copyright”</strong>:对版权声明</p>
+</blockquote>
+<h3 id="关于meta-中http-equiv"><a href="#关于meta-中http-equiv" class="headerlink" title="关于meta 中http-equiv"></a>关于meta 中http-equiv</h3><p>使用带有 http-equiv 属性的 <meta> 标签时，服务器将把名称/值对添加到发送给浏览器的内容头部。例如，添加：</p>
+<blockquote>
+<p><code>&lt;meta http-equiv=&quot;charset&quot; content=&quot;iso-8859-1&quot;&gt;</code><br><code>&lt;meta http-equiv=&quot;expires&quot; content=&quot;31 Dec 2008&quot;&gt;</code></p>
+</blockquote>
+<p>这样发送到浏览器的头部就应该包含：</p>
+<blockquote>
+<p>content-type: text/html (默认一定会带有这个)<br>charset:iso-8859-1<br>expires:31 Dec 2008</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">   &lt;head&gt;</div><div class="line">     &lt;meta http-equiv=&quot;refresh&quot; content=&quot;5;URL=http://www.zixun24.com&quot;&gt;</div><div class="line">   &lt;/head&gt;</div><div class="line">   &lt;body&gt;</div><div class="line">          页面会5秒钟自动刷新并且跳转到url制定的地址</div><div class="line">          无URL仅仅五秒钟刷新一次页面</div><div class="line">   &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line">`</div></pre></td></tr></table></figure>
+<p>如果设置content=”0″表示禁止使用缓存。<br><code>&lt;meta http-equiv=&quot;expires&quot; content=&quot;Wed, 20 Jun 2015 22:33:00 GMT&quot;&gt;</code><br>到期重新从服务器load页面</p>
+<p><strong>http-equiv =”windows-target”：</strong> 强制定义当前网页的打开窗口。用于防止页面被盗用。例如，要防止自己的网页被别人当成一个frame页面调用，可以使用如下：<code>&lt;meta http-equiv=”windows-target” content=”_top”&gt;</code></p>
+<p><strong>http-equiv =”pragma”：禁止浏览器缓存页面。</strong><br>例如：<code>&lt;meta http-equiv=”pragma” content=”on-cache”&gt;</code><br>或者：<code>&lt;meta http-equiv=”cache-control” content=”on-cache”&gt;</code> 这个比上一个更可靠</p>
+<p><strong>http-equiv =”page-Enter”、http-equiv =”page-exit”：</strong><br>浏览器刚打开页面时候的显示效果。<code>&lt;meta http-equiv=&quot;page-enter&quot; content=&quot;revealTrans(Transition=23,Duration=1.0)&quot;&gt;</code><br>浏览器退出页面时候的显示效果。<code>&lt;meta http-equiv=&quot;page-exit&quot; content=&quot;revealTrans(Transition=23,Duration=1.0)&quot;&gt;</code></p>
+<h4 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h4><p> <a href="http://www.zixun24.com/storage/2015/05/web-html-mate-06.html" target="_blank" rel="external">meta 学习</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/coding/" rel="tag">#coding</a>
+          
+            <a href="/tags/html/" rel="tag">#html</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/31/browser/browser-working-theory-02/" rel="next" title="浏览器工作原理学习（二）：补充篇">
+                <i class="fa fa-chevron-left"></i> 浏览器工作原理学习（二）：补充篇
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/04/learning/learning-note/" rel="prev" title="学习笔记">
+                学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/katana.jpg"
+               alt="steven xu" />
+          <p class="site-author-name" itemprop="name">steven xu</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML-基础的学习与理解"><span class="nav-number">1.</span> <span class="nav-text">HTML 基础的学习与理解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概览"><span class="nav-number">1.1.</span> <span class="nav-text">概览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOCTYPE"><span class="nav-number">1.1.1.</span> <span class="nav-text">!DOCTYPE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HEAD-细节"><span class="nav-number">1.1.2.</span> <span class="nav-text">HEAD 细节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于meta-中http-equiv"><span class="nav-number">1.1.3.</span> <span class="nav-text">关于meta 中http-equiv</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#连接"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">连接</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">steven xu</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
