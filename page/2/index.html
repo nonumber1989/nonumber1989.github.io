@@ -173,7 +173,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Accueil
           </a>
         </li>
       
@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -236,6 +236,1366 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/13/welcome/" itemprop="url">
+                  欢迎来到我的博客
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posté le</span>
+            <time itemprop="dateCreated" datetime="2016-10-13T09:59:13+08:00" content="2016-10-13">
+              2016-10-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/life/" itemprop="url" rel="index">
+                    <span itemprop="name">life</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>苦逼小码农一只，平时喜欢学习，自知能力有限，所以常搬砖练习。<br>普通本科毕业，未曾读研也未有BAT等大厂的实习经验。<br>入行没几年，也没特别拿出手的项目经验，总感觉浑浑噩噩，想跟随大牛或者自组一队搞搞新意思。<br>听歌·读书·看电影乃平生所好。</p>
+<h2 id="关于博客"><a href="#关于博客" class="headerlink" title="关于博客"></a>关于博客</h2><p>以前总是看大牛的博客，悄悄滴保存到自己的云笔记中，甚觉不好缺羞于写博客，现借GitPages自建一学习园地，且行且珍惜啊。</p>
+<h2 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h2><p>联系我: <a href="nonumber1989@gmail.com">Steven.Xu</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/03/JavaScript/AngularJs/AngularJs-Part01/" itemprop="url">
+                  Angular 总结之一
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posté le</span>
+            <time itemprop="dateCreated" datetime="2016-09-03T17:41:55+08:00" content="2016-09-03">
+              2016-09-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="AngularJs-总结之一"><a href="#AngularJs-总结之一" class="headerlink" title="AngularJs  总结之一"></a>AngularJs  总结之一</h2><p>很久都没有更新点自己的博客了，最近忙于工作，参与到两个项目中，其中之一就是继续搞搞angular，虽然感觉依旧是小打小闹，不过重新用起angular，还是收获满满，现在分享点自己的小总结和小经验吧。</p>
+<h3 id="Angular-http-interceptors"><a href="#Angular-http-interceptors" class="headerlink" title="Angular http interceptors"></a>Angular http interceptors</h3><p>  需要对所有的网络请求和响应进行拦截，统一处理<br>  比如500 401 403 等消息，我们多数情况不会在每一个fail回调中处理，而是统一给客户提示，这就需要http拦截器<br>  $httpProvider.interceptors.push(‘XXXInterceptor’);<br>  该拦截器也是一个普通的service了</p>
+<pre><code>return {
+  request: function(config) {
+    $rootScope.$broadcast(&apos;loading:show&apos;);
+    return config;
+  },
+  response: function(response) {
+    $rootScope.$broadcast(&apos;loading:hide&apos;);
+    return response;
+  },
+  responseError: function(rejection) {
+    $rootScope.$broadcast(&apos;loading:hide&apos;);
+    console.log(JSON.stringify(rejection));
+    if (rejection.data === null) {
+      showDialog($rootScope);
+    } else if (rejection.status === 401) {
+      $injector.invoke(function($state) {
+        console.log($state.current.name);
+        $state.go(&apos;tachi.account.signIn&apos;);
+      });
+    } else if (rejection.status === 403) {
+    } else if (rejection.status === 404) {
+    } else if (rejection.status === 500) {
+    }
+  }
+};
+</code></pre><h3 id="Angular-with-localstorage"><a href="#Angular-with-localstorage" class="headerlink" title="Angular with localstorage"></a>Angular with localstorage</h3><p>   关于localstorage与sessionstorage的问题，其实挺让我伤心的，公司的UI5框架使用JQuery封装了web storage的操作但是却又出guidline不让使用，这很让人痛心啊<br>   首先 抛开业务谈及web storage的安全问题，这是html5的规范，符合同源策略，就算你怕用户localstorage保存下来有问题，可以考虑sessionstorage啊<br>   与其他同事沟通下来觉得公司禁用的原因可能在于，公司一个域名下会存在多个application，而多个application可能存在命名冲突问题，比如我命名user 你也命名user…</p>
+<p>   抛开这些吧，我用angular选用的是ngStorage，仅仅是简单封装而已<br>   put get delete操作而已本身并没有什么其他的难度</p>
+<h3 id="Angular-with-jwt"><a href="#Angular-with-jwt" class="headerlink" title="Angular with jwt"></a>Angular with jwt</h3><p>   应用中使用了JWT，那么token的存储呢？ 必然就放localstorage了</p>
+<pre><code>jwtOptionsProvider.config({
+authPrefix: &apos;Bearer &apos;,
+tokenGetter: [&apos;jwtHelper&apos;, &apos;$localStorage&apos;, function(jwtHelper, $localStorage) {
+  var theUserToken = $localStorage.userToken;
+  if (theUserToken instanceof Object) {
+    var date = jwtHelper.getTokenExpirationDate(theUserToken.token);
+    var bool = jwtHelper.isTokenExpired(theUserToken.token);
+    return theUserToken.token;
+  } else {
+    //do nothing with rejected with 401 Unauthorized error
+  }
+}],
+whiteListedDomains: [&apos;http://127.0.0.1:3000&apos;]
+  });
+$httpProvider.interceptors.push(&apos;jwtInterceptor&apos;);
+</code></pre><h3 id="Angular-event-emit-and-listners"><a href="#Angular-event-emit-and-listners" class="headerlink" title="Angular event emit and listners"></a>Angular event emit and listners</h3><p>  采用$rootscope 进行事件发射和监听<br>  往购物车添加一件商品，需要更新下菜单栏的购物车badge数字<br>  购物车badge所在的view与对应的controller与进行添加动作的controller肯定不在一个中，则在添加时候才哟哦那个$rootscope发射事件和数据，在badge对应得controller监听</p>
+<pre><code>function deleteBroadcast() {
+    $rootScope.$broadcast(&apos;ShoppingCart&apos;, {&quot;action&quot;: &quot;delete&quot;});
+}
+//----------------------------------------------------------------
+$scope.$on(&apos;ShoppingCart&apos;, function (event, data) {
+   if (data.action === &quot;add&quot;) {
+     $scope.itemNumber++;
+     console.log($scope.itemNumber);
+   } else if (data.action === &quot;delete&quot;) {
+     $scope.itemNumber--;
+   } else if (data.action === &quot;clear&quot;) {
+     $scope.itemNumber = 0;
+   }});
+</code></pre><h3 id="Angular-with-UI-Router"><a href="#Angular-with-UI-Router" class="headerlink" title="Angular with UI Router"></a>Angular with UI Router</h3><p>  也许你用angular做了一些小的项目，采用angular自身提供的router机制，但是我觉得更多的人还是愿意选择更加强大和方便的UI-Router来帮助自己。<br>  <a href="https://github.com/angular-ui/ui-router" target="_blank" rel="external">angular-ui/ui-router</a><br>   其中大名鼎鼎的ionic就把UI-Router作为默认的路由配置。</p>
+<pre><code>$stateProvider
+  .state(&apos;crafts&apos;, {
+    url: &quot;/crafts&quot;,
+    abstract: true,
+    templateUrl: &quot;views/crafts.html&quot;,
+    controller: &apos;MainController&apos;
+  })
+  .state(&apos;crafts.introduction&apos;, {
+    url: &quot;/introduction&quot;,
+    views: {
+      &apos;craftsContent&apos;: {
+        templateUrl: &quot;views/introduction.html&quot;,
+        controller: &apos;IntroductionController&apos;
+      }
+    }
+  })
+ .state(&apos;crafts.orders.details&apos;, {
+    url: &quot;/:id&quot;,
+    views: {
+      &apos;craftsContent@crafts&apos;: {
+        templateUrl: &quot;views/orderDetails.html&quot;,
+        controller: &apos;OrderDetailsController&apos;
+      }
+    }
+  })
+  .state(&apos;home&apos;, {
+    url: &quot;/&quot;,
+    templateUrl: &quot;views/main.html&quot;,
+    controller: &quot;MainController&quot;
+  });
+</code></pre><ul>
+<li>one application multiple routers<br> 直白的讲就是把应用划分路由,比如上述代码把应用或分为tachi部分和introduction部分，表现在URL上为 <a href="http://localhost:9000/#/crafts" target="_blank" rel="external">http://localhost:9000/#/crafts</a> 、<a href="http://localhost:9000/#/home" target="_blank" rel="external">http://localhost:9000/#/home</a>  ，而且crafts部分又继续细分<br> 我home页面仅仅是展示一些信息，引导注册和登录，菜单栏上只有少部分内容<br> 而crafts想到于用户登录之后的整个功能应用，菜单栏齐全<br> 按照功能区分路由，crafts下面是功能部分个小小feature的路由</li>
+<li>abstract router<br> 把crafts设置为abstract可以把一些公用的数据放入controller控制,比如菜单栏点击事件（国际化切换中英文 $rootscope的事件监听）</li>
+<li>parameter<br> 可以URL传值 也可以直接采用state发送自定义数据进行router间传递，state parameter可以取得</li>
+<li><p>如果子路由和父路由采用同一个view </p>
+<pre><code>views: {
+    &apos;craftsContent@crafts&apos;: {
+      templateUrl: &quot;views/orderDetails.html&quot;,
+      controller: &apos;OrderDetailsController&apos;
+    }
+</code></pre><p>  注意content路径的配置 上述代码为使用views配置下的绝对路径</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/24/java/javaException/" itemprop="url">
+                  Java Exception
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posté le</span>
+            <time itemprop="dateCreated" datetime="2016-05-24T18:38:55+08:00" content="2016-05-24">
+              2016-05-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="java-exception"><a href="#java-exception" class="headerlink" title="java exception"></a>java exception</h1><h3 id="Basic-Info"><a href="#Basic-Info" class="headerlink" title="Basic Info"></a>Basic Info</h3><p> <img src="/images/java/java-exception.jpg" alt="java exception architecture"></p>
+<h3 id="Brief-Desc"><a href="#Brief-Desc" class="headerlink" title="Brief Desc"></a>Brief Desc</h3><p> 关于java的异常处理，可谓是两派之争，checked Vs. unChecked 孰优孰劣各执一词由来已久。<br> 但是不得不承认的一点是，unChecked似乎略显上风了。</p>
+<h3 id="Checked-amp-UnChecked-exception"><a href="#Checked-amp-UnChecked-exception" class="headerlink" title="Checked &amp; UnChecked exception"></a>Checked &amp; UnChecked exception</h3><ol>
+<li>Error or RuntimeException  称为unchecked exception<br>runtimeException其实很容易迷惑人，因为所有的exception都出现的运行时，纵然checked exception也只是让你编译期间做好处理准备。</li>
+<li>剩余的自然就是checked exception</li>
+<li>处理规范：一个方法必须声明可能抛出的受检异常，非受检异常要么不可能控制<strong>Error</strong>，要么应该避免发生。 当然 编译器会提示我们做好对受检异常的处理。不然编译都过不去的</li>
+</ol>
+<h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><ol>
+<li>子类覆盖超类的方法，子类的异常只能更具体或者没有异常抛出</li>
+<li>如果超类没有checked异常抛出，那么子类也不能有checked异常抛出</li>
+<li>throwable.getStackTrace() StackTraceElement[]<br>StackTraceElement shows de</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/24/java/javaLearningNotes/" itemprop="url">
+                  Java 学习总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posté le</span>
+            <time itemprop="dateCreated" datetime="2016-05-24T09:38:55+08:00" content="2016-05-24">
+              2016-05-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="java-learning-notes"><a href="#java-learning-notes" class="headerlink" title="java learning notes"></a>java learning notes</h1><h2 id="java-8-notes"><a href="#java-8-notes" class="headerlink" title="java 8 notes"></a>java 8 notes</h2><p>  lambda 中的受检异常处理 <strong><a href="http://stackoverflow.com/questions/27644361/how-can-i-throw-checked-exceptions-from-inside-java-8-streams" target="_blank" rel="external">stackoverfllow 解答</a></strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/13/nodejs/nodeNotes/" itemprop="url">
+                  Node 学习小笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posté le</span>
+            <time itemprop="dateCreated" datetime="2016-05-13T15:21:55+08:00" content="2016-05-13">
+              2016-05-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h1><p>学习nodejs的过程中总会碰到一些小的问题，希望把这些小点滴记录下来</p>
+<h3 id="Node-设计本身"><a href="#Node-设计本身" class="headerlink" title="Node 设计本身"></a>Node 设计本身</h3><ol>
+<li>node中根据相对路径读取文件。<br><strong>Relative paths work, but they are relative to process.cwd(), not the currently executing module.</strong><br><em>use <strong>__dirname</strong> to solve this problem</em></li>
+<li><p>node中的文件分隔符<br><em>一直使用   \    就可以，这个分隔符目前涵盖所有的os</em></p>
+</li>
+<li><p>promise 学习 ，直接上一段bluebird的代码吧，继续深入。</p>
+<pre><code>var Promise = require(&quot;bluebird&quot;);
+var forPromise = function(param, callback) {
+// callback(null,param);
+    if (param === &quot;nonumber1989&quot;) {
+        callback(null, param);
+    } else {
+        var error = new Error(&quot;nonumber1989 error !&quot;);
+        callback(error);
+    }
+};
+var thePromise = Promise.promisify(forPromise);
+thePromise(&quot;nonumber1989&quot;).then(function(value) {
+    console.log(value);
+    return value + &quot;--for next step&quot;;
+}).then(function(value) {
+    console.log(value);
+})
+.catch(function(err) {
+    console.log(err);
+});
+</code></pre></li>
+</ol>
+<h3 id="javascript-基础"><a href="#javascript-基础" class="headerlink" title="javascript 基础"></a>javascript 基础</h3><ol>
+<li>javascript callback return value.<br>首先这就是一个误区！ javascript回调中是不能返回值给外面使用的(不借助promise)。因为回调函数的执行时间不确定，后续的值会先被使用。</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/03/java/transaction/" itemprop="url">
+                  Java 事务学习拾遗
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posté le</span>
+            <time itemprop="dateCreated" datetime="2016-05-03T22:21:55+08:00" content="2016-05-03">
+              2016-05-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="java-transaction"><a href="#java-transaction" class="headerlink" title="java transaction"></a>java transaction</h1><h2 id="本地事务"><a href="#本地事务" class="headerlink" title="本地事务"></a>本地事务</h2><blockquote>
+<p>本地事务其实就是原始的JDBC操作，面对连接的事务。采用JDBC管理事务的时候，其实是针对connection 开始事务 提交或者 回滚。<br>现在我们更多的是采用ORM框架管理事务，比如JPA hibernate什么的，比如JPA，我们可以使用EntityManager来进行数据的增删查改</p>
+</blockquote>
+<p> 但是需要注意 </p>
+<pre><code>public class TradingServiceImpl {
+ @PersistenceContext(unitName=&quot;trading&quot;) EntityManager em;
+  public long insertTrade(TradeData trade) throws Exception {
+      em.persist(trade);
+      return trade.getTradeId();
+ }
+}
+</code></pre><blockquote>
+<p>em.persist(trade)这句代码并不会立即向表中插入一条数据，准确说不会立即去操作数据库！！！(也不会抛出异常。) 这是因为基于ORM的框架需要一个事务来触发对象的缓存与数据库之间的同步。通过事务的提交来生成SQL语句，通过数据库连接传送到数据库端进行增删查改的操作。没有事务就不会触发SQL代码生成和保存更改的真实操作，没事务只会终止操作并且不会抛出异常。<br> <strong>使用ORM框架就要使用事务，而不是再通过数管理据库连接</strong>来管理事务**</p>
+</blockquote>
+<h2 id="Spring-Transactional-注解陷阱"><a href="#Spring-Transactional-注解陷阱" class="headerlink" title="Spring @Transactional 注解陷阱"></a>Spring @Transactional 注解陷阱</h2><blockquote>
+<p>我们更多的使用Spring容器来托管事物，其中最常见的就是@Transactional 注解了<br> 但是并是不我们在方法上加上该注解就万事大吉了，必须配置</p>
+</blockquote>
+<pre><code>&lt;tx:annotation-driven transaction-manager=&quot;transactionManager&quot;/&gt;
+</code></pre><blockquote>
+<p>transaction-manager 属性保存一个对在 Spring 配置文件中定义的事务管理器 bean 的引用。这段代码告诉 Spring 在应用事务拦截器时使用 @Transaction 注释。如果没有它，就会忽略 @Transactional 注释，<strong>导致代码不会使用任何事务*</strong></p>
+</blockquote>
+<h3 id="多问几个问题？"><a href="#多问几个问题？" class="headerlink" title="多问几个问题？"></a>多问几个问题？</h3><ol>
+<li>单独使用 @Transactional 注释时，事务传播模式被设置成什么呢？（REQUIRED）</li>
+<li>只读标志被设置成什么呢？（只读标志设置为 false）</li>
+<li>事务隔离级别的设置是怎样的？（事务隔离级别设置为 READ_COMMITTED，<strong>而且事务不会针对受控异常（checked exception）回滚</strong>）</li>
+<li>事务应何时回滚工作？<br><a href="http://www.ibm.com/developerworks/cn/java/j-ts1.html" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/java/j-ts1.html</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/27/learning/tools/" itemprop="url">
+                  工具笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posté le</span>
+            <time itemprop="dateCreated" datetime="2016-04-27T17:21:55+08:00" content="2016-04-27">
+              2016-04-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learning/" itemprop="url" rel="index">
+                    <span itemprop="name">learning</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="常用命令或者工具的小笔记"><a href="#常用命令或者工具的小笔记" class="headerlink" title="常用命令或者工具的小笔记"></a>常用命令或者工具的小笔记</h1><blockquote>
+<p>有时候你会发现一些常用的小命令虽然简单却不是那么容易就拼写出来，说白了就是用的少<br>  好记性不如烂笔头嘛，记下来呗。</p>
+</blockquote>
+<h2 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h2><ol>
+<li>skip test 的命令:只是在后面加上参数<strong> -Dmaven.test.skip=true </strong></li>
+</ol>
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><ol>
+<li>git 只checkout仓库中的子文件夹。 需要用到git的sparse checkout<br><strong><a href="http://stackoverflow.com/questions/600079/is-there-any-way-to-clone-a-git-repositorys-sub-directory-only" target="_blank" rel="external">sparse checkout</a></strong><br>需要在本地设置git config，在pull之前确定需要pull的文件夹</li>
+<li>git display all remote branch<pre><code>git ls-remote --heads &lt;remote-name&gt;
+</code></pre></li>
+<li><p>How to create orphan branches</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git checkout --orphan config/services</div><div class="line">git rm -rf .</div><div class="line">git add &lt;your files&gt;</div><div class="line">git commit -m &apos;Initial commit&apos;</div><div class="line">git push origin HEAD:refs/heads/config/services</div></pre></td></tr></table></figure>
+<p><a href="http://stackoverflow.com/questions/1384325/in-git-is-there-a-simple-way-of-introducing-an-unrelated-branch-to-a-repository#answer-4288660" target="_blank" rel="external">Source</a></p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/25/java/javaAnotation/" itemprop="url">
+                  Java 注解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posté le</span>
+            <time itemprop="dateCreated" datetime="2016-04-25T21:21:55+08:00" content="2016-04-25">
+              2016-04-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Java-注解"><a href="#Java-注解" class="headerlink" title="Java 注解"></a>Java 注解</h2><blockquote>
+<p>经常使用java的注解，一些小的知识点总结下吧<br>注解是个什么东西呢？我们为什么要使用注解？注解的到底干了哪些事情呢？<br>简单来说：注解就是一种元编程的语法，注意仅仅是一种标志或者一种特殊的语法，注解本身什么都做不了，如果你想要的注解真正的发挥作用，你需要一些工具或者框架帮你生成新的代码(java本身或者Spring等框架)，转换新的代码，并且可以在运行时<strong> (主要是运行时反射实现) </strong>决定你注解的语义和真正的功能。<br> 举个例子，JPA是java5定义的OR Mapping的规范，java自身提供了注解比如@Entity，但是这个注解仅仅指明你的当前注解的类可以与数据库的表进行映射，但具体需要Hibernate这些框架来根据注解运行时生成映射文件和SQL查询。</p>
+</blockquote>
+<ol>
+<li>注解是不能继承的</li>
+<li>注解Target(ElementType) Retention(RetentionPolicy) Documented Inherited</li>
+<li>注解的祖先是java.lang.Annotation接口，可以理解注解是特殊的接口</li>
+</ol>
+<blockquote>
+<p>关于Spring几个注解的小记录</p>
+</blockquote>
+<pre><code>@Autowired and @Inject
+Matches by Type
+Restricts by Qualifiers
+Matches by Name
+</code></pre><hr>
+<pre><code>@Resource
+Matches by Name
+Matches by Type
+Restricts by Qualifiers (ignored if match is found by name)
+</code></pre><blockquote>
+<ul>
+<li><p>Spring的注解是如何起作用的呢，其实道理很简单，runtime的注解可以通过反射在运行的时候获得，那么Spring可以通过Proxy创建一个代理对象，在代理方法中获取注解的信息进行包装。然后代码真正获取的是Spring的代理类，比如@Transactional注解就是这么处理，代理帮我们完成事务等事情的处理。</p>
+</li>
+<li><p>关于一个小的问题， 注解比如@Transactional到底是加载接口还是加载具体的实现类和方法上，Spring是建议我们加载具体的方法和类的，该业务是与你具体实现绑定的，而且加在接口，只会在你使用接口代理的时候才会起作用，你使用的具体的实现类并不会真正用到该注解（注解是不能继承的！）</p>
+</li>
+</ul>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/10/java/javaweb/JavaWebTransaction/" itemprop="url">
+                  JavaWeb 事务
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posté le</span>
+            <time itemprop="dateCreated" datetime="2016-04-10T15:21:55+08:00" content="2016-04-10">
+              2016-04-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javaweb/" itemprop="url" rel="index">
+                    <span itemprop="name">javaweb</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Spring事务"><a href="#Spring事务" class="headerlink" title="Spring事务"></a>Spring事务</h2><h3 id="问题起源"><a href="#问题起源" class="headerlink" title="问题起源"></a>问题起源</h3><blockquote>
+<p>只要写javaweb，只要跟数据库交互，企业级开发不可能避免的一点就是事务管理。<br>自己捣鼓SpringBoot的时候，采用了JPA（Hibernate），发现有两个事务注解<br><code>javax.transaction.Transactional</code><br><code>org.springframework.transaction.annotation.Transactional</code><br>这一下子懵逼了有木有，到底哪个会起作用，到底用哪个？（毛线，spring web工程了，当然是spring包里的那个啊！）</p>
+</blockquote>
+<h3 id="扯点基础"><a href="#扯点基础" class="headerlink" title="扯点基础"></a>扯点基础</h3><blockquote>
+<p>说到java的事务，我们就先扯一点事务分类，因为事务分类和我们的开发模式息息相关。<br>Java平台支持三种事务模型：</p>
+</blockquote>
+<ul>
+<li><code>本地事务模型</code>——事务由DB资源而不是应用容器或框架管理。开发者管理连接而不是事务(如果你直接对着JDBC拼SQL的话，你就是在用本地事务).</li>
+<li><p><code>编程式事务模型</code>——开发者从事务管理器中获取事务，之后需要自己编写事务启动、提交、异常及回滚代码（如果你在代码接触事务管理器并自己管理事务,比如下面这一段）。</p>
+<pre><code>public static void main(String[] args) {
+//      Configuration cfg = new Configuration();
+//      cfg.configure();
+//      SessionFactory sf = cfg.buildSessionFactory();
+//      HibernateUtil类中已经帮我们做掉了上面部分
+        Session s = null;
+        Transaction tx = null;
+        try {
+            Class.forName(&quot;com.HibernateUtil&quot;);
+            s = HibernateUtil.getSession();
+            tx = s.beginTransaction(); //这里开启了事务
+            //事务中所需的一系列数据库操作。
+            tx.commit();
+        } catch (HibernateException e) { //如果出现异常，且事务已经开启，则需要回滚。
+            if (tx != null)
+                tx.rollback();
+            throw e;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally { //无论如何都需要关闭Session。
+            if (s != null)
+                s.close();
+        }
+        //sf.close();
+        System.out.println(&quot;end&quot;);
+    }
+</code></pre></li>
+<li><p><code>声明式事务模型</code>——最常见的模型，又叫做容器管理事务。在这种模型下，容器管理着事务，开发者定义（声明）事务的行为和参数（好吧，大家Spring的@transactional注解还记得吧）</p>
+</li>
+<li>这里我先不聊<code>XA</code></li>
+</ul>
+<h3 id="回到问题起源"><a href="#回到问题起源" class="headerlink" title="回到问题起源"></a>回到问题起源</h3><blockquote>
+<p>编程大法之 <a href="http://stackoverflow.com/questions/26387399/javax-transaction-transactional-vs-org-springframework-transaction-annotation-tr" target="_blank" rel="external">copy and paste from stackoverflow</a><br>这两个注解都是要容器帮助我们管理事务，历史上来说Spring比较早，知道JavaEE7，<br>Java为了方便嘛，自己也来一套，当然是给EJB配合的。原理上都是一个注解，用来通知容器管理事务而已。如果要使用Javax的transaction，要配置你应用的<code>javax.ejb.TransactionAttribute</code> (我是小菜，ejb也是仅仅接触过一点，自己查看了下Spring Data JPA的实现里，一统江湖的Spring的transaction)</p>
+</blockquote>
+<h3 id="聊聊Spring的事务"><a href="#聊聊Spring的事务" class="headerlink" title="聊聊Spring的事务"></a>聊聊Spring的事务</h3><blockquote>
+<p>看Spring的事务设计策略就是理解的一个过程，我也偷点别人的总结啦</p>
+</blockquote>
+<h4 id="先来看Spring事务需要配置的参数以及意义"><a href="#先来看Spring事务需要配置的参数以及意义" class="headerlink" title="先来看Spring事务需要配置的参数以及意义"></a>先来看Spring事务需要配置的参数以及意义</h4><table>
+<thead>
+<tr>
+<th>配置参数</th>
+<th>参数意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>propagation参数</td>
+<td>Propagation类型（枚举），默认值为Propogation.REQUIRED，支持的值有REQUIRED、MANDATORY、NESTED、NEVER、NOT_SUPPORTED、REQUIRE_NEW、SUPPORTS。</td>
+</tr>
+<tr>
+<td>isolation参数</td>
+<td>Isolation类型（枚举），默认值为Isolation.DEFAULT，支持的值有DEFAULT、READ_COMMITTED、READ_UNCOMMITTED、REPEATABLE_READ、SERIALIZABLE。</td>
+</tr>
+<tr>
+<td>timeout参数</td>
+<td>int类型，事务的超时时间，默认值为-1，即不会超时。</td>
+</tr>
+<tr>
+<td>readOnly参数</td>
+<td>boolean类型，true表示事务为只读，默认值为false。</td>
+</tr>
+<tr>
+<td>rollbackFor参数</td>
+<td>Class&lt;? extends Throwable&gt;[]类型，默认为空数组。</td>
+</tr>
+<tr>
+<td>rollbackForClassName参数</td>
+<td>String[]类型，默认为空数组。</td>
+</tr>
+<tr>
+<td>noRollbackFor参数</td>
+<td>Class&lt;? extends Throwable&gt;[]类型，默认为空数组。</td>
+</tr>
+<tr>
+<td>noRollbackForClassName参数</td>
+<td>String[]类型，默认为空数组</td>
+</tr>
+</tbody>
+</table>
+<h4 id="再看看propagation参数的意义"><a href="#再看看propagation参数的意义" class="headerlink" title="再看看propagation参数的意义"></a>再看看propagation参数的意义</h4><table>
+<thead>
+<tr>
+<th>传播行为</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PROPAGATION_MANDATORY</td>
+<td>表示该方法必须运行在一个事务中。如果当前没有事务正在发生，将抛出一个异常</td>
+</tr>
+<tr>
+<td>PROPAGATION_NESTED</td>
+<td>表示如果当前正有一个事务在进行中，则该方法应当运行在一个嵌套式事务中。被嵌套的事务可以独立于封装事务进行提交或回滚。如果封装事务不存在，行为就像PROPAGATION_REQUIRES一样。</td>
+</tr>
+<tr>
+<td>PROPAGATION_NEVER</td>
+<td>表示当前的方法不应该在一个事务中运行。如果一个事务正在进行，则会抛出一个异常</td>
+</tr>
+<tr>
+<td>PROPAGATION_NOT_SUPPORTED</td>
+<td>表示该方法不应该在一个事务中运行。如果一个现有事务正在进行中，它将在该方法的运行期间被挂起。</td>
+</tr>
+<tr>
+<td>PROPAGATION_SUPPORTS</td>
+<td>表示当前方法不需要事务性上下文，但是如果有一个事务已经在运行的话，它也可以在这个事务里运行。</td>
+</tr>
+<tr>
+<td>PROPAGATION_REQUIRES_NEW</td>
+<td>表示当前方法必须在它自己的事务里运行。一个新的事务将被启动，而且如果有一个现有事务在运行的话，则将在这个方法运行期间被挂起</td>
+</tr>
+<tr>
+<td>PROPAGATION_REQUIRED</td>
+<td>表示当前方法必须在一个事务中运行。如果一个现有事务正在进行中，该方法将在那个事务中运行，否则就要开始一个新事务。(<code>最常见的事务策略</code>)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="小小总结下"><a href="#小小总结下" class="headerlink" title="小小总结下"></a>小小总结下</h4><ul>
+<li>@Transactional 表示支持事务的管理，加在类上对整个类起作用，加在方法上对方法起作用，当然方法会覆盖掉类的作用范围</li>
+<li>这个玩意儿肯定不能加在接口或者抽象类上，注解是没有继承关系的</li>
+<li>关于配置参数的后四个，都是和回滚相关的，推荐的是不要用rollbackForClassName和noRollbackForClassName，换成另外两个代替就行了，string类型要写全类路径名字，也是蛮累的。<code>需要注意的是，我们不配置回滚参数，不代表人家就不回滚啊，DefaultTransactionAttribute配置将会生效，具体的行为是，抛掷任何unchecked Exception都会触发回滚，当然包括所有的RuntimeException</code></li>
+</ul>
+<h3 id="今天先到这儿吧，写多写点再填坑，一入java深似海啊"><a href="#今天先到这儿吧，写多写点再填坑，一入java深似海啊" class="headerlink" title="今天先到这儿吧，写多写点再填坑，一入java深似海啊"></a>今天先到这儿吧，写多写点再填坑，一入java深似海啊</h3><p><a href="https://m.oschina.net/blog/56904" target="_blank" rel="external">https://m.oschina.net/blog/56904</a> 先放个坑在这儿</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/01/JavaScript/AngularJs/AngularJs-Theory/" itemprop="url">
                   Angular  原理拾遗
                 </a>
@@ -249,7 +1609,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posté le</span>
             <time itemprop="dateCreated" datetime="2016-04-01T17:41:55+08:00" content="2016-04-01">
               2016-04-01
             </time>
@@ -261,7 +1621,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/javascript/" itemprop="url" rel="index">
@@ -363,747 +1723,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/04/learning/learning-note/" itemprop="url">
-                  学习笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-01-04T17:21:55+08:00" content="2016-01-04">
-              2016-01-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/learning/" itemprop="url" rel="index">
-                    <span itemprop="name">learning</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>###<br><a href="https://github.com/markyun/My-blog/issues/10" target="_blank" rel="external">前端面试题</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/04/html/html-basic/" itemprop="url">
-                  HTML 基础学习与理解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-01-04T11:21:55+08:00" content="2016-01-04">
-              2016-01-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/html/" itemprop="url" rel="index">
-                    <span itemprop="name">html</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="HTML-基础的学习与理解"><a href="#HTML-基础的学习与理解" class="headerlink" title="HTML 基础的学习与理解"></a>HTML 基础的学习与理解</h1><p>作为一个前端技术的小菜，之前虽然写html，却从来没有仔细的去理解html基础细节甚至是原理等，借此博客补习一下。</p>
-<h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line"> &lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">  &lt;meta charset=&quot;utf-8&quot; /&gt;</div><div class="line">  &lt;meta name=&quot;keywords&quot; content=&quot;html learning&quot; /&gt;</div><div class="line">  &lt;meta name=&quot;description&quot; content=&quot;it is learning blog&quot; /&gt;</div><div class="line">  &lt;title&gt;Steven HTML Blog&lt;/title&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">   &lt;div&gt;</div><div class="line">   &lt;/div&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line"> &lt;/html&gt;</div></pre></td></tr></table></figure>
-<h3 id="DOCTYPE"><a href="#DOCTYPE" class="headerlink" title="!DOCTYPE"></a>!DOCTYPE</h3><p>可能这个是最容易被人忽略的一点吧，其实对于html来说还是挺重要的。<br>!DOCTYPE 放在<html>前面，告诉浏览器文档使用哪种html或者xhtml规范。 第一，它告诉用户代理和校验器这个文档是按照什么DTD写的。这个动作是被动的，也就是说，每次页面加载时，浏览器并不会下载DTD并检查合法性，只有当手动校验页面时才启用。<br>第二个，对于实际操作，最重要的目的是通知浏览器读取文档时用哪种解析算法。浏览器有三种方式解析HTML文档：非怪异（标准）模式、怪异模式、部分怪异（几乎标准）模式。<br><strong>如果缺少doctype 或者格式不正确，那么怪异模式会被触发，页面以老的并且不正确的方式渲染。</strong></html></p>
-<h3 id="HEAD-细节"><a href="#HEAD-细节" class="headerlink" title="HEAD 细节"></a>HEAD 细节</h3><p>内部的meta提供页面元数据定义，元数据总是以名称/值的形式存储</p>
-<blockquote>
-<p> 用不同的属性名来划分，这两种属性名为：name属性类型，http-equiv属性类型。<br> <code>&lt;meta name=”某个设置值” content=”对该设置值进行具体补充说明的信息”&gt;</code><br> <code>&lt;meta http-equiv=”某个设置值” content=”对该设置值进行具体补充说明的信息”&gt;</code><br><strong>name=”keywords”</strong>: “keywords” 是一个经常被用到的名称。它为文档定义了一组关键字.content中有多个关键字的时候用逗号分隔<br><strong>name=”description”</strong>:会把content中的内容最为网页文件的简要描述添加到搜索引擎当中。很多的搜索引擎都会把description中的内容显示在所述索引显示超链接的下面。<br><strong>name=”robots”</strong>:content的设置值：</p>
-<pre><code>+ index（允许搜索引擎检索收录）
-+ noindex（不允许搜索引擎检索收录）
-+ follow（允许索引引擎检索收录并且顺着超链接继续查找）
-+ nofollow（允许索引引擎检索收录但是不允许顺着超链接继续查找）
-+ all（允许搜索引擎检索收录也能，也允许顺着超链接继续查找）
-+ none（不允许搜索引擎查检索收录找也不允许顺着超链接继续查找）
-</code></pre><p><strong>name=”generator”</strong>:网页的编辑软件名称。<br><strong>name=”autor”</strong>:网页的作者名称。<br><strong>name=”copyright”</strong>:对版权声明</p>
-</blockquote>
-<h3 id="关于meta-中http-equiv"><a href="#关于meta-中http-equiv" class="headerlink" title="关于meta 中http-equiv"></a>关于meta 中http-equiv</h3><p>使用带有 http-equiv 属性的 <meta> 标签时，服务器将把名称/值对添加到发送给浏览器的内容头部。例如，添加：</p>
-<blockquote>
-<p><code>&lt;meta http-equiv=&quot;charset&quot; content=&quot;iso-8859-1&quot;&gt;</code><br><code>&lt;meta http-equiv=&quot;expires&quot; content=&quot;31 Dec 2008&quot;&gt;</code></p>
-</blockquote>
-<p>这样发送到浏览器的头部就应该包含：</p>
-<blockquote>
-<p>content-type: text/html (默认一定会带有这个)<br>charset:iso-8859-1<br>expires:31 Dec 2008</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">   &lt;head&gt;</div><div class="line">     &lt;meta http-equiv=&quot;refresh&quot; content=&quot;5;URL=http://www.zixun24.com&quot;&gt;</div><div class="line">   &lt;/head&gt;</div><div class="line">   &lt;body&gt;</div><div class="line">          页面会5秒钟自动刷新并且跳转到url制定的地址</div><div class="line">          无URL仅仅五秒钟刷新一次页面</div><div class="line">   &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line">`</div></pre></td></tr></table></figure>
-<p>如果设置content=”0″表示禁止使用缓存。<br><code>&lt;meta http-equiv=&quot;expires&quot; content=&quot;Wed, 20 Jun 2015 22:33:00 GMT&quot;&gt;</code><br>到期重新从服务器load页面</p>
-<p><strong>http-equiv =”windows-target”：</strong> 强制定义当前网页的打开窗口。用于防止页面被盗用。例如，要防止自己的网页被别人当成一个frame页面调用，可以使用如下：<code>&lt;meta http-equiv=”windows-target” content=”_top”&gt;</code></p>
-<p><strong>http-equiv =”pragma”：禁止浏览器缓存页面。</strong><br>例如：<code>&lt;meta http-equiv=”pragma” content=”on-cache”&gt;</code><br>或者：<code>&lt;meta http-equiv=”cache-control” content=”on-cache”&gt;</code> 这个比上一个更可靠</p>
-<p><strong>http-equiv =”page-Enter”、http-equiv =”page-exit”：</strong><br>浏览器刚打开页面时候的显示效果。<code>&lt;meta http-equiv=&quot;page-enter&quot; content=&quot;revealTrans(Transition=23,Duration=1.0)&quot;&gt;</code><br>浏览器退出页面时候的显示效果。<code>&lt;meta http-equiv=&quot;page-exit&quot; content=&quot;revealTrans(Transition=23,Duration=1.0)&quot;&gt;</code></p>
-<h4 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h4><p> <a href="http://www.zixun24.com/storage/2015/05/web-html-mate-06.html" target="_blank" rel="external">meta 学习</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/31/browser/browser-working-theory-02/" itemprop="url">
-                  浏览器工作原理学习（二）：补充篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2015-12-31T17:21:55+08:00" content="2015-12-31">
-              2015-12-31
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="上一篇基本就是copy-learning-过程，这一篇找个总结性质的，直接拿干货！"><a href="#上一篇基本就是copy-learning-过程，这一篇找个总结性质的，直接拿干货！" class="headerlink" title="上一篇基本就是copy-learning 过程，这一篇找个总结性质的，直接拿干货！"></a>上一篇基本就是copy-learning 过程，这一篇找个总结性质的，直接拿干货！</h3><h2 id="浏览器工作大流程"><a href="#浏览器工作大流程" class="headerlink" title="浏览器工作大流程"></a>浏览器工作大流程</h2><p><strong>1. 浏览器解析三样东西</strong></p>
-<blockquote>
-<ul>
-<li>HTML/SVG/XHTML，事实上，Webkit有三个C++的类对应这三类文档。解析这三种文件会产生一个DOM Tree。</li>
-<li>CSS，解析CSS会产生CSS规则树。</li>
-<li>Javascript，脚本，主要是通过DOM API和CSSOM API来操作DOM Tree和CSS Rule Tree.</li>
-</ul>
-</blockquote>
-<p><strong>2. 解析完成后，浏览器引擎会通过DOM Tree 和 CSS Rule Tree 来构造 Rendering Tree</strong></p>
-<blockquote>
-<ul>
-<li>Rendering Tree 渲染树并不等同于DOM树，因为一些像Header或display:none的东西就没必要放在渲染树中了。</li>
-<li>CSS 的 Rule Tree主要是为了完成匹配并把CSS Rule附加上Rendering Tree上的每个Element。也就是DOM结点。也就是所谓的Frame。<strong>CSS匹配DOM Tree主要是从右到左解析CSS的Selector</strong></li>
-<li>然后，计算每个Frame（也就是每个Element）的位置，这又叫layout和reflow过程。</li>
-</ul>
-</blockquote>
-<p><strong>3. 后通过调用操作系统Native GUI的API绘制。</strong></p>
-<h2 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h2><p><strong>渲染的流程基本为四个步骤</strong></p>
-<blockquote>
-<ul>
-<li>计算CSS样式</li>
-<li>构建Render Tree</li>
-<li>Layout – 定位坐标和大小，是否换行，各种position, overflow, z-index属性 ……</li>
-<li>正式开画</li>
-</ul>
-</blockquote>
-<p>这里重要要说两个概念，一个是Reflow，另一个是Repaint。这两个不是一回事。</p>
-<pre><code>Repaint——屏幕的一部分要重画，比如某个CSS的背景色变了。但是元素的几何尺寸没有变。
-Reflow——意味着元件的几何尺寸变了，我们需要重新验证并计算Render Tree。是Render Tree的一部分或全部发生了变化。这就是Reflow，或是Layout。
-</code></pre><p><strong>（HTML使用的是flow based layout，也就是流式布局，所以，如果某元件的几何尺寸发生了变化，需要重新布局，也就叫reflow）</strong>reflow 会从<html>这个root frame开始递归往下，依次计算所有的结点几何尺寸和位置，在reflow过程中，可能会增加一些frame，比如一个文本字符串必需被包装起来。Reflow的成本比Repaint的成本高得多的多。DOM Tree里的每个结点都会有reflow方法，一个结点的reflow很有可能导致子结点，甚至父点以及同级结点的reflow</html></p>
-<p>所以，下面这些动作有很大可能会是成本比较高的。</p>
-<blockquote>
-<ul>
-<li>当你增加、删除、修改DOM结点时，会导致Reflow或Repaint</li>
-<li>当你移动DOM的位置，或是搞个动画的时候。</li>
-<li>当你修改CSS样式的时候。</li>
-<li>当你Resize窗口的时候（移动端没有这个问题），或是滚动的时候。</li>
-<li>当你修改网页的默认字体时。</li>
-</ul>
-</blockquote>
-<p>reflow有如下的几个原因：</p>
-<blockquote>
-<ul>
-<li>Initial。网页初始化的时候。</li>
-<li>Incremental。一些Javascript在操作DOM Tree时。</li>
-<li>Resize。其些元件的尺寸变了。</li>
-<li>StyleChange。如果CSS的属性发生变化了。</li>
-<li>Dirty。几个Incremental的reflow发生在同一个frame的子树上。</li>
-</ul>
-</blockquote>
-<p><strong>一般来说，浏览器会把这样的操作积攒一批，然后做一次reflow，这又叫异步reflow或增量异步reflow</strong></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/31/browser/browser-working-theory-01/" itemprop="url">
-                  浏览器工作原理学习（一）：基础知识
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2015-12-31T15:21:55+08:00" content="2015-12-31">
-              2015-12-31
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="关于该博客"><a href="#关于该博客" class="headerlink" title="关于该博客"></a>关于该博客</h3><p>前端的坑（摔）已入，虽然之前写了js，也用了Angular这种JS框架（也接触SAP UI5），用过Bootstrap,Sementic UI,KendoUI和其他的框架，但是自己毕竟是前端技术的小菜鸟，该博客就是整理下基础知识，加深下对前段技术的理解。<br><a href="http://taligarsiel.com/Projects/howbrowserswork1.htm" target="_blank" rel="external">参阅How browsers work</a></p>
-<h2 id="1-浏览器结构（High-Level-Structure）"><a href="#1-浏览器结构（High-Level-Structure）" class="headerlink" title="1. 浏览器结构（High Level Structure）"></a>1. 浏览器结构（High Level Structure）</h2><blockquote>
-<ol>
-<li>用户接口 – 包括地址栏，前进后退，书签菜单等窗口上除了网页显示区域以外的部分。</li>
-<li>浏览器引擎 – 查询与操作渲染引擎的接口。</li>
-<li>渲染引擎 – 负责显示请求的内容。比如请求到HTML, 它会负责解析HTML 与 CSS 并将结果显示到窗口中。</li>
-<li>网络 – 用于网络请求, 如HTTP请求。它包括平台无关的接口和各平台独立的实现。</li>
-<li>UI后端 – 绘制基础元件，如组合框与窗口。它提供平台无关的接口，内部使用操作系统的相应实现。</li>
-<li>JavaScript解释器。用于解析执行JavaScript代码。</li>
-<li>数据存储。这是一个持久层。浏览器需要把所有数据存到硬盘上，如cookies。新的HTML规范 (HTML5) 规定了一个完整（虽然轻量级）的浏览器中的数据库：’web database’。</li>
-</ol>
-</blockquote>
-<p><img src="/images/browser/browser-structure.png" alt="浏览器组件"></p>
-<p><em>与其它浏览器不同，chrome使用多个渲染引擎实例，每个Tab一个，每个Tab都是一个独立进程。</em></p>
-<h2 id="2-渲染引擎（The-rendering-engine）"><a href="#2-渲染引擎（The-rendering-engine）" class="headerlink" title="2. 渲染引擎（The rendering engine）"></a>2. 渲染引擎（The rendering engine）</h2><p>&ensp;&ensp;渲染引擎的职责就是渲染，即在浏览器窗口中显示所请求的内容。<br>&ensp;&ensp;默认情况下，渲染引擎可以显示html、xml文档及图片，它也可以借助插件（一种浏览器扩展）显示其他类型数据，例如使用PDF阅读器插件，可以显示PDF格式,<strong>渲染引擎最主要的用途——显示应用了CSS之后的html及图片。</strong></p>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><blockquote>
-<p>Firefox、Chrome和Safari是基于两种渲染引擎构建的，Firefox使用Geoko——Mozilla自主研发的渲染引擎，Safari和Chrome都使用webkit。</p>
-</blockquote>
-<h3 id="渲染主流程（The-main-flow）"><a href="#渲染主流程（The-main-flow）" class="headerlink" title="渲染主流程（The main flow）"></a>渲染主流程（The main flow）</h3><blockquote>
-<p>渲染引擎首先通过网络获得所请求文档的内容，通常以8K分块的方式完成。<br>渲染引擎在取得内容之后的基本流程：<br>解析html以构建dom树 -&gt; 构建render树 -&gt; 布局render树 -&gt; 绘制render树<br><img src="/images/browser/browser-render.png" alt="渲染引擎流程"><br>渲染引擎开始解析html，并将标签转化为内容树中的dom节点。接着，它解析外部CSS文件及style标签中的样式信息。这些样式信息以及html中的可见性指令将被用来构建另一棵树——render树。</p>
-<p>Render树由一些包含有颜色和大小等属性的矩形组成，它们将被按照正确的顺序显示到屏幕上。<br>Render树构建好了之后，将会执行布局过程，它将确定每个节点在屏幕上的确切坐标。再下一步就是绘制，即遍历render树，并使用UI后端层绘制每个节点。</p>
-<p>值得注意的是，这个过程是逐步完成的，为了更好的用户体验，渲染引擎将会尽可能早的将内容呈现到屏幕上，并不会等到所有的html都解析完成之后再去构建和布局render树。它是解析完一部分内容就显示一部分内容，同时，可能还在通过网络下载其余内容。</p>
-</blockquote>
-<p><img src="/images/browser/webkit-render-flow.png" alt="webkit render flow"></p>
-<p><center>webkit 渲染流程</center><br><img src="/images/browser/geoko-render-flow.png" alt="geoko render flow"></p>
-<p><center>Geoko  渲染流程</center></p>
-<blockquote>
-<p>Gecko称可见的格式化元素组成的树为frame树，每个元素都是一个frame，webkit则使用render树这个名词来命名由渲染对象组成的树。Webkit中元素的定位称为布局，而Gecko中称为回流。Webkit称利用dom节点及样式信息去构建render树的过程为attachment，Gecko在html和dom树之间附加了一层，这层称为内容接收器，相当制造dom元素的工厂</p>
-</blockquote>
-<h2 id="解析与DOM树构建（Parsing-and-DOM-tree-construction）"><a href="#解析与DOM树构建（Parsing-and-DOM-tree-construction）" class="headerlink" title="解析与DOM树构建（Parsing and DOM tree construction）"></a>解析与DOM树构建（Parsing and DOM tree construction）</h2><h3 id="解析（Parsing－general）"><a href="#解析（Parsing－general）" class="headerlink" title="解析（Parsing－general）"></a>解析（Parsing－general）</h3><blockquote>
-<p>解析一个文档即将其转换为具有一定意义的结构——编码可以理解和使用的东西。解析的结果通常是表达文档结构的节点树，称为解析树或语法树。<br>例如，解析“2＋3－1”这个表达式，可能返回这样一棵树<br><img src="/images/browser/math-parse.png" alt="浏览器组件"></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/30/JavaScript/javascript-eventloop/" itemprop="url">
-                  JavaScript 运行机制Event Loop理解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2015-12-30T15:21:55+08:00" content="2015-12-30">
-              2015-12-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="JavaScript-运行机制Event-Loop理解"><a href="#JavaScript-运行机制Event-Loop理解" class="headerlink" title="JavaScript 运行机制Event Loop理解"></a>JavaScript 运行机制Event Loop理解</h2><p>本文学习自阮一峰老师的文章<a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" target="_blank" rel="external">JavaScript 运行机制详解：再谈Event Loop</a></p>
-<h3 id="JavaScript-是单线程"><a href="#JavaScript-是单线程" class="headerlink" title="JavaScript 是单线程"></a>JavaScript 是单线程</h3><p>&ensp;&ensp;JavaScript 是单线程的，是学习javaScript必先接受的前提，尤其是我这样的java为主业的小码农。<br>&ensp;&ensp;单线程模型简单，现在单线程反而是特色，nodejs不就是看上这点么，解放java多线程的火坑啊。虽然html5提供了web worker标准，允许JavaScript创建多个线程，但是子线程完全受主线程的控制，<strong>而且worker线程不可以操作dom</strong>。所以这个标准并没有改变JavaScript单线程的本质</p>
-<h3 id="任务队列"><a href="#任务队列" class="headerlink" title="任务队列"></a>任务队列</h3><p>&ensp;&ensp;单线程就意味着，所有任务需要排队，前一个任务结束，才会执行后一个任务。如果前一个任务耗时很长，后一个任务就不得不一直等着。这就是阻塞队列了，一般阻塞队列主要是IO·网络之类（AJAX请求）的引起的，此时CUP这么宝贵的资源只能可惜的等待，等待好痛苦啊！<br>&ensp;&ensp;JavaScript设计ZEN:这时主线程完全可以不管IO设备，挂起处于等待中的任务，先运行排在后面的任务。等到IO设备返回了结果，再回过头，把挂起的任务继续执行下去。<br>&ensp;&ensp;现在任务分两类：一种是<strong>同步任务（synchronous）</strong>，另一种是<strong>异步任务（asynchronous）</strong>。同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务；异步任务指的是，不进入主线程、而进入<strong>“任务队列”（task queue）</strong>的任务，只有”任务队列”通知主线程，某个异步任务可以执行了，该任务才会进入主线程执行。</p>
-<pre><code>1. 同步任务在主线程执行，形成执行栈（execution context stack）。
-2. 主线程之外存在&quot;任务队列&quot;（task queue），异步任务有了运行结果，就在&quot;任务队列&quot;之中放置一个事件。
-3. &quot;执行栈&quot;中所有同步任务执行完毕，系统就会读取&quot;任务队列&quot;，看有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。
-4. 主线程重复上面的第三步。
-</code></pre><p><img src="/images/js/js-event-loop.jpg" alt="javascript event loop"><br>     <em>主线程空，轮询任务队列，查看时间，触发回调</em></p>
-<h3 id="事件和回调"><a href="#事件和回调" class="headerlink" title="事件和回调"></a>事件和回调</h3><p>&ensp;&ensp;”任务队列”是一个事件的队列（也可以理解成消息的队列），IO设备完成一项任务，就在”任务队列”中添加一个事件，表示相关的异步任务可以进入”执行栈”了。主线程读取”任务队列”，就是读取里面有哪些事件。<br>&ensp;&ensp;”任务队列”中的事件，除了IO设备的事件以外，还包括一些用户产生的事件（比如鼠标点击、页面滚动等等）。只要指定过回调函数，这些事件发生时就会进入”任务队列”，等待主线程读取。<br>&ensp;&ensp;所谓”回调函数”（callback），就是那些会被主线程挂起来的代码。异步任务必须指定回调函数，当主线程开始执行异步任务，就是执行对应的回调函数。<br>&ensp;&ensp;”任务队列”是一个先进先出的数据结构，排在前面的事件，优先被主线程读取。主线程的读取过程基本上是自动的，只要执行栈一清空，”任务队列”上第一位的事件就自动进入主线程。但是，由于存在后文提到的”定时器”功能，主线程首先要检查一下执行时间，某些事件只有到了规定的时间，才能返回主线程。</p>
-<h3 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h3><p>&ensp;&ensp;主线程从”任务队列”中读取事件，这个过程是循环不断的，所以整个的这种运行机制又称为Event Loop（事件循环）。<br>为了更好地理解Event Loop，请看下图（转引自Philip Roberts的演讲《Help, I’m stuck in an event-loop》）。<br><img src="/images/js/event-loop.png" alt="javascript event loop"><br>&ensp;&ensp;主线程运行的时候，产生堆（heap）和栈（stack），栈中的代码调用各种外部API，它们在”任务队列”中加入各种事件（click，load，done）。只要栈中的代码执行完毕，主线程就会去读取”任务队列”，依次执行那些事件所对应的回调函数。</p>
-<h3 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h3><p>&ensp;&ensp;除了放置异步任务的事件，”任务队列”还可以放置定时事件，即指定某些代码在多少时间之后执行。这叫做”定时器”（timer）功能，也就是定时执行的代码。<br>&ensp;&ensp;定时器功能主要由setTimeout()和setInterval()这两个函数来完成，它们的内部运行机制完全一样，区别在于前者指定的代码是一次性执行，后者则为反复执行。以下主要讨论setTimeout()。<br>&ensp;&ensp;setTimeout()接受两个参数，第一个是回调函数，第二个是推迟执行的毫秒数。</p>
-<pre><code>console.log(1);
-setTimeout(function(){console.log(2);},1000);
-console.log(3)
-</code></pre><p>&ensp;&ensp;上面代码的执行结果是1，3，2，因为setTimeout()将第二行推迟到1000毫秒之后执行。<br>&ensp;&ensp;如果将setTimeout()的第二个参数设为0，就表示当前代码执行完（执行栈清空）以后，立即执行（0毫秒间隔）指定的回调函数。</p>
-<pre><code>setTimeout(function(){console.log(1);}, 0);
-console.log(2);
-</code></pre><p>&ensp;&ensp;上面代码的执行结果总是2，1，因为只有在执行完第二行以后，系统才会去执行”任务队列”中的回调函数。<br>总之，setTimeout(fn,0)的含义是，指定某个任务在主线程最早可得的空闲时间执行，也就是说，尽可能早得执行。它在”任务队列”的尾部添加一个事件，因此要等到同步任务和”任务队列”现有的事件都处理完，才会得到执行。<br>&ensp;&ensp;HTML5标准规定了setTimeout()的第二个参数的最小值（最短间隔），不得低于4毫秒，如果低于这个值，就会自动增加。在此之前，老版本的浏览器都将最短间隔设为10毫秒。另外，对于那些DOM的变动（尤其是涉及页面重新渲染的部分），通常不会立即执行，而是每16毫秒执行一次。这时使用requestAnimationFrame()的效果要好于setTimeout()。<br>&ensp;&ensp;需要注意的是，setTimeout()只是将事件插入了”任务队列”，必须等到当前代码（执行栈）执行完，主线程才会去执行它指定的回调函数。要是当前代码耗时很长，有可能要等很久，所以并没有办法保证，回调函数一定会在setTimeout()指定的时间执行。</p>
-<h3 id="对比nodejs"><a href="#对比nodejs" class="headerlink" title="对比nodejs"></a>对比nodejs</h3><p>&ensp;&ensp;Node.js也是单线程的Event Loop，但是它的运行机制不同于浏览器环境。<br>&ensp;&ensp;请看下面的示意图（作者@BusyRich）。<br><img src="/images/js/node-event-loop.png" alt="nodejs event loop"><br>&ensp;&ensp;根据上图，Node.js的运行机制如下。</p>
-<pre><code>（1）V8引擎解析JavaScript脚本。
-（2）解析后的代码，调用Node API。
-（3）libuv库负责Node API的执行。它将不同的任务分配给不同的线程，形成一个Event Loop（事件循环），以异步的方式将任务的执行结果返回给V8引擎。
-（4）V8引擎再将结果返回给用户。
-</code></pre><p>&ensp;&ensp;除了setTimeout和setInterval这两个方法，Node.js还提供了另外两个与”任务队列”有关的方法：process.nextTick和setImmediate。它们可以帮助我们加深对”任务队列”的理解。<br>&ensp;&ensp;process.nextTick方法可以在当前”执行栈”的尾部—-下一次Event Loop（主线程读取”任务队列”）之前—-触发回调函数。也就是说，它指定的任务总是发生在所有异步任务之前。setImmediate方法则是在当前”任务队列”的尾部添加事件，也就是说，它指定的任务总是在下一次Event Loop时执行，这与setTimeout(fn, 0)很像。请看下面的例子（via StackOverflow）</p>
-<pre><code>process.nextTick(function A() {
-  console.log(1);
-  process.nextTick(function B(){console.log(2);});
-});
-
-setTimeout(function timeout() {
-  console.log(&apos;TIMEOUT FIRED&apos;);
-}, 0)
-// 1
-// 2
-// TIMEOUT FIRED
-</code></pre><p>&ensp;&ensp;上面代码中，由于process.nextTick方法指定的回调函数，总是在当前”执行栈”的尾部触发，所以不仅函数A比setTimeout指定的回调函数timeout先执行，而且函数B也比timeout先执行。这说明，如果有多个process.nextTick语句（不管它们是否嵌套），将全部在当前”执行栈”执行。<br>&ensp;&ensp;现在，再看setImmediate。    </p>
-<pre><code>setImmediate(function A() {
-  console.log(1);
-  setImmediate(function B(){console.log(2);});
-});
-
-setTimeout(function timeout() {
-  console.log(&apos;TIMEOUT FIRED&apos;);
-}, 0);
-</code></pre><p>&ensp;&ensp;上面代码中，setImmediate与setTimeout(fn,0)各自添加了一个回调函数A和timeout，都是在下一次Event Loop触发。那么，哪个回调函数先执行呢？答案是不确定。运行结果可能是1–TIMEOUT FIRED–2，也可能是TIMEOUT FIRED–1–2。<br>&ensp;&ensp;令人困惑的是，Node.js文档中称，setImmediate指定的回调函数，总是排在setTimeout前面。实际上，这种情况只发生在递归调用的时候。</p>
-<pre><code>setImmediate(function (){
-  setImmediate(function A() {
-    console.log(1);
-    setImmediate(function B(){console.log(2);});
-  });
-
-  setTimeout(function timeout() {
-    console.log(&apos;TIMEOUT FIRED&apos;);
-  }, 0);
-});
-// 1
-// TIMEOUT FIRED
-// 2
-</code></pre><p>&ensp;&ensp;上面代码中，setImmediate和setTimeout被封装在一个setImmediate里面，它的运行结果总是1–TIMEOUT FIRED–2，这时函数A一定在timeout前面触发。至于2排在TIMEOUT FIRED的后面（即函数B在timeout后面触发），是因为setImmediate总是将事件注册到下一轮Event Loop，所以函数A和timeout是在同一轮Loop执行，而函数B在下一轮Loop执行。<br>&ensp;&ensp;我们由此得到了process.nextTick和setImmediate的一个重要区别：多个process.nextTick语句总是在当前”执行栈”一次执行完，多个setImmediate可能则需要多次loop才能执行完。事实上，这正是Node.js 10.0版添加setImmediate方法的原因，否则像下面这样的递归调用process.nextTick，将会没完没了，主线程根本不会去读取”事件队列”！</p>
-<pre><code>process.nextTick(function foo() {
-  process.nextTick(foo);
-});
-</code></pre><p>&ensp;&ensp;事实上，现在要是你写出递归的process.nextTick，Node.js会抛出一个警告，要求你改成setImmediate。<br>&ensp;&ensp;另外，由于process.nextTick指定的回调函数是在本次”事件循环”触发，而setImmediate指定的是在下次”事件循环”触发，所以很显然，前者总是比后者发生得早，而且执行效率也高（因为不用检查”任务队列”）。<br>（完）</p>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>More info: <a href="nonumber1989@gmail.com">Steven.Xu</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1144,16 +1768,16 @@ setTimeout(function timeout() {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">articles</span>
             </a>
           </div>
 
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">6</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
               
             </div>
           
@@ -1161,8 +1785,8 @@ setTimeout(function timeout() {
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">13</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -1198,7 +1822,7 @@ setTimeout(function timeout() {
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1206,11 +1830,11 @@ setTimeout(function timeout() {
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Theme -
+  Thème -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>

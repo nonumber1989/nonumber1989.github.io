@@ -173,7 +173,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Accueil
           </a>
         </li>
       
@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -236,6 +236,1257 @@
             
               
                 
+                <a class="post-title-link" href="/2017/01/04/microservices/microservices/" itemprop="url">
+                  Chris Richardson 微服务系列文章 翻译
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posté le</span>
+            <time itemprop="dateCreated" datetime="2017-01-04T13:36:23+08:00" content="2017-01-04">
+              2017-01-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/microservice/" itemprop="url" rel="index">
+                    <span itemprop="name">microservice</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>  2017年的元旦，经过同事介绍开始阅读 nginx blog上的大神<strong>Chris Richardson</strong>发布的七篇针对微服务的文章，刚好决定在新年伊始，做一点技术上的积累，那么就从翻译开始吧！ 这是我第一次翻译外文博客，难免有一些含糊不清的地方，希望各位看官轻喷并帮助我纠正，针对文章中的一些问题 我也将会提出自己的疑问（一开始就是因为有疑问才看的文章，摔！）</p>
+<h1 id="原链接地址"><a href="#原链接地址" class="headerlink" title="原链接地址"></a>原链接地址</h1><ol>
+<li><a href="https://www.nginx.com/blog/introduction-to-microservices/" target="_blank" rel="external"><em>Introduction to Microservices</em></a></li>
+<li><a href="https://www.nginx.com/blog/building-microservices-using-an-api-gateway/?utm_source=introduction-to-microservices&amp;utm_medium=blog&amp;utm_campaign=Microservices" target="_blank" rel="external"><em>Building Microservices: Using an API Gateway</em></a></li>
+<li><a href="https://www.nginx.com/blog/building-microservices-inter-process-communication/?utm_source=introduction-to-microservices&amp;utm_medium=blog&amp;utm_campaign=Microservices" target="_blank" rel="external"><em>Building Microservices: Inter-Process Communication in a Microservices Architecture</em></a></li>
+<li><a href="https://www.nginx.com/blog/service-discovery-in-a-microservices-architecture/?utm_source=introduction-to-microservices&amp;utm_medium=blog&amp;utm_campaign=Microservices" target="_blank" rel="external"><em>Service Discovery in a Microservices Architecture</em></a></li>
+<li><a href="https://www.nginx.com/blog/event-driven-data-management-microservices/?utm_source=introduction-to-microservices&amp;utm_medium=blog&amp;utm_campaign=Microservices" target="_blank" rel="external"><em>Event-Driven Data Management for Microservices</em></a></li>
+<li><a href="https://www.nginx.com/blog/deploying-microservices/?utm_source=introduction-to-microservices&amp;utm_medium=blog&amp;utm_campaign=Microservices" target="_blank" rel="external"><em>Choosing a Microservices Deployment Strategy</em></a></li>
+<li><a href="https://www.nginx.com/blog/refactoring-a-monolith-into-microservices/?utm_source=introduction-to-microservices&amp;utm_medium=blog&amp;utm_campaign=Microservices" target="_blank" rel="external"><em>Refactoring a Monolith into Microservices</em></a></li>
+</ol>
+<h1 id="译文链接"><a href="#译文链接" class="headerlink" title="译文链接"></a>译文链接</h1><ol>
+<li><em><a href="http://www.jianshu.com/p/8d2cfa1fa633" target="_blank" rel="external">微服务介绍</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/9e90b2a5df7b" target="_blank" rel="external">构建微服务之使用API网关</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/9c03081bc0d9" target="_blank" rel="external">构建微服务之:微服务架构中的进程间通信</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/1bf9a46efe7a" target="_blank" rel="external">微服务中的服务发现</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/9a440c5ea1db" target="_blank" rel="external">微服务之事件驱动的数据管理</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/31c2a5a8b764" target="_blank" rel="external">选择一种微服务部署策略</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/29f4d788e3bb" target="_blank" rel="external">重构巨石应用到微服务</a></em></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/04/microservices/Service Discovery in a Microservices Architecture/" itemprop="url">
+                  微服务中的服务发现
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posté le</span>
+            <time itemprop="dateCreated" datetime="2017-01-04T13:36:23+08:00" content="2017-01-04">
+              2017-01-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/microservice/" itemprop="url" rel="index">
+                    <span itemprop="name">microservice</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/04/microservices/Refactoring a Monolith into Microservices/" itemprop="url">
+                  重构巨石应用到微服务
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posté le</span>
+            <time itemprop="dateCreated" datetime="2017-01-04T13:36:23+08:00" content="2017-01-04">
+              2017-01-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/microservice/" itemprop="url" rel="index">
+                    <span itemprop="name">microservice</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/04/microservices/Introduction to Microservices/" itemprop="url">
+                  微服务介绍
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posté le</span>
+            <time itemprop="dateCreated" datetime="2017-01-04T13:36:23+08:00" content="2017-01-04">
+              2017-01-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/microservice/" itemprop="url" rel="index">
+                    <span itemprop="name">microservice</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>原文链接:<a href="https://www.nginx.com/blog/introduction-to-microservices/" target="_blank" rel="external"><em>Introduction to Microservices</em></a></strong></p>
+<ol>
+<li><em>微服务介绍(本文)</em></li>
+<li><em><a href="http://www.jianshu.com/p/9e90b2a5df7b" target="_blank" rel="external">构建微服务之使用API网关</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/9c03081bc0d9" target="_blank" rel="external">构建微服务之:微服务架构中的进程内通信</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/1bf9a46efe7a" target="_blank" rel="external">微服务中的服务发现</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/9a440c5ea1db" target="_blank" rel="external">微服务之事件驱动的数据管理</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/31c2a5a8b764" target="_blank" rel="external">选择一种微服务部署策略</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/29f4d788e3bb" target="_blank" rel="external">重构巨石应用到微服务</a></em></li>
+</ol>
+<p>微服务现在受到了大量的关注︰ 文章、 博客、 社交媒体和学术会议上的讨论都能看到该词汇的身影。微服务正迅速走向 Gartner Hype cycle 所指的快速发展期。同时，软件社区的一些怀疑论者指出微服务并不是什么新鲜玩意儿。这些唱反调的人说微服务和SOA概念并没有什么不同，旧瓶装新酒而已，顺势炒炒新概念。然而，不管说是夸大也好，怀疑也好，微服务架构模式应用在敏捷开发和交付复杂的企业应用程序的时候还是有巨大优势的 。</p>
+<p>这篇博客是设计、构建和部署微服务七篇博客系列之一。通过该文章将学到一些微服务的方法，还有微服务架构与传统的整体式架构模式的比较。本系列将介绍微服务架构的各种元素，并揭示该架构模式的各种优点与缺点，以此来指导微服务是否适合您的项目，以及如何运用该模式。</p>
+<p>让我们首先看看为什么你应该考虑使用微服务。</p>
+<h2 id="构建整体式应用"><a href="#构建整体式应用" class="headerlink" title="构建整体式应用"></a>构建整体式应用</h2><p>假设现在我们为了与Uber和Hailo竞争来构建一个全新的出租车品牌<strong>taxi-hailing</strong>:经过一系列的预备会议和需求收集，我们决定无论是人工撸还是用Rails，Spring Boot，Play，或Maven之类工具生成也好，最终要创建一个全新的应用！应用应该有如下图六边形一样的模块结构</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3912920-d319c7769ff1e518.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>应用程序的核心是业务逻辑，它了定义服务、 领域对象和事件模块。围绕核心是接口与外部世界的适配器。适配器的例子包括数据库访问组件、 生产消息和消费消息的消息传递组件以及暴露API或实现用户界面的 web 组件。</p>
+<p>尽管在逻辑上模块化，整个应用还是做为一个巨大的整体进行打包和部署的。而且模块的结构往往与选择的编程语言和框架紧密相关。 举个栗子： 多数java程序打成war包部署到Tomcat 、Jetty等应用服务器中；还有一部分被打成自包含的jar包（Spring Boot支持把jetty或者tomcat包进去，以main为入口启动应用）； 同样的，Rails 和 Node.js 应用直接以目录结构的方式部署.</p>
+<p>这种风格开发的应用是非常常见的。我们的IDE和工具致力于构建这样的单一应用，所以我们开发起来也感觉到简单；此类应用测试起来也很方便，你可以很简单的启动这个应用，采用selenium测试UI去完成端到端的测试；单体应用部署起来也不难，把包一拷贝扔服务器里就妥了， 如果要扩展应用，只需要在负载均衡器后面跑多个相同的应用就可以了。工程的初期呢，这个方法工作的还是不错的！</p>
+<h2 id="迈向单体的地狱"><a href="#迈向单体的地狱" class="headerlink" title="迈向单体的地狱"></a>迈向单体的地狱</h2><p>很不幸的是，这种方式还是有巨大的局限性的.。一个成功的应用总会随着时间逐步成长并变得巨大起来。每个敏捷Sprint周期，开发者会实现更多的功能，当然这就意味着又添加了很多行代码。几年之后你会发现，当年你写的那个简单的小小的应用居然变成一个巨大的单体怪物。举一个比较极端的例子吧：最近我和一个开发者聊天，他正在写一个工具来分析数百万行代码的巨大应用中的上千个jar的依赖关系。别的不说，写出这么巨大的怪物肯定花费了很多程序员几年的时间。</p>
+<p>一旦应用变成了巨大复杂的单体，那你的开发团队将痛苦不堪！敏捷开发和交付的一些愿景在这个庞然大物面前都会受挫。最主要的问题就是这玩意儿现在太复杂了！复杂到很难有某个程序员能完全理解它！导致结果就是，正确的修个bug、做个新功能变的费时又费力。更可恨的是，这是一个恶性循环的过程，应用正在逐步的‘死去’ 。如果你的代码库别人都理解不了，那么对代码做点正确的改动是很难的，最终这个怪物更加的可怕更加的难以理解，纠结！</p>
+<p>应用程序的规模大了也会拖慢程序的开发： 程序越大，启动越慢！调查显示一些程序员说他们启动程序要12分钟，我个人还听过有的应用启动要40分钟！程序员开发过程需要周期性的重启应用，这样就浪费了很多时间，效率自然也很低下，不能忍！</p>
+<p>巨大、复杂的单体应用还是持续交付的巨大障碍。现在SaaS应用的宗旨是如果有改动能够每天部署多次。单体应用的中某部分的改动需要需要重新部署整个应用，这样的话持续交付是相当困难的。前面也讲了，启动一次就要那么久 ！另外，改动造成的影响也不是很好被理解，需要大量的手工测试去保证，这样的话持续交付更是难上加难了！</p>
+<p>单体应用在多个模块对资源需求上有冲突时很难进行扩展。比如：一个新模块可能实现了CPU密集型的图片处理逻辑,更适合部署到Amazon EC2 Compute Optimized instances。另一个模块可能需要一个内存数据库，更适合使用EC2 Memory-optimized instances。然而，这些模块必须被一起部署的话，选择硬件的时候就要好好折中一下喽。</p>
+<p>单体应用的另一个问题是稳定性：因为所有的模块都跑在同一进程之中，某模块中的bug，比如内存泄漏是可能拖垮整个应用的！更重要的是，因为负载均衡后面的所有的应用是一样的，bug还可能影响整个应用的可用性！</p>
+<p>最后重要的一点：单体应用很难拥抱新的框架和编程语言。假设你有2百万行用XYZ框架写的代码，如果用ABC框架重写它将会耗费巨大的时间和金钱！哪怕大家都知道用新框架更适合一些（摊手）。这样导致的结果是，在尝试转换新框架新技术的时候存在巨大的障碍，我们不得不继续在选型之初定好的技术架构上前行（哭脸）。</p>
+<p>最后总结下吧，你从拥有一个业务清晰，几个程序员都明白的小程序，逐步的变成了一个可怕的单体应用。回首看这个应用是采用了过时的、效率低下的技术来写的（毕竟技术在进步，抱着老东西闷头陶醉不是什么好事情）！别的不说，招聘都费劲呐！这个单体应用变的难以扩展、变得极不稳定，想敏捷开发？想持续交付？ 恐怕只能呵呵了。</p>
+<p>面对这些，你能做点什么呢？</p>
+<h2 id="微服务-–-处理这些复杂问题！"><a href="#微服务-–-处理这些复杂问题！" class="headerlink" title="微服务 – 处理这些复杂问题！"></a>微服务 – 处理这些复杂问题！</h2><p>很多机构，比如Amazon、eBay、Netflix，已经开始通过拥抱微服务架构去解决上述的问题了。她们不再去构建一个可怕的单体应用，而是拆分成多个更小的、相互连接的微服务！</p>
+<p>服务通常实现了一系列相互独立的功能或特性，比如订单管理、客户管理等等。每一个微服务都具有自身业务逻辑以及各种适配器构成的六角形架构模式，都是一个迷你的小应用。有的微服务会暴露API供其他微服务和客户消费，其他微服务则可能实现Web UI。运行时，每一个实例通常是云平台的一个VM或者一个Docker容器。</p>
+<p>下面是对上述老架构的一个拆分：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3912920-9762019e56935c8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>应用的每个功能区域限制都以微服务的方式来实现了，此外整个应用被拆分成一系列更小的web应用（比如乘客管理、司机管理）。拆分之后更加方便的为特殊用户、设备或者特殊用例进行部署。</p>
+<p>每一个后端服务暴露REST API，绝大部分服务也会消费其他服务提供的API。比如，司机管理服务会使用通知服务告知空闲的司机潜在的行程（来生意了，接单！）；还有UI 服务会调用其他服务后渲染web页面。服务之间也会使用异步的，基于消息的通信模式，服务内的通信将会在后面的文章详述。</p>
+<p>一些REST API 也会暴露给移动端设备方便司机和乘客的使用。当然，这些应用不会直接访问后端各个微服务 ，而是通过一个协调者<strong>API网关</strong>来访问的。 API网关的职责有负载均衡、缓存、访问控制、API计费、监控···，这些事情使用NGINX就OK啦。后面的文章将会讲述API网关的细节。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3912920-edd018002c577cff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>微服务架构模式很契合上图的Y轴扩展方式，上图X轴的扩展表示横向扩展应用，一般就是负载均衡器后面部署几个相同的应用。Z轴扩展表示数据分区,将请求路由到特定的服务器上（比如数据库分库分表，根据主键访问到用户记录对应的数据库）。</p>
+<p>应用一般都会三个维度去扩展。Y轴正是按照我们第一节讲到的，把单体应用拆分为微服务，运行时呢，为了某个服务达到高吞吐和高可用性，可以采用负载均衡，也就是X轴扩展了，特殊应用也会使用Z轴扩展来切分服务。下面的图展示了行程管理采用Docker镜像部署到Amazon EC2的情况：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3912920-2d3f5e1b1c954c35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>运行时，行程管理由多个服务实例组成。每个应用实例实际是一个Docker容器。为了达到高可用，容器会跑在多个云平台VM上，服务实例之前是NGINX这样的负载均衡器来分发请求，负载均衡器也会关注比如缓存、权限访问、服务计费、监控等事宜。</p>
+<p>微服务架构模式极大的影响应用和数据库之间的关系。每个微服务都会有自己的数据库Schema，而不是和其他服务共享一套数据库Shcema。另一个角度看，这种方式对于以往企业级范围的数据模型来讲是很奇怪的，另外，微服务这么搞会造成数据冗余。然而，如果你想从微服务架构获益，那么每个微服务一个数据Schema是很有必要的，因为微服务提倡的就是松耦合啊，下面的图展示了微服务架构下应用的数据架构：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3912920-609da44e77622fea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>每个微服务都有自己的数据库，而且每个服务还能选择适合自己需求的数据库，这就是所谓的多态型持久化架构。比如，司机如果需要查找附近的潜在乘客，那就必须要使用支持高效地理位置查询的数据库。</p>
+<p>表面上看微服务和SOA架构很相似，两种架构都倡导由一系列的服务组成。我们可以把微服务架构模式当成是没有商业web service规范（WS规范咯）以及ESB等打包的套件约束的SOA。基于微服务架构的应用更倾向于简单的、轻量级的REST协议而不是老旧的WS，当然，微服务也会避免去使用笨重的ESB套件而更喜欢去实现一些ESB部分功能的轻量级工具（不要捆绑，不要全家桶！），微服务架构模式也避免SOA中诸如规范化Schema的定义。</p>
+<h2 id="微服务的优势"><a href="#微服务的优势" class="headerlink" title="微服务的优势"></a>微服务的优势</h2><p>微服务架构模式有很多重要的优势。首先，通过把可怕巨大的单体拆分为一系列的服务解决了单体复杂度问题， 拆分后整体功能数量并没有变化，但是应用现在变成了多个方便管理的小应用，每个服务都有一个定义良好的服务边界，通过RPC方式或消息驱动暴露API。微服务架构模式解决了单体应用代码库在实践中极难模块化的难题，拆分后的微服务能够更快的部署，更易理解和维护！</p>
+<p>第二，拆分后的服务可以被专注于某部分服务的团队独立开发。程序员可以基于API约定前提下自由选择合适的技术，当然，很多机构为了避免技术选择混乱也会限制技术的选项。因此，自由意味着程序员可以不再局限于项目初期选择的技术了（撒花）！开始写一个新的微服务的时候，开发者可以使用一些当下流行的技术，更重要的是，因为每个服务现在拆分的很小，使用现有技术重写老的服务成为可能！</p>
+<p>第三，微服务架构模式使得独立部署成为可能，开发者不用再忙碌于协调其他模块的变化再去部署（单体应用，改一个部分可能对其他部分影响，某个更改可能涉及多个模块的协调），微服务的更改可以在测试后尽快的被部署。比如，UI组可以进行A/B测试并且快速迭代而不用等待整个应用部署。微服务架构模式使得持续部署成为可能！</p>
+<p>最后，微服务架构模式使得每个服务可以独立的扩展。我们可以针对某些有容量和可用性要求的微服务进行扩展，为需要的服务部署多个实例而不是复制多个单体去折中获得某项提升！更重要的是，我们可以针对服务需求使用最合适的硬件资源。比如，我们可以把CPU密集型的图片处理服务部署到EC2 Compute Optimized instances，部署内存数据库相关的服务到EC2 Memory-optimized instances。</p>
+<h2 id="微服务的劣势"><a href="#微服务的劣势" class="headerlink" title="微服务的劣势"></a>微服务的劣势</h2><p>正如Fred 30年前的书中所说,“没有银弹！”。和其他技术一样，微服务架构也有其劣势 。劣势之一就是它的名字（捂脸），微服务这个词过分强调了服务的尺寸，实际上还真有几个开发者号召大家写10-100行代码的‘微服务’（这应该不太可能吧）！然而微服务更想表达的是一种工具和途径，微并不是最终的目标（为微服务而微服务，敲响警钟），微服务是为了便利敏捷开发和部署而去有效的拆分应用。</p>
+<p>微服务另一个劣势是因为从单体应用拆分为分布式系统带来的复杂。开发者需要选择或者实现基于消息或者RPC模式的进程间通讯机制，另外开发者也要写额外的代码去处理对于目的服务请求可能存在的请求缓慢或者请求不可用导致的部分失败问题。分布式系统可不是什么火箭科学，它可比单体应用中模块间通过语言层面或者进程内调用复杂的多了！</p>
+<p>微服务另一个挑战就是拆分数据库架构。一个逻辑事务更新多个业务记录是很常见的事情，单体应用实现该事务是比较简单的，毕竟大家使用一个数据库。然而在微服务架构中，你必须要更新多个服务的多个数据库。一般不会使用分布式事务，不仅仅是因为CAP理论，还因为一些流行的NoSQL数据库和Message Queue系统压根也不支持（摊手）。最后还得绕回最终一致性方案，这个方案对开发者来讲也是略有挑战的（实际上我看这个系列的文章并且开始翻译也是因为实际中遇到了这个问题，下面的文章将会提到）。</p>
+<p>测试微服务架构的应用也是更加复杂的。比如，使用Spring Boot这种框架，开发者启动一个单体应用去写一些测试用例、测试其REST API是很平常事情。相反的是，相类似的测试在微服务中的话，你要启动或者至少去mock其依赖的其他的服务才能完成。再次强调，微服务不是火箭科学，很重要的一点是大家不要低估了这样做的复杂度！</p>
+<p>微服务架构模式的另一巨大挑战是实现跨服务的改动。比如，让我们假设你要实现一个需要更改服务A、B、C的功能，而此时A依赖于B，B依赖于C。在传统单体应用中，你可以很简单的去更改对应的模块，集成这些变动然后一起部署它们。然而在微服务架构模式下，你需要小心翼翼的计划和协调每个服务的改动和发布：你需要更新服务C，再更新服务B。然后还要更新服务A。幸运的是，绝大部分时候一个服务的变化仅会影响一个服务，多个服务间需要协调的情况是很少出现的。</p>
+<p>部署一个基于微服务架构的应用是更加复杂的。一个传统单体应用可以简单的部署到负载均衡器后面，因为应用都是相同的，拷贝部署就可以了。每个应用配置好数据库和message broker的地址（主机和端口）就好了。相对应的微服务一般是大量的服务组成的，比如，Hailo存在160个不同的服务，Netflix则有多达600多个不同服务，每个服务还有多个运行实例！将会有更多的变化的部分需要去配置、部署、扩展、监控。此外还需要实现一个服务发现机制让其他服务找到它需要通信的服务的地址。传统的基于Ticket和手动运维的方式是不可能处理好这个级别的复杂扩展的。因此，成功部署一个微服务需要开发者对部署方法有更多控制还要对服务执行高水平的自动化。</p>
+<p>自动化的其中一种方式是使用现有的Paas平台（比如Cloud Foundry）。PaaS平台为开发者提供了便捷的方式去部署他们的微服务，避免了是他们纠缠于购买和配置IT资源的泥潭。同时，配置PaaS系统和网络的专业人员可以确保遵守了最佳实践和公司策略。另一种自动化方式就是开发自己的PaaS平台。一个典型的开端就是先使用集群方案（比如Kubernetes）配合上Docker容器技术，后续的文章将会介绍基于软件的应用部署方案，比如NGINX是如何在微服务层面方便的处理缓存、访问控制、API计费、监控等问题的。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>构建复杂的应用本身就是困难的事情。单体应用架构在针对简单、轻量级的应用的时候是很好的。但是一旦你把那套方案运用在复杂的应用的时候你将会痛苦不堪。尽管微服务架构模式有诸多缺点和实现上的挑战，但对于复杂的、演进的应用来讲是一个更好的选择。</p>
+<p>在后续的文章中我将会详细介绍微服务的几个方面，讨论一些诸如服务发现、服务部署选择以及重构单体应用到微服务的的话题。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>第一篇文章翻译完了，说实话胆颤心惊，第一次作大死，厚着脸皮上吧！！！</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/04/microservices/Event-Driven Data Management for Microservices/" itemprop="url">
+                  微服务之事件驱动的数据管理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posté le</span>
+            <time itemprop="dateCreated" datetime="2017-01-04T13:36:23+08:00" content="2017-01-04">
+              2017-01-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/microservice/" itemprop="url" rel="index">
+                    <span itemprop="name">microservice</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>原文链接:<a href="https://www.nginx.com/blog/event-driven-data-management-microservices/?utm_source=introduction-to-microservices&amp;utm_medium=blog&amp;utm_campaign=Microservices" target="_blank" rel="external"><em>Event-Driven Data Management for Microservices</em></a></strong></p>
+<ol>
+<li><em><a href="http://www.jianshu.com/p/8d2cfa1fa633" target="_blank" rel="external">微服务介绍</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/9e90b2a5df7b" target="_blank" rel="external">构建微服务之使用API网关</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/9c03081bc0d9" target="_blank" rel="external">构建微服务之:微服务架构中的进程内通信</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/1bf9a46efe7a" target="_blank" rel="external">微服务中的服务发现</a></em></li>
+<li><em>微服务之事件驱动的数据管理(本文)</em></li>
+<li><em><a href="http://www.jianshu.com/p/31c2a5a8b764" target="_blank" rel="external">选择一种微服务部署策略</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/29f4d788e3bb" target="_blank" rel="external">重构巨石应用到微服务</a></em></li>
+</ol>
+<p>这是使用微服务架构构建应用系列的第五篇文章.第一篇文章介绍了微服务架构模式并讨论了使用微服务的优势和劣势 ；第二篇和第三篇文章讨论了微服务架构不同层面的通信问题；第四篇文章密切探讨了服务发现的相关问题；本文章呢，我们换个口味，看看微服务架构模式中的分布式的数据管理问题。</p>
+<h2 id="微服务与分布式数据管理问题"><a href="#微服务与分布式数据管理问题" class="headerlink" title="微服务与分布式数据管理问题"></a>微服务与分布式数据管理问题</h2><p>一个单体应用一般只有一个关系型数据库，使用一个关系型数据的优势是应用可以实现ACID，为业务操作进行保证：</p>
+<ul>
+<li>Atomicity – 操作是原子性的</li>
+<li>Consistency – 数据库中的状态永远是一致的</li>
+<li>Isolation – 尽管事务是并发的执行，但他们表现的像顺序执行，事务之间不会彼此影响</li>
+<li>Durable – 一旦事务提交就不能再撤销</li>
+</ul>
+<p>因此，应用可以很简单的开始一个事务，操作（增删改）多条数据，然后提交事务。</p>
+<p>使用关系型数据库的另一个巨大优势是可以使用SQL，一种丰富的声明式的标准查询语言。 你可以很简单的写一条关联多个数据表的查询语句，关系型数据库管理系统会解析SQL来决定最优执行方案执行该查询。你不必关心诸如数据库如何访问这种低层次的细节问题，另外，你所有的应用数据在一个数据库中，查询起来很容易。</p>
+<p>很不幸的是，当转换到微服务架构的时候，数据访问变的越来越复杂。这是因为每个服务拥有的数据是该服务所私有的，要想访问该服务的数据只能通过API。对数据进行封装可以确保微服务之间是松散耦合的，各个服务可以独立于其他服务进行演进。如果多个服务访问同样的数据，那么Schema的更新是很耗时而且需要协调所有服务进行更新。</p>
+<p>不同微服务可能使用不同的数据库会让事情变得更糟。现代应用程序存储和处理各种各样的数据，关系数据库并不总是最好的选择。在一些用例下，一种特殊的NoSQL数据库可能有更加方便的数据模型并且提供更好的性能与扩展性 ，比如，对一个存储和查询文档的服务来讲，使用Elasticsearch这样的文档查询引擎可能更加合适；同样的，存储社交图谱的服务更合适使用Neo4J这样的图数据库 。总之，微服务架构的应用经常使用SQL和NoSQL的混合存储，通常叫做多态型数据持久性方案。</p>
+<p>一个分区的多态型的数据持久性方案有诸多好处：松耦合、更高的性能、扩展性等，然而这也引入了分布式数据管理的挑战！</p>
+<p>第一个挑战就是如何跨多个服务实现业务事务、维护数据的一致性。为什么这是一个问题？让我们看一个在线B2B商店的例子：用户服务维护诸如用户信用额度这样的信息，订单服务管理订单并且确保新订单没有超过用户的信用额度限制。在传统单体应用中，订单服务可以在创建新订单时简单的使用ACID事务去查看用户可用的信用额。</p>
+<p>然而在微服务架构中，<strong>ORDER</strong> 和<strong>CUSTOMER</strong>表是各个服务所私有的，如下图所示：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3912920-39d62663419d03a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>订单服务不能直接去访问用户表而只能使用用户服务提供的API。订单服务可能潜在的使用分布式事务，也就是两段提交，然而现在的应用中两段提交通常不是一个可行的选择。CAP理论要求你在可用性和ACID风格的一致性之间进行选择 ，而且。许多流行的技术，比如NoSQL并不支持两段提交，这就尴尬了！维护跨服务和跨数据库的数据一致性是很有必要的，所以我们需要另一种解决方案。</p>
+<p>另一项挑战就是如何在多服务中获取数据。比如。假设我们应用需要展示用户信息和他最近的订单，如果订单服务提供API查询用户订单，那么你可以使用 应用程序连接查询数据 ：应用从用户服务查询用户信息，从订单服务查询订单。 假设，订单服务仅支持主键查询订单（也许使用了仅支持主键查询的NoSQL），这种情况下，没有好的方法来检索数据。</p>
+<h2 id="事件驱动架构"><a href="#事件驱动架构" class="headerlink" title="事件驱动架构"></a>事件驱动架构</h2><p>对很多应用来讲，方案就是使用事件驱动架构。在该架构中，一个微服务在一些业务发生时发布一个事件，比如更新一条业务记录，其他微服务会订阅该事件，当微服务收到事件后会更新自己的业务记录，导致其他的事件被发布。</p>
+<p>你可以使用事件实现跨服务的业务事务。一个事务包含一系列步骤，每个步骤由某微服务更新业务记录并发布事件触发下一步骤组成。下面的图显示如何使用事件驱动方式在创建订单时检查可用信用额度 ，微服务间通过Message Broker交换事件。</p>
+<ol>
+<li>订单服务创建状态为NEW的订单并发布<strong>Order Created</strong>事件<br><img src="http://upload-images.jianshu.io/upload_images/3912920-c34e0260f81ba3ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></li>
+<li>客户服务消费<strong>Order Created</strong>事件，为该订单预订信用并发布<strong>Credit Reserved</strong>事件<br><img src="http://upload-images.jianshu.io/upload_images/3912920-c8a5730c151bf778.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></li>
+<li>订单服务消费<strong>Credit Reserved</strong>事件并更改订单状态为<strong>OPEN</strong><br><img src="http://upload-images.jianshu.io/upload_images/3912920-9f629b3f80489e19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></li>
+</ol>
+<p>更复杂的场景可能调用多个步骤，比如保留订单同时检查用户信用。</p>
+<p>假设（a）每个服务原子性的更新数据库并发布事件– 并且–  （b） Message Broker保证事件至少被交付一次，那么你就可以实现跨服务的业务事务了。我们必须注意到一点是，这并不是ACID事务，他们提供更弱一点的最终一致性，这种事务模型可以参考 <a href="http://queue.acm.org/detail.cfm?id=1394128" target="_blank" rel="external">BASE model</a>.</p>
+<p>你也可以使用事件来维护提前关联了多个微服务的物化视图。该服务通过订阅相关事件并更新视图，比如，用户订单视图通过订阅订单事件和用户事件来更新用户订单视图。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3912920-24785400e0d9fbd4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>当客户订单视图更新服务接收到来自客户或者订单的事件时，它将更新客户订单视图。你可以使用Mongodb这样的文档数据库为每个用户存储一份文档来实现客户订单更新视图，客户订单视图查询服务可以查询客户订单视图数据库提供客户信息与最近客户订单数据。</p>
+<p>事件驱动架构有很多优势也有一些劣势。它使得跨服务事务成为可能，并提供了最终一致性，另一个优势就是它使得应用可以维护物化视图；但是劣势之一是编程模型比ACID事务模型更为复杂 ，通常我们要实现补偿事务来恢复应用级别的错误。比如，一旦信用额度确认失败，你必须要取消订单，并且应用要处理不一致的数据， 这是因为随意的事务是可见的，应用如果读取未更新的物化视图，将会获取到不一致的数据，另外一个劣势是，订阅必须可以检测并忽略重复的事件。</p>
+<h2 id="实现原子性"><a href="#实现原子性" class="headerlink" title="实现原子性"></a>实现原子性</h2><p>在事件驱动的架构中，还有一个更新数据与发布事件的原子性问题。比如，订单服务需要插入一条数据到 <strong>ORDER</strong>表并且发布<strong>Order Created</strong>事件，这两个操作原子性完成是很有必要的：假如在数据库更新完成后，事件发布之前服务挂掉了，系统将会存在不一致。标准确保原子性的方式是使用分布式事务调用数据库系统和Message Broker。然而，根据前面我们描述的理由，比如CAP理论，我们是想避免这么干的。</p>
+<h2 id="使用本地事务发布事件"><a href="#使用本地事务发布事件" class="headerlink" title="使用本地事务发布事件"></a>使用本地事务发布事件</h2><p>应用发布事件并保证原子性的方法之一是采用多步骤本地事务方法。技巧是有一张EVENT表，表其实就是模拟一个message queue。当然数据库中还存着业务数据的状态，应用开始一个本地数据库事务，更新业务数据记录并往EVENT表中插入一条数据，最后提交事务。一个单独的应用线程或进程轮询EVENT表，并根据查询结果往Message Broker推送事件消息，然后使用本地事务标记事件被发布。下图描述了该设计：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3912920-db0c3e03d9744d32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>订单服务插入数据到ORDER表并且插入Order Created event 到EVENT表。数据发布者线程或进程轮询EVENT表中未发布的事件，发布事件，然后更新EVENT表标记事件已被发布。</p>
+<p>这种方案有优势也有劣势。优势之一是保证了在不使用两段提交前提下事件在每次更新后一定被发布 ，当然，应用发布了业务级别的事件，减少了再去推断事件类型的麻烦。劣势之一是这种方案很容易出错，因为要求程序员必须记得更新后去发布事件，该方案另一个局限是使用NoSQL时，由于NoSQL的事务和查询能力局限，实现起来困难。</p>
+<p>这种方案使用本地事务来更新数据和发布事件减少了两段提交的使用，现在让我们来看只需更新状态就达到原子性的方法。</p>
+<h2 id="挖掘数据库事务日志"><a href="#挖掘数据库事务日志" class="headerlink" title="挖掘数据库事务日志"></a>挖掘数据库事务日志</h2><p>另一种不需要两段提交就实现原子性的方法是挖掘数据库事务日志或提交日志实现事件发布,这就要求变化操作要被记录在数据库事务日志当中，事务日志挖据线程或进程读取事务日志并发布事件到 Message Broker。下图展示了这种方案：<br><img src="http://upload-images.jianshu.io/upload_images/3912920-e1633250c639939c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>例子之一就是开源的<a href="https://github.com/linkedin/databus" target="_blank" rel="external">LinkedIn Databus</a> 项目。 Databus 挖掘 Oracle事务日志并发布相应的事件， LinkedIn使用 Databus 来保持各种派生数据存储与记录系统的一致。</p>
+<p>另一个例子就是NoSQL数据库<a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html" target="_blank" rel="external">streams mechanism in AWS DynamoDB</a>， DynamoDB 流包含在过去 24 小时向 DynamoDB 表中的记录所做的时序性变化 （创建、 更新和删除操作）。应用程序可以从流中读取这些更改并将它们作为事件发布。</p>
+<p>事务日志挖掘有优势也有劣势。优势之一是在不使用两段提交的前提下保证了事件一定被发布，事务日志挖据也可以通过拆分应用业务逻辑事件的发布简化整个应用。该方案一个巨大的劣势是：事务日志每个数据库都不同，甚至相同数据库不同版本也会不同（摊手），而且我们很难从低级别事务日志的更新记录中反推高级别的业务事件。</p>
+<p>事务日志挖掘通过更新数据库来避免使用两段提交。现在让我们看看一种消除了更新，并完全依靠的事件的方案：</p>
+<h2 id="使用事件源"><a href="#使用事件源" class="headerlink" title="使用事件源"></a>使用事件源</h2><p>事件源通过使用截然不同，以事件为中心的方案持久化业务实体，达到了不使用两段提交前提下 的原子性。这种方案存储一系列状态变化的事件而不是存储当前实体的状态。应用可以通过重放事件来重新构建实体的当前状态。一旦业务实体发生变化，一个新的事件就会被添加到事件列表中，由于保存事件是单一操作，本身就是原子性的。</p>
+<p>为查看事件源如何工作，我们以订单实体为例子。传统方案下，每个订单会映射到ORDER表并记录数据到ORDER_LINE_ITEM。但当使用事件源编程时，订单服务以存储订单状态变化事件来存储订单：订单创建、批准、运输、取消。每个事件有充足的信息来重新构建订单。<br><img src="http://upload-images.jianshu.io/upload_images/3912920-af829ed8264d124b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>事件存储到专门存储事件的数据库中，数据库提供添加和查询实体事件的API。这个事件数据库也会像我们上面描述的Message Broker一样提供让其他服务订阅事件的API，事件数据库向对其感兴趣的订阅者发布事件，这个事件数据库是事件驱动型微服务的骨架。</p>
+<p>事件源的优势：它解决了一个实现事件源架构的关键问题，使得事件发生时可靠的发布事件成为可能，因此，它解决了微服务架构中数据一致性的问题。当然，因为他持久化事件而非领域对象，也避免了面向对象到关系型数据库中的阻抗不匹配问题。事件源也为实体变动提供了100%可靠的审计日志，并使其能够执行可以确定在任何时间点实体状态的时态查询。事件源的另一巨大优势是，业务逻辑与交换事件的实体是松耦合的，这使得迁移一个单体应用到微服务架构更加简单。</p>
+<p>事件源也有一些劣势：对程序员来讲这是完全不同的，非常陌生的编程风格，学习曲线陡峭。事件数据库仅仅直接支持主键方式查询业务实体，必须使用 <a href="https://github.com/cer/event-sourcing-examples/wiki" target="_blank" rel="external">Command Query Responsibility Segregation</a> (CQRS) 来实现查询。因此，应用必须来处理最终一致性。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在微服务架构中，每个服务拥有自己的数据存储。不同服务可能是一不同的SQL或者NoSQL数据库。这样的数据库架构有很多优势，当然也带来了分布式数据管理的挑战。挑战之一就是如何实现跨多服务的业务逻辑事务来维持一致性，挑战之二就是如何从多服务查询数据。</p>
+<p>对很多应用来讲，使用事件驱动架构来应对这些挑战。实现事件驱动架构的挑战之一是如何保证更新数据状态和发布事件的原子性 ，有几种方案来实现，包括以数据库为message queue，事务日志挖掘，事件源。</p>
+<p>剩余的文章将讨论其他方面的问题。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/04/microservices/Choosing a Microservices Deployment Strategy/" itemprop="url">
+                  选择一种微服务部署策略
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posté le</span>
+            <time itemprop="dateCreated" datetime="2017-01-04T13:36:23+08:00" content="2017-01-04">
+              2017-01-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/microservice/" itemprop="url" rel="index">
+                    <span itemprop="name">microservice</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/04/microservices/Building Microservices-Using an API Gateway/" itemprop="url">
+                  建微服务之使用API网关
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posté le</span>
+            <time itemprop="dateCreated" datetime="2017-01-04T13:36:23+08:00" content="2017-01-04">
+              2017-01-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/microservice/" itemprop="url" rel="index">
+                    <span itemprop="name">microservice</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/04/microservices/Building Microservices-Inter-Process Communication/" itemprop="url">
+                  构建微服务之:微服务架构中的进程间通信
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posté le</span>
+            <time itemprop="dateCreated" datetime="2017-01-04T13:36:23+08:00" content="2017-01-04">
+              2017-01-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/microservice/" itemprop="url" rel="index">
+                    <span itemprop="name">microservice</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>原文链接:<a href="https://www.nginx.com/blog/building-microservices-inter-process-communication/?utm_source=introduction-to-microservices&amp;utm_medium=blog&amp;utm_campaign=Microservices" target="_blank" rel="external"><em>Building Microservices: Inter-Process Communication in a Microservices Architecture</em></a></strong></p>
+<ol>
+<li><em><a href="http://www.jianshu.com/p/8d2cfa1fa633" target="_blank" rel="external">微服务介绍</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/9e90b2a5df7b" target="_blank" rel="external">构建微服务之使用API网关</a></em></li>
+<li><em>构建微服务之:微服务架构中的进程间通信(本文)</em></li>
+<li><em><a href="http://www.jianshu.com/p/1bf9a46efe7a" target="_blank" rel="external">微服务中的服务发现</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/9a440c5ea1db" target="_blank" rel="external">微服务之事件驱动的数据管理</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/31c2a5a8b764" target="_blank" rel="external">选择一种微服务部署策略</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/29f4d788e3bb" target="_blank" rel="external">重构巨石应用到微服务</a></em></li>
+</ol>
+<p>这是使用微服务架构构建应用系列的第三篇文章。第一篇文章介绍了微服务架构模式并讨论了使用微服务的优势和劣势 ；第二篇文章介绍了应用的客户端如何通过API网关作为中介实现服务间的通信；在这篇文章中我们将看一看同一系统间的服务如何通信；第四篇文章主要介绍服务发现的问题。</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>在传统单体应用中，模块间使用编程语言级别的方法或功能彼此调用。然而微服务架构应用本质上是运行在多台机器上的分布式系统，每个服务都是一个进程！因此，下图为我们展示，微服务必须使用进程间通信（IPC）的机制实现交互：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3912920-f333ee79c1ebd318.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>稍后，我们将看具体的 IPC 技术实现，但首先让我们探讨不同方案设计中的问题。</p>
+<h2 id="交互风格"><a href="#交互风格" class="headerlink" title="交互风格"></a>交互风格</h2><p>当我们为服务选择一种IPC机制的时候，我们首先要考虑服务间如何交互，技术上存在多种 client⇔service 交互风格：它们可以按照两大维度分类：第一维度是服务间交互是一对一还是一对多； </p>
+<ul>
+<li>一对一：每个客户端请求只会被一个服务实例处理。</li>
+<li>一对多：每个请求将会被多个服务实例处理</li>
+</ul>
+<p>第二个维度是交互是同步模式还是异步模式：</p>
+<ul>
+<li>同步：客户端期望来自服务端的及时响应，甚至可能阻塞并等待。</li>
+<li>异步：客户端等待响应时不会阻塞，对异步来讲，及时响应并不是必须的。</li>
+</ul>
+<p>下列表格展示了两种方式的不同</p>
+<p>有下面几种一对一的交互方式：</p>
+<ul>
+<li>请求/响应模式： 客户端向服务端发送请求并等待响应，并期望服务端可以及时的返回响应。在一个基于线程的应用中，发出请求的线程可能在等待时阻塞线程的执行。</li>
+<li>通知（也就是单向请求）：客户端往服务端发送请求，但并不等待响应返回</li>
+<li>请求/异步响应：客户端往一个异步返回响应的服务发送请求。客户端等待式并不会阻塞线程，因为设计时就假设请求不会立即返回（js回调）</li>
+</ul>
+<p>有下面几种一对多的交互方式：</p>
+<ul>
+<li>发布/订阅模式：客户端发布一个通知消息，消息将会被0或多个感兴趣的服务消费</li>
+<li>发布/异步响应：客户端发布一个请求消息，并在一定时间内等待消费消息的服务响应。</li>
+</ul>
+<p>每个服务通常会使用多种交互风格的组合：对一些服务来讲，简单的IPC机制可能已经足够了，但另外一些服务可能需要几种IPC机制的组合。下图展示了在<strong>taxi-hailing</strong>应用中，当用户请求行程时，服务是如何交互的：<br><img src="http://upload-images.jianshu.io/upload_images/3912920-c46c209a8b21013f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>这个服务使用了通知、请求/响应、发布/订阅风格的组合。比如，乘客使用智能手机向行程管理服务发送一个接送需求的<strong>通知</strong>，行程管理服务将使用<strong>请求/响应</strong>模式调用乘客服务来验证乘客账号是否为活动状态，然后行程管理服务创建行程并使用<strong>发布/订阅</strong>方式来通知诸如分发器（用来定位空闲司机）等服务。</p>
+<p>我们已经讨论了交互风格，那么再来看下如何定义API。</p>
+<h1 id="定义API"><a href="#定义API" class="headerlink" title="定义API"></a>定义API</h1><p>服务API是服务与客户之间的契约。抛开选择哪种IPC机制的选择，使用一些接口定义语言interface definition language (IDL)准确定义服务API是很重要的！.当然，最好考虑使用API优先的方式来定义服务，通过先写接口定义语言来开始开发，并与客户端开发者（服务消费者）一起review你的设计，先对API定义进行迭代，再去实现这些服务。这样做设计的话将会使你构建更加符合客户需求的服务！</p>
+<p>后续文章你将会发现，服务定义和你选择哪种IPC机制息息相关，如果你是要消息机制，API就由消息频道和消息类型组成；如果你使用http，API就是由URLs以及request/response格式组成。稍后我们将会讨论更多关于接口定义语言的细节。</p>
+<h2 id="API进化"><a href="#API进化" class="headerlink" title="API进化"></a>API进化</h2><p>服务API将会不可避免的随着时间进化，在传统单体应用中，我们可以很直接的去修改服务并更新所有服务的调用者（refactor）。但是在基于微服务架构的应用中，哪怕服务API的其他消费者都是在一个应用中，去更新所有服务也是相当困难的。你通常不能强制让所有的客户端升级来保持和服务端升级维持步调一致，而且，你还可能会增量部署新服务使得新老服务同时运行，寻找一种处理此种情况的策略是很重要的。</p>
+<p>你是如何根据更改的大小来处理服务API的变化的呢？一些变化很小，通常可以与之前版本做到向后兼容，比如，你为请求或相应添加了一个属性；对此，设计服务时考虑服务和客户消费者的鲁棒性原则是很有必要的：使用就版本服务API的客户端可以在新版本服务API下正常工作，服务端为客户端缺失的属性提供默认值，客户端自动忽略额外添加的响应属性。最后强调，注意使用IPC机制和定义消息格式使你的API可以简单方便的进化！</p>
+<p>当然，有时候我们不得不对API做一些较大的，不再兼容的变化，而我们这时候又不可能强制每个客户端升级，因此我们的服务就要继续支持运行一段时间的老版本API。如果使用http，我们可以在URL里嵌入服务版本，每个服务实例可能同时处理多个版本的服务，当然，你也可以选择为每个服务版本部署单独的服务实例。</p>
+<h2 id="处理局部故障"><a href="#处理局部故障" class="headerlink" title="处理局部故障"></a>处理局部故障</h2><p>就像前面关于API网关文章提到的那样：在分布式系统中总会有无时无刻的局部故障的风险。由于客户端和服务在不同的进程中，服务可能由于挂掉或者维护原因而不能及时响应客户端的请求，或者服务由于过载原因导致响应缓慢。</p>
+<p>比如，让我们考虑之前文章提到的<strong>Product details</strong>场景，假设推荐服务没有响应了，一个简单的客户端实现可能无期限的等待服务响应并阻塞，这样不仅导致糟糕的用户体验，在很多应用中还会消耗比如线程这样宝贵的资源，最终就像下图展示的那样，运行时将会用尽所有线程使得服务不再响应任何请求：<br><img src="http://upload-images.jianshu.io/upload_images/3912920-11c7d11329b92789.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>为解决此类问题，设计上处理局部故障是很有必要的。</p>
+<p>Netflix给出了一些处理局部故障比较好的方法：</p>
+<ul>
+<li>网络超时：等待响应时不要一直阻塞，而是使用超时，超时能够保证资源不会一直被占用</li>
+<li>限制未完成请求的数量：针对一个请求某服务的客户端，需要设置其未处理请求数量的上限，一旦超过限制就不再处理任何请求，这样就做到快速失败。</li>
+<li>断路器模式：跟踪成功和失败请求的数量，如果比率超过了设置的阀值，打开断路器使得后续请求快速失败。如果大量请求失败，就建议服务为不可以状态并决绝处理新请求，过一段时间之后，客户端可以再次重试，一旦成功，关闭断路器。</li>
+<li>提供fallback机制：请求失败时提供fallback，比如返回缓存值或者为失败的推荐服务返回默认空集合作为默认值。<br><strong>Netflix Hystrix</strong>是一个实现了这些模式的开源工具包，如果你使用JVM那么一定要考虑使用它！如果你的服务不是运行在JVM中，那也要考虑有等效的实现来处理此类问题。</li>
+</ul>
+<h2 id="IPC-技术"><a href="#IPC-技术" class="headerlink" title="IPC 技术"></a>IPC 技术</h2><p>我们有不同的IPC技术可供选择：服务可以使用基于请求/响应的同步通信模式，比如基于Http的REST或者Thrift，当然，也可以使用异步基于消息的通信模式，比如AMQP、STOMP。这些通信模式有不同的消息格式，服务可以使用基于文本格式、方便阅读的JSON 或者 XML格式，也可以使用效率更高的二进制格式（比如Avro或Protocol Buffers）。稍后我们将讨论同步IPC机制，现在我们先讨论下异步的IPC机制：</p>
+<h3 id="异步，基于消息的通信"><a href="#异步，基于消息的通信" class="headerlink" title="异步，基于消息的通信"></a>异步，基于消息的通信</h3><p>使用消息时，进程间通过异步交换消息来通信。一个客户端通过发送消息的方式请求服务，如果期望服务有响应，也是服务通过向客户端发送另外的消息来实现。由于通信是异步的，客户端不会为了响应等待并阻塞，相反的，客户端编程时就是以服务不会立即返回响应来处理的。</p>
+<p>一条消息包含消息头（元数据和发送者）和消息体，消息通过频道进行交换，任意数量的消费者都可以往频道中发消息，任意数量的消费者也可以消费频道中的消息。有<strong>point‑to‑point</strong>和<strong>publish‑subscribe</strong>两种频道：point‑to‑point模式下，频道的消息只会被交付到某一个消费者，这种模式用于前面提到的一对一的交互；publish‑subscribe 模式下，频道的消息将会交付到所有感兴趣的消费者，使用于前面提到的一对多交互风格。</p>
+<p>下图展示了<strong>taxi-hailing</strong> 应用可能是一publish-subscribe模式：<br><img src="http://upload-images.jianshu.io/upload_images/3912920-6cb0d76a907b6ec2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>行程管理服务通过向publish-subscribe频道写入trip create消息的方式通知比如分发器这样感兴趣的服务，分发器查找空闲司机并通过向publish-subscribe频道写入Driver Proposed消息通知其他服务。</p>
+<p>有多种消息系统供我们选择，当然我们尽量选择一个支持多种编程语言的来使用。一些消息系统支持标准的协议比如 AMQP和STOMP，另一些消息系统有专有但是文档化的协议，大量的开源消息系统可供我们挑选，包括RabbitMQ、Apache Kafka、Apache ActiveMQ和NSQ。统一的来看，他们都支持某种形式的消息和频道，都致力于高可靠，高性能和高扩展性，但是每个消息中介在实现细节上还是有很大的不同：<br>使用消息系统有很多优点：</p>
+<ul>
+<li>客户端与服务端解耦： 客户端只需要向合适的频道发送消息就实现简单的请求，客户端完全感知不到服务实例的存在，因此不需要再去使用一套服务发现机制去决定服务实例的位置。</li>
+<li>缓存消息：在同步的请求/响应协议，比如HTTP下，客户端和服务端在交互的阶段必须保证双方都可用，然而，消息中介会把消息写入队列直到消息被消费者处理位置，这意味着，尽管 在订单履行系统响应缓慢甚至不可用情况下，在线商城仍然可以接受来自客户的订单，只需要先把订单消息简单的入队即可。</li>
+<li>灵活的客户-服务端交换风格，消息支持前面提到的所有交互风格。</li>
+<li>显示的进程间通信：基于 RPC的通信机制试图使调用远程服务等同于调用本地服务。然而，由于物理定律和局部故障的可能性，事实上他们相当不同。消息使这些差异非常明显，因此开发人员不被虚假的安全感所迷惑。</li>
+</ul>
+<p>当然消息系统也有缺点：</p>
+<ul>
+<li>额外的运维复杂度：消息系统毕竟也是额外的系统组件，也要求安装、配置、运维等操作，有必要保证消息系统的高可用，否则会影响整个系统的稳定性。</li>
+<li>实现请求/响应交互的复杂度：要实现请求/响应的交互风格还是要做些额外工作的：每条请求消息必要要包含回复频道的标志符以及关联标志符 ，服务回写包含关联ID的消息到回复频道，客户端使用关联ID去匹配请求对应的响应。当然，如果使用直接支持请求/响应的基于IPC机制的方式，将会特别简单。</li>
+</ul>
+<p>我们已经讨论了基于消息的IPC，再看检验下基于请求/响应的IPC吧：</p>
+<h3 id="同步，基于请求-响应的IPC"><a href="#同步，基于请求-响应的IPC" class="headerlink" title="同步，基于请求/响应的IPC"></a>同步，基于请求/响应的IPC</h3><p>当使用同步，基于请求/响应的IPC机制的时候，客户端向服务端发送请求，服务端处理请求并返回响应，很多客户端，发出请求的线程会在等待响应过程中阻塞，另外有一些客户端也会使用异步、事件驱动的代码，比如封装好的Futures 或 Rx Observables。然而，和使用消息不一样，客户端假设请求会立即返回。有几种方案供我们选择，比较流行就是REST和 Thrift，我们先看下REST：</p>
+<h4 id="REST"><a href="#REST" class="headerlink" title="REST"></a>REST</h4><p>限制使用REST风格暴露API很流行，REST基本就是使用HTTP的IPC 机制，REST的关键理念是资源，也就是通常代表诸如用户或产品的某个或一组业务对象，REST使用HTTP verbs维护URL指向的资源，比如 GET返回某资源的表示，可能是XML也可能是JSON对象， POST会创建新资源，PUT更新资源··· 引用自Roy Fielding，提出REST的大牛：</p>
+<p>“REST provides a set of architectural constraints that, when applied as a whole, emphasizes scalability of component interactions, generality of interfaces, independent deployment of components, and intermediary components to reduce interaction latency, enforce security, and encapsulate legacy systems.”<br>—Fielding, <a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm" target="_blank" rel="external">Architectural Styles and the Design of Network-based Software Architectures</a></p>
+<p>下图展示了<strong>taxi-hailing </strong>应用使用REST的场景：<br><img src="http://upload-images.jianshu.io/upload_images/3912920-f0467101397a961a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>乘客向行程服务/trips发送POST请求，行程服务通过向乘客管理服务发送GET请求获取乘客信息，在验证完乘客授权之后，创建行程，行程服务创建行程后返回201响应给手机.</p>
+<p>很多用了HTTP暴露服务API的开发就说自己是REST，其实按照 Fielding 在<a href="http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven" target="_blank" rel="external">blog post</a>描述的规定，他们根本不是REST。 Leonard Richardson (no relation)定义了非常有用的 <a href="http://martinfowler.com/articles/richardsonMaturityModel.html" target="_blank" rel="external">maturity model for REST</a>组成了下面几个级别：</p>
+<ul>
+<li>Level 0 :客户端使用HTTP POST调用服务固定的URL，每次请求指定动作和参数</li>
+<li>Level 1：支持资源的概念，请求通过POST，并且要制定要做的动作和参数</li>
+<li>Level 2：充分使用 HTTP verbs 执行动作GET获取资源 POST创建资源PUT更新资源，还是要请求参数和请求体，还可以指定请求的参数，使得服务充分使用web基础架构的功能，比如缓存请求等</li>
+<li>Level 3:  API定义按照HATEOAS (Hypertext As The Engine Of Application State) 原则。基本的定义就是GET请求返回表示资源的body中包含一些对资源允许动作的链接。比如，客户端可以使用get订单返回的订单body中的一个超链接取消一个订单。HATEOAS 优点之一是：客户端不用在代码中硬编码URL了，另外，由于返回的body中包含允许对资源所作动作的超链接，客户端就不需要再猜测当前资源状态下他可以做哪些操作了。</li>
+</ul>
+<p>使用基于HTTP的协议的优点有：</p>
+<ul>
+<li>HTTP 简单而且大家都熟悉</li>
+<li>可以用浏览器测试，配合比如Postman插件更佳，命令行curl也很方便（假设使用json或其他数据格式）</li>
+<li>直接就支持请求/响应风格的通信</li>
+<li>HTTP很友好</li>
+<li>无需中介，简化架构</li>
+</ul>
+<p>使用HTTP的缺点：</p>
+<ul>
+<li>HTTP只支持请求/响应风格的交互，你可以使用HTTP请求向服务器发送通知，但是服务器一定要返回HTTP响应。</li>
+<li>客户端和服务端没有消息buffer机制，交互都是直接的，这就要求交换消息的时候双方必须同时运行。</li>
+<li>客户端必须知道每个服务实例的地址，比如URL，正如前面的API网关文章描述的那样，在现代流行的应用架构中，这已经不再是一个问题，我们可以使用服务发现机制来定位服务实例。</li>
+</ul>
+<p>开发者论坛最近又重新发掘了RESTful API风格接口定义语言的价值，我们可以选择使用<strong>RAML</strong>或者<strong>Swagger</strong>等工具， Swagger允许定义请求响应的消息格式，RAML则要求你使用额外的诸如JSON Schema这样的定义.IDL除了描述API，通常还会提供根据接口定义生产客户端Stub或服务端骨架的工具。</p>
+<h2 id="Thrift"><a href="#Thrift" class="headerlink" title="Thrift"></a>Thrift</h2><p><strong>Apache Thrift</strong>是REST的一个很有意思的替代品，它是一个实现跨语言客户端与服务端RPC通信的框架。Thrift提供C语言风格的接口定义语言来定义API，你可以通过编译生成客户端Stub和服务端的骨架，编译器可以为 C++、Java、Python、PHP、Ruby、Erlang、Node.js等不同语言生产代码。</p>
+<p>一个Thrift接口包含一个或多个服务，一个服务定义可以类比java的接口：都是一组强类型方法的集合。Thrift方法可以返回值也可以被定义为单向通信，如果方法需要返回值就需要实现请求/响应风格的交互，客户端等待响应的时候可能会抛出异常；单向通信就是我们前面讲到的通知风格的交互，服务端不需要返回响应。</p>
+<p>Thrift支持不同的消息格式：JSON、binary以及compact binary。 Binary相对JSON更加高效，因为解码速度更快，compact binary比JSON空间利用率高，见名知意嘛，JSON则对人和浏览器更加的友好 ；Thrift也支持不同的通信协议选择：原生TCP或者HTTP，原生TCP相比HTTP肯定更加高效，但是HTTP对防火墙、人以及浏览器更加的友好。</p>
+<h2 id="消息格式"><a href="#消息格式" class="headerlink" title="消息格式"></a>消息格式</h2><p>既然我们已经讨论了HTTP和Thrift，现在再来探讨下消息格式的问题吧：如果你需要消息系统或者REST风格交互，你就必须选择消息格式。其他类似Thrift的IPC机制可能只支持一小部分的消息格式，甚至只会支持一种！在某些情况下，使用一种支持跨语言的消息格式非常重要，哪怕你现在只有一种语言实现微服务，谁又能保证你以后不会使用新的语言呢？</p>
+<p>主要有文本和二进制两种格式：文本格式包括JSON和XML等，文本格式不仅仅方便阅读，而且是自描述的，JOSN中对象属性是采用一组键值对的组合来表示的；同样，XML的属性是采用命名元素和值来表示的，这样允许消费者只挑选感兴趣的消息摒弃其他消息，因而这种方式也可以方便的做到向后兼容。</p>
+<p>XML文档的结构是由XML schema来指定的，随着时间的流逝，开发者论坛逐步意识到JSON也需要类似的机制：一种选择是使用JSON Schema，要么单独使用，要么作为类似Swagger这种IDL的一部分使用。</p>
+<p>文本格式消息的缺点是非常的冗长，尤其是XML格式：由于消息是自描述的，每条消息除了值之外还包含属性的名称，另一个缺点就是解析文本开销略大，这时候可以考虑下二进制格式。</p>
+<p>二进制格式也有多种选择：如果使用Thrift，你可以选择Thrift binary，如果选择其他的消息格式，比较流行的还有Protocol Buffers和Apache Avro，两种格式都提供了IDL来定义消息的结构。区别是，Protocol Buffers使用标记字段，而Avro 消费者则需要了解Schema才能解析消息，因此使用Protocol Buffers时，API进化比Avro更容易。这篇 <a href="http://martin.kleppmann.com/2012/12/05/schema-evolution-in-avro-protocol-buffers-thrift.html" target="_blank" rel="external">文章</a>是一个对Thrift、 Protocol Buffers以及 Avro非常好的比较。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>微服务需要使用进程间通信的机制进行交互，当设计你的服务如何通信的时候，需要考虑多个问题：服务如何交互、如何为服务定义API、如何处理API进化、如何处理局部故障。有两种微服务可以使用的IPC机制：异步消息和同步的请求/响应。该系列的下一篇文章，将会讲解微服务架构中的服务发现问题。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/15/learning/distributeSystem/" itemprop="url">
+                  学习笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posté le</span>
+            <time itemprop="dateCreated" datetime="2016-11-15T17:21:55+08:00" content="2016-11-15">
+              2016-11-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/learning/" itemprop="url" rel="index">
+                    <span itemprop="name">learning</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###<br><a href="http://nosqldb.org/p/5458e2aeb7619ae04486b7aa" target="_blank" rel="external">Facebook Haystack Image storage</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/13/JavaScript/You-Dont-Know-JS-Scope&Closures/" itemprop="url">
                   You Don't Know JS - Scope & Closures
                 </a>
@@ -249,7 +1500,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posté le</span>
             <time itemprop="dateCreated" datetime="2016-10-13T15:21:55+08:00" content="2016-10-13">
               2016-10-13
             </time>
@@ -261,7 +1512,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/javascript/" itemprop="url" rel="index">
@@ -388,1371 +1639,11 @@ console.log(a);//2, Leaked global
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/13/welcome/" itemprop="url">
-                  欢迎来到我的博客
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-10-13T09:59:13+08:00" content="2016-10-13">
-              2016-10-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index">
-                    <span itemprop="name">life</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>苦逼小码农一只，平时喜欢学习，自知能力有限，所以常搬砖练习。<br>普通本科毕业，未曾读研也未有BAT等大厂的实习经验。<br>入行没几年，也没特别拿出手的项目经验，总感觉浑浑噩噩，想跟随大牛或者自组一队搞搞新意思。<br>听歌·读书·看电影乃平生所好。</p>
-<h2 id="关于博客"><a href="#关于博客" class="headerlink" title="关于博客"></a>关于博客</h2><p>以前总是看大牛的博客，悄悄滴保存到自己的云笔记中，甚觉不好缺羞于写博客，现借GitPages自建一学习园地，且行且珍惜啊。</p>
-<h2 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h2><p>联系我: <a href="nonumber1989@gmail.com">Steven.Xu</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/03/JavaScript/AngularJs/AngularJs-Part01/" itemprop="url">
-                  Angular 总结之一
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-03T17:41:55+08:00" content="2016-09-03">
-              2016-09-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="AngularJs-总结之一"><a href="#AngularJs-总结之一" class="headerlink" title="AngularJs  总结之一"></a>AngularJs  总结之一</h2><p>很久都没有更新点自己的博客了，最近忙于工作，参与到两个项目中，其中之一就是继续搞搞angular，虽然感觉依旧是小打小闹，不过重新用起angular，还是收获满满，现在分享点自己的小总结和小经验吧。</p>
-<h3 id="Angular-http-interceptors"><a href="#Angular-http-interceptors" class="headerlink" title="Angular http interceptors"></a>Angular http interceptors</h3><p>  需要对所有的网络请求和响应进行拦截，统一处理<br>  比如500 401 403 等消息，我们多数情况不会在每一个fail回调中处理，而是统一给客户提示，这就需要http拦截器<br>  $httpProvider.interceptors.push(‘XXXInterceptor’);<br>  该拦截器也是一个普通的service了</p>
-<pre><code>return {
-  request: function(config) {
-    $rootScope.$broadcast(&apos;loading:show&apos;);
-    return config;
-  },
-  response: function(response) {
-    $rootScope.$broadcast(&apos;loading:hide&apos;);
-    return response;
-  },
-  responseError: function(rejection) {
-    $rootScope.$broadcast(&apos;loading:hide&apos;);
-    console.log(JSON.stringify(rejection));
-    if (rejection.data === null) {
-      showDialog($rootScope);
-    } else if (rejection.status === 401) {
-      $injector.invoke(function($state) {
-        console.log($state.current.name);
-        $state.go(&apos;tachi.account.signIn&apos;);
-      });
-    } else if (rejection.status === 403) {
-    } else if (rejection.status === 404) {
-    } else if (rejection.status === 500) {
-    }
-  }
-};
-</code></pre><h3 id="Angular-with-localstorage"><a href="#Angular-with-localstorage" class="headerlink" title="Angular with localstorage"></a>Angular with localstorage</h3><p>   关于localstorage与sessionstorage的问题，其实挺让我伤心的，公司的UI5框架使用JQuery封装了web storage的操作但是却又出guidline不让使用，这很让人痛心啊<br>   首先 抛开业务谈及web storage的安全问题，这是html5的规范，符合同源策略，就算你怕用户localstorage保存下来有问题，可以考虑sessionstorage啊<br>   与其他同事沟通下来觉得公司禁用的原因可能在于，公司一个域名下会存在多个application，而多个application可能存在命名冲突问题，比如我命名user 你也命名user…</p>
-<p>   抛开这些吧，我用angular选用的是ngStorage，仅仅是简单封装而已<br>   put get delete操作而已本身并没有什么其他的难度</p>
-<h3 id="Angular-with-jwt"><a href="#Angular-with-jwt" class="headerlink" title="Angular with jwt"></a>Angular with jwt</h3><p>   应用中使用了JWT，那么token的存储呢？ 必然就放localstorage了</p>
-<pre><code>jwtOptionsProvider.config({
-authPrefix: &apos;Bearer &apos;,
-tokenGetter: [&apos;jwtHelper&apos;, &apos;$localStorage&apos;, function(jwtHelper, $localStorage) {
-  var theUserToken = $localStorage.userToken;
-  if (theUserToken instanceof Object) {
-    var date = jwtHelper.getTokenExpirationDate(theUserToken.token);
-    var bool = jwtHelper.isTokenExpired(theUserToken.token);
-    return theUserToken.token;
-  } else {
-    //do nothing with rejected with 401 Unauthorized error
-  }
-}],
-whiteListedDomains: [&apos;http://127.0.0.1:3000&apos;]
-  });
-$httpProvider.interceptors.push(&apos;jwtInterceptor&apos;);
-</code></pre><h3 id="Angular-event-emit-and-listners"><a href="#Angular-event-emit-and-listners" class="headerlink" title="Angular event emit and listners"></a>Angular event emit and listners</h3><p>  采用$rootscope 进行事件发射和监听<br>  往购物车添加一件商品，需要更新下菜单栏的购物车badge数字<br>  购物车badge所在的view与对应的controller与进行添加动作的controller肯定不在一个中，则在添加时候才哟哦那个$rootscope发射事件和数据，在badge对应得controller监听</p>
-<pre><code>function deleteBroadcast() {
-    $rootScope.$broadcast(&apos;ShoppingCart&apos;, {&quot;action&quot;: &quot;delete&quot;});
-}
-//----------------------------------------------------------------
-$scope.$on(&apos;ShoppingCart&apos;, function (event, data) {
-   if (data.action === &quot;add&quot;) {
-     $scope.itemNumber++;
-     console.log($scope.itemNumber);
-   } else if (data.action === &quot;delete&quot;) {
-     $scope.itemNumber--;
-   } else if (data.action === &quot;clear&quot;) {
-     $scope.itemNumber = 0;
-   }});
-</code></pre><h3 id="Angular-with-UI-Router"><a href="#Angular-with-UI-Router" class="headerlink" title="Angular with UI Router"></a>Angular with UI Router</h3><p>  也许你用angular做了一些小的项目，采用angular自身提供的router机制，但是我觉得更多的人还是愿意选择更加强大和方便的UI-Router来帮助自己。<br>  <a href="https://github.com/angular-ui/ui-router" target="_blank" rel="external">angular-ui/ui-router</a><br>   其中大名鼎鼎的ionic就把UI-Router作为默认的路由配置。</p>
-<pre><code>$stateProvider
-  .state(&apos;crafts&apos;, {
-    url: &quot;/crafts&quot;,
-    abstract: true,
-    templateUrl: &quot;views/crafts.html&quot;,
-    controller: &apos;MainController&apos;
-  })
-  .state(&apos;crafts.introduction&apos;, {
-    url: &quot;/introduction&quot;,
-    views: {
-      &apos;craftsContent&apos;: {
-        templateUrl: &quot;views/introduction.html&quot;,
-        controller: &apos;IntroductionController&apos;
-      }
-    }
-  })
- .state(&apos;crafts.orders.details&apos;, {
-    url: &quot;/:id&quot;,
-    views: {
-      &apos;craftsContent@crafts&apos;: {
-        templateUrl: &quot;views/orderDetails.html&quot;,
-        controller: &apos;OrderDetailsController&apos;
-      }
-    }
-  })
-  .state(&apos;home&apos;, {
-    url: &quot;/&quot;,
-    templateUrl: &quot;views/main.html&quot;,
-    controller: &quot;MainController&quot;
-  });
-</code></pre><ul>
-<li>one application multiple routers<br> 直白的讲就是把应用划分路由,比如上述代码把应用或分为tachi部分和introduction部分，表现在URL上为 <a href="http://localhost:9000/#/crafts" target="_blank" rel="external">http://localhost:9000/#/crafts</a> 、<a href="http://localhost:9000/#/home" target="_blank" rel="external">http://localhost:9000/#/home</a>  ，而且crafts部分又继续细分<br> 我home页面仅仅是展示一些信息，引导注册和登录，菜单栏上只有少部分内容<br> 而crafts想到于用户登录之后的整个功能应用，菜单栏齐全<br> 按照功能区分路由，crafts下面是功能部分个小小feature的路由</li>
-<li>abstract router<br> 把crafts设置为abstract可以把一些公用的数据放入controller控制,比如菜单栏点击事件（国际化切换中英文 $rootscope的事件监听）</li>
-<li>parameter<br> 可以URL传值 也可以直接采用state发送自定义数据进行router间传递，state parameter可以取得</li>
-<li><p>如果子路由和父路由采用同一个view </p>
-<pre><code>views: {
-    &apos;craftsContent@crafts&apos;: {
-      templateUrl: &quot;views/orderDetails.html&quot;,
-      controller: &apos;OrderDetailsController&apos;
-    }
-</code></pre><p>  注意content路径的配置 上述代码为使用views配置下的绝对路径</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/24/java/javaException/" itemprop="url">
-                  Java Exception
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-05-24T18:38:55+08:00" content="2016-05-24">
-              2016-05-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="java-exception"><a href="#java-exception" class="headerlink" title="java exception"></a>java exception</h1><h3 id="Basic-Info"><a href="#Basic-Info" class="headerlink" title="Basic Info"></a>Basic Info</h3><p> <img src="/images/java/java-exception.jpg" alt="java exception architecture"></p>
-<h3 id="Brief-Desc"><a href="#Brief-Desc" class="headerlink" title="Brief Desc"></a>Brief Desc</h3><p> 关于java的异常处理，可谓是两派之争，checked Vs. unChecked 孰优孰劣各执一词由来已久。<br> 但是不得不承认的一点是，unChecked似乎略显上风了。</p>
-<h3 id="Checked-amp-UnChecked-exception"><a href="#Checked-amp-UnChecked-exception" class="headerlink" title="Checked &amp; UnChecked exception"></a>Checked &amp; UnChecked exception</h3><ol>
-<li>Error or RuntimeException  称为unchecked exception<br>runtimeException其实很容易迷惑人，因为所有的exception都出现的运行时，纵然checked exception也只是让你编译期间做好处理准备。</li>
-<li>剩余的自然就是checked exception</li>
-<li>处理规范：一个方法必须声明可能抛出的受检异常，非受检异常要么不可能控制<strong>Error</strong>，要么应该避免发生。 当然 编译器会提示我们做好对受检异常的处理。不然编译都过不去的</li>
-</ol>
-<h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><ol>
-<li>子类覆盖超类的方法，子类的异常只能更具体或者没有异常抛出</li>
-<li>如果超类没有checked异常抛出，那么子类也不能有checked异常抛出</li>
-<li>throwable.getStackTrace() StackTraceElement[]<br>StackTraceElement shows de</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/24/java/javaLearningNotes/" itemprop="url">
-                  Java 学习总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-05-24T09:38:55+08:00" content="2016-05-24">
-              2016-05-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="java-learning-notes"><a href="#java-learning-notes" class="headerlink" title="java learning notes"></a>java learning notes</h1><h2 id="java-8-notes"><a href="#java-8-notes" class="headerlink" title="java 8 notes"></a>java 8 notes</h2><p>  lambda 中的受检异常处理 <strong><a href="http://stackoverflow.com/questions/27644361/how-can-i-throw-checked-exceptions-from-inside-java-8-streams" target="_blank" rel="external">stackoverfllow 解答</a></strong></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/13/nodejs/nodeNotes/" itemprop="url">
-                  Node 学习小笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-05-13T15:21:55+08:00" content="2016-05-13">
-              2016-05-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h1><p>学习nodejs的过程中总会碰到一些小的问题，希望把这些小点滴记录下来</p>
-<h3 id="Node-设计本身"><a href="#Node-设计本身" class="headerlink" title="Node 设计本身"></a>Node 设计本身</h3><ol>
-<li>node中根据相对路径读取文件。<br><strong>Relative paths work, but they are relative to process.cwd(), not the currently executing module.</strong><br><em>use <strong>__dirname</strong> to solve this problem</em></li>
-<li><p>node中的文件分隔符<br><em>一直使用   \    就可以，这个分隔符目前涵盖所有的os</em></p>
-</li>
-<li><p>promise 学习 ，直接上一段bluebird的代码吧，继续深入。</p>
-<pre><code>var Promise = require(&quot;bluebird&quot;);
-var forPromise = function(param, callback) {
-// callback(null,param);
-    if (param === &quot;nonumber1989&quot;) {
-        callback(null, param);
-    } else {
-        var error = new Error(&quot;nonumber1989 error !&quot;);
-        callback(error);
-    }
-};
-var thePromise = Promise.promisify(forPromise);
-thePromise(&quot;nonumber1989&quot;).then(function(value) {
-    console.log(value);
-    return value + &quot;--for next step&quot;;
-}).then(function(value) {
-    console.log(value);
-})
-.catch(function(err) {
-    console.log(err);
-});
-</code></pre></li>
-</ol>
-<h3 id="javascript-基础"><a href="#javascript-基础" class="headerlink" title="javascript 基础"></a>javascript 基础</h3><ol>
-<li>javascript callback return value.<br>首先这就是一个误区！ javascript回调中是不能返回值给外面使用的(不借助promise)。因为回调函数的执行时间不确定，后续的值会先被使用。</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/03/java/transaction/" itemprop="url">
-                  Java 事务学习拾遗
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-05-03T22:21:55+08:00" content="2016-05-03">
-              2016-05-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="java-transaction"><a href="#java-transaction" class="headerlink" title="java transaction"></a>java transaction</h1><h2 id="本地事务"><a href="#本地事务" class="headerlink" title="本地事务"></a>本地事务</h2><blockquote>
-<p>本地事务其实就是原始的JDBC操作，面对连接的事务。采用JDBC管理事务的时候，其实是针对connection 开始事务 提交或者 回滚。<br>现在我们更多的是采用ORM框架管理事务，比如JPA hibernate什么的，比如JPA，我们可以使用EntityManager来进行数据的增删查改</p>
-</blockquote>
-<p> 但是需要注意 </p>
-<pre><code>public class TradingServiceImpl {
- @PersistenceContext(unitName=&quot;trading&quot;) EntityManager em;
-  public long insertTrade(TradeData trade) throws Exception {
-      em.persist(trade);
-      return trade.getTradeId();
- }
-}
-</code></pre><blockquote>
-<p>em.persist(trade)这句代码并不会立即向表中插入一条数据，准确说不会立即去操作数据库！！！(也不会抛出异常。) 这是因为基于ORM的框架需要一个事务来触发对象的缓存与数据库之间的同步。通过事务的提交来生成SQL语句，通过数据库连接传送到数据库端进行增删查改的操作。没有事务就不会触发SQL代码生成和保存更改的真实操作，没事务只会终止操作并且不会抛出异常。<br> <strong>使用ORM框架就要使用事务，而不是再通过数管理据库连接</strong>来管理事务**</p>
-</blockquote>
-<h2 id="Spring-Transactional-注解陷阱"><a href="#Spring-Transactional-注解陷阱" class="headerlink" title="Spring @Transactional 注解陷阱"></a>Spring @Transactional 注解陷阱</h2><blockquote>
-<p>我们更多的使用Spring容器来托管事物，其中最常见的就是@Transactional 注解了<br> 但是并是不我们在方法上加上该注解就万事大吉了，必须配置</p>
-</blockquote>
-<pre><code>&lt;tx:annotation-driven transaction-manager=&quot;transactionManager&quot;/&gt;
-</code></pre><blockquote>
-<p>transaction-manager 属性保存一个对在 Spring 配置文件中定义的事务管理器 bean 的引用。这段代码告诉 Spring 在应用事务拦截器时使用 @Transaction 注释。如果没有它，就会忽略 @Transactional 注释，<strong>导致代码不会使用任何事务*</strong></p>
-</blockquote>
-<h3 id="多问几个问题？"><a href="#多问几个问题？" class="headerlink" title="多问几个问题？"></a>多问几个问题？</h3><ol>
-<li>单独使用 @Transactional 注释时，事务传播模式被设置成什么呢？（REQUIRED）</li>
-<li>只读标志被设置成什么呢？（只读标志设置为 false）</li>
-<li>事务隔离级别的设置是怎样的？（事务隔离级别设置为 READ_COMMITTED，<strong>而且事务不会针对受控异常（checked exception）回滚</strong>）</li>
-<li>事务应何时回滚工作？<br><a href="http://www.ibm.com/developerworks/cn/java/j-ts1.html" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/java/j-ts1.html</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/27/learning/tools/" itemprop="url">
-                  工具笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-04-27T17:21:55+08:00" content="2016-04-27">
-              2016-04-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/learning/" itemprop="url" rel="index">
-                    <span itemprop="name">learning</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="常用命令或者工具的小笔记"><a href="#常用命令或者工具的小笔记" class="headerlink" title="常用命令或者工具的小笔记"></a>常用命令或者工具的小笔记</h1><blockquote>
-<p>有时候你会发现一些常用的小命令虽然简单却不是那么容易就拼写出来，说白了就是用的少<br>  好记性不如烂笔头嘛，记下来呗。</p>
-</blockquote>
-<h2 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h2><ol>
-<li>skip test 的命令:只是在后面加上参数<strong> -Dmaven.test.skip=true </strong></li>
-</ol>
-<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><ol>
-<li>git 只checkout仓库中的子文件夹。 需要用到git的sparse checkout<br><strong><a href="http://stackoverflow.com/questions/600079/is-there-any-way-to-clone-a-git-repositorys-sub-directory-only" target="_blank" rel="external">sparse checkout</a></strong><br>需要在本地设置git config，在pull之前确定需要pull的文件夹</li>
-<li>git display all remote branch<pre><code>git ls-remote --heads &lt;remote-name&gt;
-</code></pre></li>
-<li><p>How to create orphan branches</p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git checkout --orphan config/services</div><div class="line">git rm -rf .</div><div class="line">git add &lt;your files&gt;</div><div class="line">git commit -m &apos;Initial commit&apos;</div><div class="line">git push origin HEAD:refs/heads/config/services</div></pre></td></tr></table></figure>
-<p><a href="http://stackoverflow.com/questions/1384325/in-git-is-there-a-simple-way-of-introducing-an-unrelated-branch-to-a-repository#answer-4288660" target="_blank" rel="external">Source</a></p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/25/java/javaAnotation/" itemprop="url">
-                  Java 注解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-04-25T21:21:55+08:00" content="2016-04-25">
-              2016-04-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Java-注解"><a href="#Java-注解" class="headerlink" title="Java 注解"></a>Java 注解</h2><blockquote>
-<p>经常使用java的注解，一些小的知识点总结下吧<br>注解是个什么东西呢？我们为什么要使用注解？注解的到底干了哪些事情呢？<br>简单来说：注解就是一种元编程的语法，注意仅仅是一种标志或者一种特殊的语法，注解本身什么都做不了，如果你想要的注解真正的发挥作用，你需要一些工具或者框架帮你生成新的代码(java本身或者Spring等框架)，转换新的代码，并且可以在运行时<strong> (主要是运行时反射实现) </strong>决定你注解的语义和真正的功能。<br> 举个例子，JPA是java5定义的OR Mapping的规范，java自身提供了注解比如@Entity，但是这个注解仅仅指明你的当前注解的类可以与数据库的表进行映射，但具体需要Hibernate这些框架来根据注解运行时生成映射文件和SQL查询。</p>
-</blockquote>
-<ol>
-<li>注解是不能继承的</li>
-<li>注解Target(ElementType) Retention(RetentionPolicy) Documented Inherited</li>
-<li>注解的祖先是java.lang.Annotation接口，可以理解注解是特殊的接口</li>
-</ol>
-<blockquote>
-<p>关于Spring几个注解的小记录</p>
-</blockquote>
-<pre><code>@Autowired and @Inject
-Matches by Type
-Restricts by Qualifiers
-Matches by Name
-</code></pre><hr>
-<pre><code>@Resource
-Matches by Name
-Matches by Type
-Restricts by Qualifiers (ignored if match is found by name)
-</code></pre><blockquote>
-<ul>
-<li><p>Spring的注解是如何起作用的呢，其实道理很简单，runtime的注解可以通过反射在运行的时候获得，那么Spring可以通过Proxy创建一个代理对象，在代理方法中获取注解的信息进行包装。然后代码真正获取的是Spring的代理类，比如@Transactional注解就是这么处理，代理帮我们完成事务等事情的处理。</p>
-</li>
-<li><p>关于一个小的问题， 注解比如@Transactional到底是加载接口还是加载具体的实现类和方法上，Spring是建议我们加载具体的方法和类的，该业务是与你具体实现绑定的，而且加在接口，只会在你使用接口代理的时候才会起作用，你使用的具体的实现类并不会真正用到该注解（注解是不能继承的！）</p>
-</li>
-</ul>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/10/java/javaweb/JavaWebTransaction/" itemprop="url">
-                  JavaWeb 事务
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-04-10T15:21:55+08:00" content="2016-04-10">
-              2016-04-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javaweb/" itemprop="url" rel="index">
-                    <span itemprop="name">javaweb</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Spring事务"><a href="#Spring事务" class="headerlink" title="Spring事务"></a>Spring事务</h2><h3 id="问题起源"><a href="#问题起源" class="headerlink" title="问题起源"></a>问题起源</h3><blockquote>
-<p>只要写javaweb，只要跟数据库交互，企业级开发不可能避免的一点就是事务管理。<br>自己捣鼓SpringBoot的时候，采用了JPA（Hibernate），发现有两个事务注解<br><code>javax.transaction.Transactional</code><br><code>org.springframework.transaction.annotation.Transactional</code><br>这一下子懵逼了有木有，到底哪个会起作用，到底用哪个？（毛线，spring web工程了，当然是spring包里的那个啊！）</p>
-</blockquote>
-<h3 id="扯点基础"><a href="#扯点基础" class="headerlink" title="扯点基础"></a>扯点基础</h3><blockquote>
-<p>说到java的事务，我们就先扯一点事务分类，因为事务分类和我们的开发模式息息相关。<br>Java平台支持三种事务模型：</p>
-</blockquote>
-<ul>
-<li><code>本地事务模型</code>——事务由DB资源而不是应用容器或框架管理。开发者管理连接而不是事务(如果你直接对着JDBC拼SQL的话，你就是在用本地事务).</li>
-<li><p><code>编程式事务模型</code>——开发者从事务管理器中获取事务，之后需要自己编写事务启动、提交、异常及回滚代码（如果你在代码接触事务管理器并自己管理事务,比如下面这一段）。</p>
-<pre><code>public static void main(String[] args) {
-//      Configuration cfg = new Configuration();
-//      cfg.configure();
-//      SessionFactory sf = cfg.buildSessionFactory();
-//      HibernateUtil类中已经帮我们做掉了上面部分
-        Session s = null;
-        Transaction tx = null;
-        try {
-            Class.forName(&quot;com.HibernateUtil&quot;);
-            s = HibernateUtil.getSession();
-            tx = s.beginTransaction(); //这里开启了事务
-            //事务中所需的一系列数据库操作。
-            tx.commit();
-        } catch (HibernateException e) { //如果出现异常，且事务已经开启，则需要回滚。
-            if (tx != null)
-                tx.rollback();
-            throw e;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally { //无论如何都需要关闭Session。
-            if (s != null)
-                s.close();
-        }
-        //sf.close();
-        System.out.println(&quot;end&quot;);
-    }
-</code></pre></li>
-<li><p><code>声明式事务模型</code>——最常见的模型，又叫做容器管理事务。在这种模型下，容器管理着事务，开发者定义（声明）事务的行为和参数（好吧，大家Spring的@transactional注解还记得吧）</p>
-</li>
-<li>这里我先不聊<code>XA</code></li>
-</ul>
-<h3 id="回到问题起源"><a href="#回到问题起源" class="headerlink" title="回到问题起源"></a>回到问题起源</h3><blockquote>
-<p>编程大法之 <a href="http://stackoverflow.com/questions/26387399/javax-transaction-transactional-vs-org-springframework-transaction-annotation-tr" target="_blank" rel="external">copy and paste from stackoverflow</a><br>这两个注解都是要容器帮助我们管理事务，历史上来说Spring比较早，知道JavaEE7，<br>Java为了方便嘛，自己也来一套，当然是给EJB配合的。原理上都是一个注解，用来通知容器管理事务而已。如果要使用Javax的transaction，要配置你应用的<code>javax.ejb.TransactionAttribute</code> (我是小菜，ejb也是仅仅接触过一点，自己查看了下Spring Data JPA的实现里，一统江湖的Spring的transaction)</p>
-</blockquote>
-<h3 id="聊聊Spring的事务"><a href="#聊聊Spring的事务" class="headerlink" title="聊聊Spring的事务"></a>聊聊Spring的事务</h3><blockquote>
-<p>看Spring的事务设计策略就是理解的一个过程，我也偷点别人的总结啦</p>
-</blockquote>
-<h4 id="先来看Spring事务需要配置的参数以及意义"><a href="#先来看Spring事务需要配置的参数以及意义" class="headerlink" title="先来看Spring事务需要配置的参数以及意义"></a>先来看Spring事务需要配置的参数以及意义</h4><table>
-<thead>
-<tr>
-<th>配置参数</th>
-<th>参数意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>propagation参数</td>
-<td>Propagation类型（枚举），默认值为Propogation.REQUIRED，支持的值有REQUIRED、MANDATORY、NESTED、NEVER、NOT_SUPPORTED、REQUIRE_NEW、SUPPORTS。</td>
-</tr>
-<tr>
-<td>isolation参数</td>
-<td>Isolation类型（枚举），默认值为Isolation.DEFAULT，支持的值有DEFAULT、READ_COMMITTED、READ_UNCOMMITTED、REPEATABLE_READ、SERIALIZABLE。</td>
-</tr>
-<tr>
-<td>timeout参数</td>
-<td>int类型，事务的超时时间，默认值为-1，即不会超时。</td>
-</tr>
-<tr>
-<td>readOnly参数</td>
-<td>boolean类型，true表示事务为只读，默认值为false。</td>
-</tr>
-<tr>
-<td>rollbackFor参数</td>
-<td>Class&lt;? extends Throwable&gt;[]类型，默认为空数组。</td>
-</tr>
-<tr>
-<td>rollbackForClassName参数</td>
-<td>String[]类型，默认为空数组。</td>
-</tr>
-<tr>
-<td>noRollbackFor参数</td>
-<td>Class&lt;? extends Throwable&gt;[]类型，默认为空数组。</td>
-</tr>
-<tr>
-<td>noRollbackForClassName参数</td>
-<td>String[]类型，默认为空数组</td>
-</tr>
-</tbody>
-</table>
-<h4 id="再看看propagation参数的意义"><a href="#再看看propagation参数的意义" class="headerlink" title="再看看propagation参数的意义"></a>再看看propagation参数的意义</h4><table>
-<thead>
-<tr>
-<th>传播行为</th>
-<th>意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PROPAGATION_MANDATORY</td>
-<td>表示该方法必须运行在一个事务中。如果当前没有事务正在发生，将抛出一个异常</td>
-</tr>
-<tr>
-<td>PROPAGATION_NESTED</td>
-<td>表示如果当前正有一个事务在进行中，则该方法应当运行在一个嵌套式事务中。被嵌套的事务可以独立于封装事务进行提交或回滚。如果封装事务不存在，行为就像PROPAGATION_REQUIRES一样。</td>
-</tr>
-<tr>
-<td>PROPAGATION_NEVER</td>
-<td>表示当前的方法不应该在一个事务中运行。如果一个事务正在进行，则会抛出一个异常</td>
-</tr>
-<tr>
-<td>PROPAGATION_NOT_SUPPORTED</td>
-<td>表示该方法不应该在一个事务中运行。如果一个现有事务正在进行中，它将在该方法的运行期间被挂起。</td>
-</tr>
-<tr>
-<td>PROPAGATION_SUPPORTS</td>
-<td>表示当前方法不需要事务性上下文，但是如果有一个事务已经在运行的话，它也可以在这个事务里运行。</td>
-</tr>
-<tr>
-<td>PROPAGATION_REQUIRES_NEW</td>
-<td>表示当前方法必须在它自己的事务里运行。一个新的事务将被启动，而且如果有一个现有事务在运行的话，则将在这个方法运行期间被挂起</td>
-</tr>
-<tr>
-<td>PROPAGATION_REQUIRED</td>
-<td>表示当前方法必须在一个事务中运行。如果一个现有事务正在进行中，该方法将在那个事务中运行，否则就要开始一个新事务。(<code>最常见的事务策略</code>)</td>
-</tr>
-</tbody>
-</table>
-<h4 id="小小总结下"><a href="#小小总结下" class="headerlink" title="小小总结下"></a>小小总结下</h4><ul>
-<li>@Transactional 表示支持事务的管理，加在类上对整个类起作用，加在方法上对方法起作用，当然方法会覆盖掉类的作用范围</li>
-<li>这个玩意儿肯定不能加在接口或者抽象类上，注解是没有继承关系的</li>
-<li>关于配置参数的后四个，都是和回滚相关的，推荐的是不要用rollbackForClassName和noRollbackForClassName，换成另外两个代替就行了，string类型要写全类路径名字，也是蛮累的。<code>需要注意的是，我们不配置回滚参数，不代表人家就不回滚啊，DefaultTransactionAttribute配置将会生效，具体的行为是，抛掷任何unchecked Exception都会触发回滚，当然包括所有的RuntimeException</code></li>
-</ul>
-<h3 id="今天先到这儿吧，写多写点再填坑，一入java深似海啊"><a href="#今天先到这儿吧，写多写点再填坑，一入java深似海啊" class="headerlink" title="今天先到这儿吧，写多写点再填坑，一入java深似海啊"></a>今天先到这儿吧，写多写点再填坑，一入java深似海啊</h3><p><a href="https://m.oschina.net/blog/56904" target="_blank" rel="external">https://m.oschina.net/blog/56904</a> 先放个坑在这儿</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1793,16 +1684,16 @@ Restricts by Qualifiers (ignored if match is found by name)
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">articles</span>
             </a>
           </div>
 
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">6</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
               
             </div>
           
@@ -1810,8 +1701,8 @@ Restricts by Qualifiers (ignored if match is found by name)
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">13</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -1847,7 +1738,7 @@ Restricts by Qualifiers (ignored if match is found by name)
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1855,11 +1746,11 @@ Restricts by Qualifiers (ignored if match is found by name)
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Theme -
+  Thème -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
