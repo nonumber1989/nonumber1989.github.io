@@ -430,7 +430,57 @@
       
         
           
-            
+            <p><strong>原文链接:<a href="https://www.nginx.com/blog/service-discovery-in-a-microservices-architecture/?utm_source=introduction-to-microservices&amp;utm_medium=blog&amp;utm_campaign=Microservices" target="_blank" rel="external"><em>Service Discovery in a Microservices Architecture</em></a></strong></p>
+<ol>
+<li><em><a href="http://www.jianshu.com/p/8d2cfa1fa633" target="_blank" rel="external">微服务介绍</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/9e90b2a5df7b" target="_blank" rel="external">构建微服务之使用API网关</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/9c03081bc0d9" target="_blank" rel="external">构建微服务之:微服务架构中的进程间通信</a></em></li>
+<li><em>微服务中的服务发现(本文)</em></li>
+<li><em><a href="http://www.jianshu.com/p/9a440c5ea1db" target="_blank" rel="external">微服务之事件驱动的数据管理</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/31c2a5a8b764" target="_blank" rel="external">选择一种微服务部署策略</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/29f4d788e3bb" target="_blank" rel="external">重构单体应用到微服务</a></em></li>
+</ol>
+<p>这是使用微服务构建应用的第四篇文章。第一篇文章介绍了微服务架构模式并讨论了使用微服务的优势和劣势，该系列的第二和第三篇文章 描述了微服务架构中通信的不同方面，本篇文章我们将密切讨论下服务发现的问题。</p>
+<h1 id="为什么使用服务发现"><a href="#为什么使用服务发现" class="headerlink" title="为什么使用服务发现"></a>为什么使用服务发现</h1><p>设想下，我们写了一些通过REST API或者Thrift API调用某个服务的代码，为了发起这个请求，你的代码需要知道服务实例的网络地址(IP 地址和端口号）。在传统运行在物理机器上的应用中，某个服务实例的网络地址一般是静态的，比如，代码可以从只会偶尔更新的配置文件中读取网络地址。<br>然而在现在流行的基于云平台的微服务应用中， 有更多如下图所示的困难问题需要去解决：<br><img src="http://upload-images.jianshu.io/upload_images/3912920-4742d0f9ff9bdeb9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>服务实例需要动态分配网络地址，而且，一组服务实例可能会因为自动扩展、失败或者升级发生动态变化，因此 你的客户端代码应该使用更加精细的服务发现机制。<br>有两种主要的服务发现机制：<a href="http://microservices.io/patterns/client-side-discovery.html" target="_blank" rel="external">客户端发现</a> 和 <a href="http://microservices.io/patterns/server-side-discovery.html" target="_blank" rel="external">服务端发现</a>。让我们先看客户端发现机制。</p>
+<h2 id="客户端发现模式"><a href="#客户端发现模式" class="headerlink" title="客户端发现模式"></a>客户端发现模式</h2><p>当我们使用 <a href="http://microservices.io/patterns/client-side-discovery.html" target="_blank" rel="external">客户端发现</a>的时候，客户端负责决定可用服务实例的网络地址并且在集群中对请求负载均衡, 客户端访问<strong>服务登记表</strong>，也就是一个可用服务的数据库，然后客户端使用一种负载均衡算法选择一个可用的服务实例然后发起请求。<br>下图展示了该结构模式：<br><img src="http://upload-images.jianshu.io/upload_images/3912920-76cc7f3f5107c3af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>服务实例的网络地址在服务启动的时候被登记到服务注册表中 ，当实例终止服务时从服务注册表中移除。服务实例的注册一般是通过心跳机制阶段性的进行刷新。</p>
+<p><a href="https://netflix.github.io/" target="_blank" rel="external">Netflix OSS</a> 为客户端发现机制提供了很多优秀的例子。<a href="https://github.com/Netflix/eureka" target="_blank" rel="external">Netflix Eureka</a> 实现了服务注册表，它通过提供REST API来管理服务实例注册以及可用实例的查询。<a href="https://github.com/Netflix/ribbon" target="_blank" rel="external">Netflix Ribbon</a> 是一个与Eureka一起使用并在多个可用实例间对请求负载均衡的IPC客户端。我们将在下面文章深入讨论Eureka。</p>
+<p>客户端发现机制有诸多优势和劣势：该模式除了服务注册表之外没有其他的活动部分了，相对来说还是简单直接的，而且，由于客户端知道相关的可用服务实例，那么就可以使用更加智能的，特定于应用的负载均衡机制，比如一致性哈希。一个明显的缺点是它把客户端与服务注册表紧耦合了，你必须为每一种消费服务的客户端对应的编程语言和框架实现服务发现逻辑。</p>
+<p>现在看完了客户端发现，再让我们看下服务端发现吧。</p>
+<h2 id="服务端发现模式"><a href="#服务端发现模式" class="headerlink" title="服务端发现模式"></a>服务端发现模式</h2><p>服务发现的另一种模式就是<a href="http://microservices.io/patterns/server-side-discovery.html" target="_blank" rel="external">服务端发现模式</a>。下图展示了该模式的结构：<br><img src="http://upload-images.jianshu.io/upload_images/3912920-76dce8ab07216514.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>客户端通过一个负载均衡器向服务发送请求，负载均衡器查询服务注册表并把请求路由到一台可用的服务实例上。和客户端发现一样，服务实例通过服务注册表进行服务的注册和注销。</p>
+<p> <a href="https://aws.amazon.com/elasticloadbalancing/" target="_blank" rel="external">AWS Elastic Load Balancer</a> (ELB) 是服务端发现路由的一个示例。一个ELB通常对来自外部互联网的请求进行负载均衡，当然，你也可以使用ELB对虚拟私有云(VPC)的内部请求进行负载均衡。客户端通过DNS域名向ELB发起HTTP或者TCP请求，ELB将请求负载均衡到一系列注册的Elastic Compute Cloud (EC2) 实例 或者EC2 Container Service (ECS) 的容器中，两者并没有分割的服务注册表，EC2 实例和ECS容器都是通过ELB进行注册的。</p>
+<p>类似NGINX PLUG和NGINX这些HTTP服务器和负载均衡器可以作为服务端发现负载均衡来使用。比如 <a href="https://www.airpair.com/scalable-architecture-with-docker-consul-and-nginx" target="_blank" rel="external">这篇博客</a> 就描述了使用<a href="https://github.com/hashicorp/consul-template" target="_blank" rel="external">Consul Template</a> 动态重配置NGINX反向代理，Consul Template是一种根据存储在Consul 服务注册表的配置数据阶段性重新生成任意配置文件的工具 ，每当文件发生变化时，它将运行任意的Shell 命令。在博客描述的例子中，Consul Template 生成用于配置反向代理的<strong>nginx.conf</strong>文件，然后运行一个命令行告知NGINX重载配置。更复杂的实现可能使用 <a href="https://www.nginx.com/products/on-the-fly-reconfiguration/?utm_source=service-discovery-in-a-microservices-architecture&amp;utm_medium=blog&amp;utm_campaign=Microservices" target="_blank" rel="external">HTTP API or DNS</a>动态重配置NGINX Plus。</p>
+<p>一些部署环境使用诸如<a href="https://github.com/kubernetes/kubernetes/blob/master/docs/design/architecture.md" target="_blank" rel="external">Kubernetes</a> 和<a href="https://mesosphere.github.io/marathon/docs/service-discovery-load-balancing.html" target="_blank" rel="external">Marathon</a>在集群中的每个主机上运行一个代理，这些代理扮演了服务端发现负载均衡的角色，代理可以根据主机IP地址和服务分配的端口号来路由客户端请求，代理因此可以透明的把客户端请求转发到集群中某台可用的服务实例上去。</p>
+<p>服务端发现模式有一些优势也有一些劣势：一个巨大的优势是，服务发现的细节对客户端来说是抽象的，客户端仅需向负载均衡器发送请求即可。这种方式减少了为消费服务的不同编程语言与框架实现服务发现逻辑的麻烦。当然，正如前面所述，一些部署环境已经提供了该功能。这种模式也有一些劣势： 除非部署环境已经提供了负载均衡器，否则这又是一个需要额外设置和管理的可高可用的系统组件。</p>
+<h1 id="服务注册表"><a href="#服务注册表" class="headerlink" title="服务注册表"></a>服务注册表</h1><p><a href="http://microservices.io/patterns/service-registry.html" target="_blank" rel="external">服务注册表</a> 是服务发现的关键部分，它是一个包含服务实例网络地址的的数据库。一个服务注册表需要高可用和实时更新，客户端可以缓存从服务注册表获取的网络地址。然而，这样的话缓存的信息最终会过期，客户端不能再根据该信息发现服务实例。因此，服务注册表对集群中的服务实例使用复制协议来维护一致性。</p>
+<p>之前也提到 <a href="https://github.com/Netflix/eureka" target="_blank" rel="external">Netflix Eureka</a> 是服务注册表的好例子，它为服务实例的注册与查询提供了REST API：一个服务实例可以使用POST来注册自己的网络地址，它必须每30秒通过PUT去刷新，服务实例可以直接或者在服务实例注册超时的时候使用DELETE删除注册表中的信息，正如你所料，客户端可以使用HTTP GET获取注册实例的信息。</p>
+<p>Netflix通过在每一个Amazon EC2 availability zone运行一到多个Eureka服务<a href="https://github.com/Netflix/eureka/wiki/Configuring-Eureka-in-AWS-Cloud" target="_blank" rel="external"> 实现高可用</a>  。每一个Eureka服务器运行在一个关联 <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html" target="_blank" rel="external">Elastic IP地址</a>的 EC2 实例上。<strong>DNS TEXT</strong>记录了Eureka集群的配置文件，配置文件映射availability zones到一组Eureka服务器可用的网络地址。 Eureka 服务器启动的时候将会查询DNS获取Eureka集群的配置、查询同等节点并为自己分配一个未被使用的Elastic IP地址。</p>
+<p>Eureka clients – services和service clients，通过查询DNS发现Eureka服务器的网络地址。客户端更倾向使用在同一availability zone中的Eureka服务器，当然，如果该zone中没有可用的网络地址，它将使用另一zone中的。</p>
+<p>其他的服务注册表例子包括：</p>
+<ul>
+<li><a href="https://github.com/coreos/etcd" target="_blank" rel="external">etcd</a> ，一个高可用、分布式、一致性、key-value 方式的存储，被用在分享配置和服务发现中。两个著名的项目使用了它：Kubernetes 和 <a href="http://pivotal.io/platform" target="_blank" rel="external">Cloud Foundry</a>.</li>
+<li><a href="https://www.consul.io/" target="_blank" rel="external">consul</a> ，一个发现和配置服务的工具，为客户端注册和发现服务提供了API，Consul还可以通过执行健康检查决定服务的可用性。</li>
+<li><a href="http://zookeeper.apache.org/" target="_blank" rel="external">Apache Zookeeper</a> ，是一个广泛使用、高性能的针对分布式应用的协调服务。 Apache Zookeeper本来是Hadoop的子工程，现在已经是顶级工程了。</li>
+</ul>
+<p>正如前面所述，一些诸如Kubernetes、Marathon和AWS之类的应用并没有显示的服务注册表，相反，服务注册表是架构内置的一部分。</p>
+<p>我们已经看过了服务注册表的概念，现在我们看下服务实例是如何使用注册表注册的：</p>
+<h2 id="服务注册选项"><a href="#服务注册选项" class="headerlink" title="服务注册选项"></a>服务注册选项</h2><p>正如前面提到的那样，服务实例必须使用服务注册表来进行服务的注册和注销，我们有几种方式来处理服务的注册和注销，其中之一是服务实例自己注册自己也就是<a href="http://microservices.io/patterns/self-registration.html" target="_blank" rel="external">self-registration 模式</a>，另一种是系统的其他组件管理服务实例的注册，也就是 <a href="http://microservices.io/patterns/3rd-party-registration.html" target="_blank" rel="external">third-party registration 模式</a>.。我们先看下self-registration模式：</p>
+<h3 id="Self-Registration模式"><a href="#Self-Registration模式" class="headerlink" title="Self-Registration模式"></a>Self-Registration模式</h3><p>当使用<a href="http://microservices.io/patterns/self-registration.html" target="_blank" rel="external">self-registration 模式</a>,时，服务实例自己负责通过服务注册表对自己进行注册和注销，另外如果有必要的话，服务实例可以通过发送心跳请求防止注册过期，下图展示了该模式的结构：<br><img src="http://upload-images.jianshu.io/upload_images/3912920-5bd07f6c772a719f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p><a href="https://github.com/Netflix/eureka" target="_blank" rel="external">Netflix OSS Eureka client</a>就是这种模式的一个例子，Eureka客户端处理服务实例注册和注销的各个方面。<a href="http://projects.spring.io/spring-cloud/" target="_blank" rel="external">Spring Cloud project</a>实现了包括服务发现在内的不同模式，使得自动注册服务实例到Eureka变的简单。你可以简单的在你的java配置类上添加@EnableEurekaClient注解即可。</p>
+<p>self-registration模式有一些优势也有一些劣势：优势之一是它相对简单，而且不强制使用其他的系统组件。然而，一个很大的劣势是 它使得服务实例和服务注册表强耦合 ，你必须在每一个使用服务的客户端编程语言和架构代码中实现注册逻辑。</p>
+<p>解绑服务和服务注册表的另一替换方案是，使用third-party registration 模式。</p>
+<h3 id="Third-Party-Registration模式"><a href="#Third-Party-Registration模式" class="headerlink" title="Third-Party Registration模式"></a>Third-Party Registration模式</h3><p>当使用<a href="http://microservices.io/patterns/3rd-party-registration.html" target="_blank" rel="external">third-party registration 模式</a>的时候，服务实例本身并不负责通过服务注册表注册自己，相反的，通过另一个被称作 <em>service registrar</em>系统组件来处理注册。 service registrar通过轮询或者订阅事件来检测一些运行实例的变化，当它检测到一个新的可用服务实例时就把该实例注册到服务注册表中去，service registrar还负责注销已经被终止的服务实例，下图展示了该模式的架构：<br><img src="http://upload-images.jianshu.io/upload_images/3912920-e68df99cf47bfeec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>service registrar其中一个例子是开源的<a href="https://github.com/gliderlabs/registrator" target="_blank" rel="external">Registrator</a> 项目，它自动的对部署到Docker 容器中的服务实例进行注册和注销。 Registrator支持不同的服务注册表，包括etcd和Consul。</p>
+<p>service registrar的另一个例子是 <a href="https://github.com/netflix/Prana" target="_blank" rel="external">NetflixOSS Prana</a>，原本是为非JVM语言的服务所设计，它像服务实例的跨斗一样和服务实例一起运行，Prana使用Netflix Eureka对服务进行注册和注销。</p>
+<p>service registrar是部署环境的内置组件，EC2实例可以自动扩展组 并可使用ELB进行服务注册。Kubernetes 服务是自动注册的并能使其可以被发现。</p>
+<p>third-party registration模式有一些优势也有一些劣势：主要优势是使得服务从服务注册表中被解耦，你不必为开发者使用的每种开发语言和框架实现服务注册的逻辑，相反，服务实例的注册被一个专有服务以集中式的方式处理。</p>
+<p>该模式的劣势是，除非它被内置在部署环境中，不然这又是一个需要被设置和管理的高可用系统组件。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在一个微服务应用中，一组运行的服务实例是动态变化的，实例有动态分配的网络地址，因此，为了使得客户端能够向服务发起请求，必须要要有服务发现机制。</p>
+<p>服务发现的关键是<a href="http://microservices.io/patterns/service-registry.html" target="_blank" rel="external">服务注册表</a>，服务注册表是可用服务实例的数据库，它提供了管理和查询使用的API。服务实例使用这些管理API进行服务的注册和注销，系统组件使用查询API来发现可用的服务实例。</p>
+<p>有两种服务发现的模式：客户端发现和服务端发现。在使用<a href="http://microservices.io/patterns/client-side-discovery.html" target="_blank" rel="external">客户端发现模式</a>的系统中，客户端直接查询服务注册表，选择一个可用的实例并发起请求，在一个使用<a href="http://microservices.io/patterns/server-side-discovery.html" target="_blank" rel="external">服务端发现模式</a>的系统中，客户端通过路由发起请求，路由会查询服务注册表并把请求转发到可用的服务实例上。</p>
+<p>对服务实例来讲有两种方式可以对服务注册表进行注册和注销，一种是服务实例本身通过服务注册表来注册自己，也就是<a href="http://microservices.io/patterns/self-registration.html" target="_blank" rel="external">self-registration模式</a>，另一种则是第三方系统组件代表实例来处理服务的注册和注销，也就是<a href="http://microservices.io/patterns/3rd-party-registration.html" target="_blank" rel="external">third-party registration模式</a>。</p>
+<p>在一些部署环境中，你需要使用诸如<a href="https://github.com/Netflix/eureka" target="_blank" rel="external">Netflix Eureka</a>、<a href="https://github.com/coreos/etcd" target="_blank" rel="external">etcd</a>, 或者<a href="http://zookeeper.apache.org/" target="_blank" rel="external">Apache Zookeeper</a>这样的服务注册表来设置你自己的服务发现架构。在另一些部署环境中，服务发现则是内置组件，比如<a href="https://github.com/kubernetes/kubernetes/blob/master/docs/design/architecture.md" target="_blank" rel="external">Kubernetes</a> 和 <a href="https://mesosphere.github.io/marathon/docs/service-discovery-load-balancing.html" target="_blank" rel="external">Marathon</a>用来处理服务注册和注销，他们同样也在集群的每一个主机上运行一个代理来扮演<a href="http://microservices.io/patterns/server-side-discovery.html" target="_blank" rel="external">服务端发现</a>路由的角色。</p>
+<p>一些诸如NGINX的HTTP反向代理和负载均衡器 可以用作服务端发现负载均衡器使用，服务注册表可以向NGINX推送路由信息并调用优雅的配置更新，比如，你可以使用<a href="https://hashicorp.com/blog/introducing-consul-template.html" target="_blank" rel="external">Consul Template</a>。 NGINX Plus 支持<a href="https://www.nginx.com/products/on-the-fly-reconfiguration/?utm_source=service-discovery-in-a-microservices-architecture&amp;utm_medium=blog&amp;utm_campaign=Microservices" target="_blank" rel="external">额外的动态重配置机制</a> ：它可以使用DNS从服务注册表 拉取服务实例的信息，并且为远程重配置提供API。</p>
+<p>在该系列之后的文章中我们将继续挖掘微服务的各个方面。</p>
+
           
         
       
@@ -542,7 +592,47 @@
       
         
           
-            
+            <p>这是使用微服务架构构建应用系列的第七篇也是最后一篇文章，第一篇文章介绍了微服务架构模式，并讨论了使用微服务架构的优势和劣势，接下来的文章讨论微服务架构的不同方面：使用API网关、进程间通信、服务发现、事件驱动的数据管理以及部署微服务，本篇文章，让我们看下如何把一个单体应用重构为微服务架构的应用。</p>
+<p>我希望这个系列的文章使你对微服务架构有一些好的理解，比如它的优势和劣势，何时使用微服务等 ，或许微服务架构对您的组织将非常合适。</p>
+<p>然而，你现在更可能正在为一个庞大的、复杂的单体应用而工作，你每天正经历着开发和部署单体应用的缓慢和痛苦 ，微服务看起来更像一个遥远的极乐世界。幸运的是，我们有几个策略可以使你逃离单体的地狱。本篇文章我将描述如何渐进的把单体应用重构为一系列的微服务。</p>
+<h1 id="重构为微服务架构的概览"><a href="#重构为微服务架构的概览" class="headerlink" title="重构为微服务架构的概览"></a>重构为微服务架构的概览</h1><p>把一个单体应用转化为微服务实际是<a href="https://en.wikipedia.org/wiki/Software_modernization" target="_blank" rel="external">应用现代化</a>的一种形式，这个事情开发者已经做了十多年了，因此，有一些经验在我们重构应用为微服务时候可以重用。</p>
+<p>策略之一是不要使用“Big Bang”式的重写，也就是不要集中所有的力量从头构建一个新的基于微服务的应用，尽管那个方式听起来很诱人，实际会有极大的风险，最终也会以失败告终。正如 Martin Fowler <a href="http://www.randyshoup.com/evolutionary-architecture" target="_blank" rel="external">所说</a>：“the only thing a Big Bang rewrite guarantees is a Big Bang!”。</p>
+<p>避免使用Big Bang重写，我们应该渐进式的重构我们的单体应用，我们逐步的构建由微服务组成的新应用，并与我们的单体应用一起运行。随着时间的推移，单体应用实现的功能将会缩水，直到完全消失或者变成另外一个微服务。这种策略可以类比于在高速路上只把车开到70迈-有挑战性但是比Big Bang重写危险小。</p>
+<p>Martin Fowler 提到了这种应用现代化的策略，称其为<a href="http://www.martinfowler.com/bliki/StranglerApplication.html" target="_blank" rel="external">Strangler Application</a>，名称来源于热带雨林中的扼杀藤蔓，扼杀藤蔓生长在大树的周围企图得到树冠处的阳光，最后树木会死掉，只留下一堆树状的藤蔓。应用现代化 遵循这样的模式，我们将会围绕的遗留应用构建由一系列微服务组成的新的应用，最终遗留应用将会消失。<br><img src="http://upload-images.jianshu.io/upload_images/3912920-ed317d25d4200ca5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>让我们来看实现该目标可采用的不同策略：</p>
+<h1 id="策略一：停止挖掘"><a href="#策略一：停止挖掘" class="headerlink" title="策略一：停止挖掘"></a>策略一：停止挖掘</h1><p> <a href="https://en.wikipedia.org/wiki/Law_of_holes" target="_blank" rel="external">Law of Holes</a> 告诉我们一旦你落入洞穴，你应该停止继续挖洞！一旦你的单体应用变的难以管理，这是一个需要听取的极好的建议。换句话讲，你应该停止让单体应用继续变的更加庞大，这意味着，当你需要实现新功能的时候，你不应该往单体应用中添加新的代码。相反的，这个策略的重要一点是，把新代码放到一个独立的微服务中去。下图展示了应用该方法后的系统架构：<br><img src="http://upload-images.jianshu.io/upload_images/3912920-7bb605084710b1ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>除了新服务和遗留的单体应用，还多出来其他的两个组件：第一个组件是请求路由器，用来处理HTTP请求，这和我们前面所说的API网关类似，路由器发送请求到对应新功能的新服务上去，路由遗留应用的请求到单体应用中去。</p>
+<p>另一个组件就是胶水代码，用来集成服务和单体应用。一个服务很少独立存在，一般都需要访问单体应用拥有的数据。胶水代码存在于服务端，或者单体端，或者两端均有，用来负责数据的集成，服务使用胶水代码对单体拥有的数据进行读写操作。</p>
+<p>服务有三种策略可以用来访问单体的数据:</p>
+<ul>
+<li>调用单体提供的远程API</li>
+<li>直接访问单体拥有的数据库</li>
+<li>维护自己的数据副本，副本需要从单体应用端同步过来</li>
+</ul>
+<p>胶水代码有时也被称为<em>anti-corruption layer</em>，这是因为胶水代码防止了拥有自己纯净领域模型的服务被来自遗留单体应用的领域模型的设计理念所污染。胶水代码在两种不同的模型间进行转换。anti-corruption layer一词首次出现在Eric Evans 所著的必读之书 <a href="https://domainlanguage.com/ddd/" target="_blank" rel="external">Domain Driven Design</a> 中，并在<a href="http://domainlanguage.com/ddd-resources/ddd-surrounded-by-legacy-software/" target="_blank" rel="external">white paper</a>中被提炼修正。开发一个anti-corruption layer不是一项简单的事情，但如果不想陷入单一地狱，还是有必要搞一个的。</p>
+<p>把新功能实现为轻量级的服务有诸多优势：它避免单体应用最终变的不可管理，服务同时可以被独立于单体去开发、部署和扩展。你可以通过创建每一个新的服务体会到微服务架构的优势。</p>
+<p>然而，这种方式并没有解决单体中的问题，为了解决这些问题，你需要拆分单体。让我们看一下拆分的策略：</p>
+<h1 id="策略二：前后端分离"><a href="#策略二：前后端分离" class="headerlink" title="策略二：前后端分离"></a>策略二：前后端分离</h1><p>缩小单体应用的策略之一是把展示层从业务逻辑层和数据访问层中拆分出来。一个典型的企业应用一般包含至少三种不同的组件：</p>
+<ul>
+<li>展示层：用来处理HTTP请求并实现基于REST API或者基于HTML的Web UI，在一个用户界面复杂的应用中，展示层通常包含大量的代码</li>
+<li>业务逻辑层：应用的核心并实现业务规则的组件</li>
+<li>数据访问层：访问诸如数据库和消息中介等基础架构的组件。</li>
+</ul>
+<p>通常展示逻辑对于后台业务逻辑与数据访问逻辑来讲，彼此有清晰的划分。业务层有由一个或多个门面组成的粗粒度API，它封装了业务逻辑组件，这些API是拆分单体应用到两个更小应用时候的自然缝隙。一个应用包含展示层，另一应用包含业务逻辑和数据访问逻辑，经过拆分，展示逻辑的应用向业务逻辑应用发起远程调用，下图展示了重构前后的架构：<br><img src="http://upload-images.jianshu.io/upload_images/3912920-48f9d932a6016ea1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>这种方式拆分单体应用有两个大的优势：它使得两个应用可以独立的开发、部署和扩展，尤其是它允许展示层开发者快速迭代用户界面并容易的进行A|B测试，这种方式的另一优势是它暴露了可以被其他微服务调用的远程API。</p>
+<p>这种策略，也仅仅是部分解决方案，这样重构完之后，很可能两个应用逐步变成两个不可管理的单体。你需要使用第三者策略消除剩余的单体部分。</p>
+<h1 id="策略三：提取服务"><a href="#策略三：提取服务" class="headerlink" title="策略三：提取服务"></a>策略三：提取服务</h1><p>重构第三个策略是把单体中存在的模块变成独立的微服务。每一次你提取模块并把其转化为服务，单体就会缩小，一旦你覆盖了足够多的模块，单体就将不再是一个问题，单体要么消失掉要么小到变成另外一个微服务。</p>
+<h2 id="确定需要转化为服务的模块的优先级"><a href="#确定需要转化为服务的模块的优先级" class="headerlink" title="确定需要转化为服务的模块的优先级"></a>确定需要转化为服务的模块的优先级</h2><p>一个庞大、复杂的单体应用有数十甚至上百个模块组成，所有的模块都是需要提取的候选。确定哪一个模块需要首先被提取是很有挑战性的问题，一个好的方式是先选择容易提取的模块作为开始，这将给你一些微服务总体上概览以及尤其是提取过程上的经验。在这之后，你可以提取那些可以给你带来最大优势的模块。</p>
+<p>把一个模块转化为一个服务通常是需要一定时间的。你想要根据你可以获得优势的大小排列你的模块，通常转换经常变化的模块带来的优势最大。一旦你把一个模块转化为服务，你就可以独立于单体来开发、部署它 了，这会极大的加速你的开发效率。</p>
+<p>提取那些对资源有独特需求的模块也会带来很多优势，比如，把拥有内存数据的模块转化为服务，就可以把服务部署到拥有大量内存的主机上，同样的，提取一个需要实现计算密集型算法的模块也是很值得的，因为该服务可以被部署到有多颗CUP的主机上，通过把有独特资源需求的模块转化为服务，可以使得应用更容易扩展。</p>
+<p>当决定哪个模块需要提取时，查看已存在的粗粒度的边界（也就是缝隙）是很有用的，这会使模块转化到服务更加简单和低廉。边界的例子之一是，一个模块只通过异步消息与应用的其他部分进行通信，把该模块转化成微服务是相当廉价和简单的。</p>
+<h2 id="如何提取模块"><a href="#如何提取模块" class="headerlink" title="如何提取模块"></a>如何提取模块</h2><p>提取模块的第一步是确定模块与单体应用间的粗粒度接口，由于单体和模块需要访问彼此拥有的数据，一般是一些双向的API。由于依赖的错综复杂以及模块与应用其他部分间细粒度的交互，实现这些API一般非常有挑战性。重构使用<a href="http://martinfowler.com/eaaCatalog/domainModel.html" target="_blank" rel="external">领域对象模式</a> 设计的业务逻辑尤其困难，因为领域模型类中彼此包含大量的关联关系 。你一般需要进行大的代码改动才能打破这些依赖，下图展示了重构过程：</p>
+<p>一旦你实现了粗粒度的接口，你就可以把这些模块转化为独立的服务。为了实现这个目标，你必须写代码使得单体应用和服务可以通过进程间通信机制的API进行交互。下图展示了应用重构前、中、后的架构：<br><img src="http://upload-images.jianshu.io/upload_images/3912920-a0b9bce56c11edef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>在这个例子中，模块Z是要被提取的候选模块，它的组件被模块X使用，它本身使用到模块Y。重构第一步是定义一组粗粒度的API，第一个接口是模块X调用模块Z的入端接口，第二个接口是模块Z调用模块Y的出端接口。</p>
+<p>重构的第二步是把模块转化为独立的服务，出端和入端的接口使用IPC机制的代码实现，你最有可能需要通过模块 Z 结合 <a href="http://microservices.io/patterns/microservice-chassis.html" target="_blank" rel="external">Microservice Chassis framework</a>来处理诸如服务发现这样的横切关注点。</p>
+<p>一旦你提取了某个模块，你就拥有了另一个可以独立于单体应用和其他服务来开发、部署、扩展的新服务，你甚至可以从头重写这个服务； 在这种状况下，API代码集成单体和微服务，变成了用以转换两种领域模型的anti-corruption层。每次你提取一个模块，你就又向微服务的方向迈出一步，随着时间的推移，单体应用将会缩水，你也会拥有更多的微服务。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>从一个现存应用迁移到微服务的过程是应用现代化的一种形式，你不应该以从头完全重写的方式把现存应用变为微服务，相反的，你应该逐步的把应用重构为一系列的微服务。你可以使用三种策略：使用微服务实现新的功能；把表现层从业务逻辑和数据访问组件中拆分出来；把单体应用中的现有模块转化为服务。随着时间推移，微服务的数量将会增长，你团队的敏捷性和开发速度也会提升。</p>
+
           
         
       
@@ -995,7 +1085,68 @@
       
         
           
-            
+            <p><strong>原文链接:<a href="https://www.nginx.com/blog/deploying-microservices/?utm_source=introduction-to-microservices&amp;utm_medium=blog&amp;utm_campaign=Microservices" target="_blank" rel="external"><em>Choosing a Microservices Deployment Strategy</em></a></strong></p>
+<ol>
+<li><em><a href="http://www.jianshu.com/p/8d2cfa1fa633" target="_blank" rel="external">微服务介绍</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/9e90b2a5df7b" target="_blank" rel="external">构建微服务之使用API网关</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/9c03081bc0d9" target="_blank" rel="external">构建微服务之:微服务架构中的进程间通信</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/1bf9a46efe7a" target="_blank" rel="external">微服务中的服务发现</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/9a440c5ea1db" target="_blank" rel="external">微服务之事件驱动的数据管理</a></em></li>
+<li><em>选择一种微服务部署策略(本文)</em></li>
+<li><em><a href="http://www.jianshu.com/p/29f4d788e3bb" target="_blank" rel="external">重构单体应用到微服务</a></em></li>
+</ol>
+<p>这是使用微服务架构构建应用系列的第六篇文章，第一篇文章介绍的微服务架构模式以及使用该模式的优势和劣势，接下来的文章讨论了微服务架构的不同方面：使用APi网关、进程间通信、服务发现以及事件驱动的数据管理。本篇文章我们将看一下有关微服务部署的策略。</p>
+<h1 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h1><p>部署一个<a href="http://microservices.io/patterns/monolithic.html" target="_blank" rel="external">单体应用</a>意味着对一个一般比较庞大的应用运行多个相同的拷贝，通常需要提供N台服务器（物理机或者虚拟机），并在每一台机器上运行M个应用实例。部署一个单体应用一般并不是特别直接，但是相比部署微服务架构的应用来讲，它已经简单很多了。</p>
+<p>一个 <a href="http://microservices.io/patterns/microservices.html" target="_blank" rel="external">微服务应用</a>包含数十个甚至上百个服务，服务是由多种不同的编程语言和框架写成，每一个服务都是一个有自己独特的部署、资源、扩展性以及 监控需求的mini应用。比如，你需要根据服务的需求对该服务运行一定数量的实例，而且，每一个服务实例必须提供适当的CPU、内存以及I/O资源，更加具有挑战性的是，尽管这很复杂，部署一个服务同时还要求 快速、可靠、高效。</p>
+<p>存在多种微服务部署模式，让我们先看一下一台主机部署多个服务的模式：</p>
+<h1 id="一台主机部署多服务实例模式"><a href="#一台主机部署多服务实例模式" class="headerlink" title="一台主机部署多服务实例模式"></a>一台主机部署多服务实例模式</h1><p>部署微服务的方法之一是使用<a href="http://microservices.io/patterns/deployment/multiple-services-per-host.html" target="_blank" rel="external">每台主机部署多服务实例</a> 的模式，使用这种模式的时候，你提供多台物理或者虚拟的主机，每台主机上运行多个服务实例，从某些角度来讲，这是传统的应用部署方式。每个服务的运行占用一台多多台主机上的端口，主机机器通常 <a href="https://www.nginx.com/blog/microservices-at-netflix-architectural-best-practices/?utm_source=deploying-microservices&amp;utm_medium=blog&amp;utm_campaign=Microservices#stateless-servers" target="_blank" rel="external">照顾宠物一样</a>来管理这些服务。</p>
+<p>下图展示了这种模式的结构图：<br><img src="http://upload-images.jianshu.io/upload_images/3912920-2b381913e347ce3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>这种模式有多种变种，变种之一是每个服务对应一个或一组进程，比如你可能把一个java服务实例以web应用的形式部署到<a href="http://tomcat.apache.org/" target="_blank" rel="external">Apache Tomcat</a> 服务器中，一个<a href="https://nodejs.org/" target="_blank" rel="external">Node.js</a> 服务实例则可能包含一个父进程以及一到多个子进程。</p>
+<p>这种模式的另外一个变种是在同一个进程或进程组中运行多个服务实例，比如你可以在同一个Apache Tomcat服务器中部署多个java web 应用，或者在同一个OSGI容器中运行多个OSGI bundles。</p>
+<p>每个主机运行多个服务实例的模式有优势也有劣势。一个大的优势是资源利用率相当的高，多个服务实例共享服务器和对应的操作系统，如果一个进程或进程组运行多个服务实例的话，效率就更加高了，比如多个web应用共享同一台Apache Tomcat服务器和JVM。</p>
+<p>该模式的另一个优势是部署服务实例相当的快速，你可以简单的把服务拷贝到主机并启动它。如果服务是java编写的，你拷贝JAR或者WAR包，如果是使用其他编程语言写的，比如 Node.js 或者 Ruby，你拷贝源代码就可以。在网络上拷贝这些字节的数量还是相对比较小的。</p>
+<p>当然，由于没有其他的开销，启动一个服务一般是非常快的。如果该服务是其自身的进程，你只需要简单的启动进程，如果服务本身是运行于同一个容器进程或者进程组中的服务实例，你可以将其动态的部署到容器或者使用重启容器的方式启动服务。</p>
+<p>尽管有一些魅力，每个主机运行多个服务实例的模式还是有一些重大缺陷的。一个主要缺陷是服务实例之间的隔离性很小或者没有隔离性，除非每个服务实例运行在单独的进程中！虽然你可以精确的监控每一个服务实例的资源使用情况，但你不可以限制每一个实例使用的资源，很有可能一个行为异常的服务实例会消耗掉主机上所有的内存和CPU资源。</p>
+<p>同一进程运行多个服务实例的模式压根就没有隔离性，所有的服务实例可能共享相同的JVM heap，一个行为异常的服务实例可以很容易的破坏掉运行在同一进程中的其他服务实例，而且，你没有任何方法监控每一个服务实例的资源使用情况。</p>
+<p>这种模式的另一个巨大劣势是对于运维团队来讲，部署一个服务实例必须知道针对该服务的具体细节，服务可能被不同的编程语言和框架写成，因此就有大量的细节需要开发人员分享给运维人员，这些复杂度增加了部署时出错的风险。</p>
+<p>如你所见，尽管每个主机运行多个服务实例的模式很熟悉，但是存在一些严重的缺陷，现在让我们看一下可以避免这些问题的另一种模式：</p>
+<h1 id="每个主机一个服务实例"><a href="#每个主机一个服务实例" class="headerlink" title="每个主机一个服务实例"></a>每个主机一个服务实例</h1><p>部署微服务的另一种模式是<a href="http://microservices.io/patterns/deployment/single-service-per-host.html" target="_blank" rel="external">每个主机一个服务实例</a> 模式。当你使用这种模式的时候，你可以隔离的在每一个主机中运行对应的服务实例，这种模式有两种不同的标准：每台虚拟机一个服务实例和每个容器一个服务实例。</p>
+<h2 id="每台虚拟机一个服务实例模式"><a href="#每台虚拟机一个服务实例模式" class="headerlink" title="每台虚拟机一个服务实例模式"></a>每台虚拟机一个服务实例模式</h2><p>当你使用<a href="http://microservices.io/patterns/deployment/service-per-vm.html" target="_blank" rel="external">每台虚拟器一个服务实例</a> 模式的时候，你把每一个服务打包为一个虚拟机镜像，比如<a href="https://aws.amazon.com/ec2/" target="_blank" rel="external">Amazon EC2 AMI</a>。虚拟机中的每一个服务实例(比如， an EC2 instance)使用虚拟机镜像启动，下图展示了这种模式的架构：<br><img src="http://upload-images.jianshu.io/upload_images/3912920-2ad6d1e51505b3c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>这也是Netflix用来部署其video streaming服务的最初的方案。 Netflix使用 <a href="https://github.com/Netflix/aminator" target="_blank" rel="external">Aminator</a>把其每一个服务打包成EC2 AMI ，每一个运行的服务实例实际就是一个EC2实例。</p>
+<p>有不同的工具可以让你构建自己的虚拟机镜像，你可以配置你的持续集成(CI)服务器(比如, <a href="https://jenkins-ci.org/" target="_blank" rel="external">Jenkins</a>) 调用Aminator来把服务打包成EC2 AMI。<a href="https://www.packer.io/" target="_blank" rel="external">Packer.io</a>是另一个自动化虚拟机镜像的选择，和Aminator不同，它支持不同的虚拟化技术，包括EC2、DigitalOcean、VirtualBox以及VMware。</p>
+<p><a href="https://boxfuse.com/" target="_blank" rel="external">Boxfuse</a> 公司使用一种更加优秀的方式来构建虚拟机镜像，它克服了我下面将会讲到的虚拟机镜像的一些缺陷，Boxfuse把你的Java应用打包成一个迷你的虚拟机镜像，这些镜像可以被快速的构建、迅速启动，由于他们暴露了有限的可能被攻击的接口，所以也更加的安全。</p>
+<p>每一台虚拟机一个服务实例的模式有一些优势。一个主要优势是每一个服务实例的运行都是相互隔离的，服务实例有固定的CUP和内存分配，它不可能窃取其他服务的资源。</p>
+<p>该模式的另一优势是可以充分利用成熟的云平台基础架构，AWS这样的云平台都提供了负载均衡以及自动扩展这样的功能。</p>
+<p>该模式的另一巨大优势是它封装了你服务实现使用的技术细节，一旦服务被打包成了虚拟机镜像，它就变成了一个黑盒，镜像管理API就成了服务部署API，部署变得更加简单和可靠。</p>
+<p>一个虚拟机一个服务实例的模式也有有一些劣势，一个主要的劣势是资源利用率低，每一个服务都完全占有包括操作系统在内的整个虚拟机，更重要的是，在典型的公共IaaS中，固定大小的虚拟机资源并没有被充分利用。</p>
+<p>然而，一个公共的IaaS平台在计费的时候并不关心虚拟机忙碌或空闲，AWS这样的IaaS平台提供自动扩展，但是<a href="http://techblog.netflix.com/2013/11/scryer-netflixs-predictive-auto-scaling.html" target="_blank" rel="external">很难快速响应并按需收费</a>，因此你需要经常的拨备虚拟机，增加了部署的花费。</p>
+<p>这种方式的另一个劣势是部署一个新的服务通常非常缓慢。虚拟机镜像由于其大小的问题，构建过程非常缓慢，而且通常虚拟机的大小问题使得初始化也很缓慢 ，而且操作系统在启动的时候也要花费一定的时间，注意，这并不是指所有的镜像，因为还有Boxfuse这样的轻量级的虚拟机镜像存在。</p>
+<p>这种模式的再一个劣势是你（或者你组中的其他人）需要负责大量非分化的heavy lifting。除非你使用诸如Boxfuse这样的工具处理构建和管理虚拟机镜像这些繁杂的事情，不然就只能是你来负责了，这些很必要但是又耗费时间的活动使你远离了你的业务代码。</p>
+<p>让我们看下另一种具有虚拟机镜像优势同时更加轻量级的微服务部署方式吧：</p>
+<h2 id="每台容器一个服务实例的模式"><a href="#每台容器一个服务实例的模式" class="headerlink" title="每台容器一个服务实例的模式"></a>每台容器一个服务实例的模式</h2><p>当你使用<a href="http://microservices.io/patterns/deployment/service-per-container.html" target="_blank" rel="external">每台容器一个服务实例</a> 模式的时候，每个服务实例运行在自己的容器中。容器是一种<a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization" target="_blank" rel="external">操作系统层面的虚拟机制</a>，一个容器由跑在沙箱中的一到多个进程组成。从进程的角度看，他们都有自己的端口命名空间和根文件系统，你可以限制容器的内存和CUP资源使用。一些容器的实现也可以实现I/O的速率限制，容器技术包括<a href="https://www.docker.com/" target="_blank" rel="external">Docker</a> 和 <a href="https://en.wikipedia.org/wiki/Solaris_Containers" target="_blank" rel="external">Solaris Zones</a>。</p>
+<p>下图展示了这种模式的架构：<br><img src="http://upload-images.jianshu.io/upload_images/3912920-ba65c5eab3c698bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>为使用这种模式，你需要把你的服务打包成容器镜像，一个容器镜像是包含运行服务所需应用和必要library的文件系统镜像，一些容器镜像可能包含完整的Linux根文件系统，比如为了部署一个java服务，你可以构建一个包含java运行时或者Apache Tomcat 服务器以及编译后的java应用的容器镜像。</p>
+<p>一旦你把你的服务打包成了容器镜像，你就可以启动一到多个容器了，你通常在一台虚拟机或者物理机器上运行多个容器，你可以使用诸如<a href="http://kubernetes.io/" target="_blank" rel="external">Kubernetes</a> 或 <a href="https://github.com/mesosphere/marathon" target="_blank" rel="external">Marathon</a>这样的集群管理器来管理你的容器。集群管理器把这些主机作为资源池，它根据每台主机上的可用资源以及每台容器的资源需求决定把容器放置在哪台主机。</p>
+<p>这种模式有优势也有劣势。优势类似于虚拟机具有的优势，他们隔离了每一个服务实例，你可以很容易的监控每一台容器的资源消耗，与虚拟机类似，容器也封装了实现服务所使用的不同技术细节，容器管理API同样作为管理服务的API来使用。</p>
+<p>当然，不同于虚拟机，容器是更加轻量级的技术。容器镜像的构建通常非常快速，比如，在我的个人笔记本上，把一个<a href="http://projects.spring.io/spring-boot/" target="_blank" rel="external">Spring Boot</a> 应用打包为Docker镜像仅仅需要5秒钟。由于没有冗长的OS引导过程，容器启动过程也非常快速，容器启动，服务就会运行。</p>
+<p>使用容器也有一些缺陷。尽管容器技术正在快速的走向成熟，但是相对虚拟机架构来说还是略显青涩，由于容器间分享同一主机的操作系统内核，容器并没有虚拟机那么安全。</p>
+<p>容器的另一劣势是你必须负责管理容器镜像的这些未分化的heavy lifting，除非你使用诸如 <a href="https://cloud.google.com/container-engine/" target="_blank" rel="external">Google Container Engine</a> 或者<a href="https://aws.amazon.com/ecs/" target="_blank" rel="external">Amazon EC2 Container Service</a> (ECS)这些主机容器解决方案，你必须自己来管理容器的架构或者支撑容器的底层虚拟机架构。</p>
+<p>此外，容器通常部署在按照每个VM定价的基础设施上，因此，正如前面提到的那样，为处理负载峰值的情况，你有可能为提供额外的虚拟机而增加额外的花费。</p>
+<p>有意思的是，容器和虚拟机之间的区别变的模糊起来。前面提到Boxfuse虚拟机可以快速构建和启动， <a href="https://clearlinux.org/features/clear-containers" target="_blank" rel="external">Clear Containers</a> 工程致力于创建轻量级的虚拟机镜像。对于<a href="https://en.wikipedia.org/wiki/Unikernel" target="_blank" rel="external">unikernels</a>也有更多人感兴趣起来。 Docker公司最近收购了Unikernel Systems。</p>
+<p>也有一种新的、逐步流行的server-less的部署理念，它回避了部署服务时选择容器还是虚拟机的问题，让我们接着看：</p>
+<h2 id="Serverless-部署"><a href="#Serverless-部署" class="headerlink" title="Serverless 部署"></a>Serverless 部署</h2><p><a href="https://aws.amazon.com/lambda/" target="_blank" rel="external">AWS Lambda</a> 是serverless部署技术的例子之一，它支持Java、Node.js和Python 服务。为了部署一个微服务，你把服务打包为一个ZIP文件上传到AWS Lambda，你还要提供元数据，其中包括指定调用用以处理请求（也就是事件）的函数的名称 。 AWS Lambda自动为你的微服务运行足够的实例来处理请求。你可以简单根据每个请求花费的时间和消耗的内存进行计费。当然，你很快就会看到AWS Lambda在这些细节中的局限，但是请注意，不管你组织的开发者或者其他的人员都不需要担心服务器、虚拟机或者容器的各个方面，这一点是很有诱惑力的。</p>
+<p>一个 <em>Lambda function</em> 是一个无状态的服务，它通常通过调用AWS服务来处理请求。比如，一个Lambda function在一张图片被上传到S3 bucket的时候被调用，它可能往DynamoDB图片表中插入一条记录并向Kinesis stream发送一条消息来触发图片的处理，一个Lambda function也可以调用第三方的web服务。</p>
+<p>有四种调用Lambda function的方法:</p>
+<ol>
+<li>使用web服务请求直接调用</li>
+<li>自动以响应诸如S3、DynamoDB、Kinesis或者Simple Email Service等产生的事件的方式调用</li>
+<li>通过AWS API网关处理来自客户端的请求的方式调用</li>
+<li>基于cron-like schedule阶段性的去调用</li>
+</ol>
+<p>如你所见，AWS Lambda 是部署微服务的一个方便方式，基于请求的计价意味着你只需要为你服务的实际工作买单，当然，你不必负责IT基础架构的问题，从而专心的开发你的应用。</p>
+<p>当然，这也有显著的局限：它不是为部署需要长时间运行的服务而设计的，比如消费来自第三方消息中介的消息的服务。请求必须在300秒内被完成，由于理论上处理请求的AWS Lambda可能运行在不同的实例中，因此服务也必须是无状态的。它们必须使用被支持的编程语言所编写，服务必须快速被启动，否则将会超时或者终止。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>部署一个微服务应用是很有挑战性的，应用拥有十几个甚至上百个由不同编程语言和框架实现的服务组成，每一个服务都是一个拥有独特部署、资源、扩展和监控需求的迷你应用 。有每台虚拟机一个服务实例和每台容器一个服务实例两种微服务部署模式，另一种有趣的微服务部署选择是使用AWS Lambda，一个serverless的方式。在该系列下一篇也是最后一篇文章中，我们将讨论如何把单体应用迁移为微服务结构。</p>
+
           
         
       
@@ -1107,7 +1258,61 @@
       
         
           
-            
+            <p><strong>原文链接:<a href="https://www.nginx.com/blog/building-microservices-using-an-api-gateway/?utm_source=introduction-to-microservices&amp;utm_medium=blog&amp;utm_campaign=Microservices" target="_blank" rel="external"><em>Building Microservices: Using an API Gateway</em></a></strong></p>
+<ol>
+<li><em><a href="http://www.jianshu.com/p/8d2cfa1fa633" target="_blank" rel="external">微服务介绍</a></em></li>
+<li><em>构建微服务之使用API网关(本文)</em></li>
+<li><em><a href="http://www.jianshu.com/p/9c03081bc0d9" target="_blank" rel="external">构建微服务之:微服务架构中的进程间通信</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/1bf9a46efe7a" target="_blank" rel="external">微服务中的服务发现</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/9a440c5ea1db" target="_blank" rel="external">微服务之事件驱动的数据管理</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/31c2a5a8b764" target="_blank" rel="external">选择一种微服务部署策略</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/29f4d788e3bb" target="_blank" rel="external">重构单体应用到微服务</a></em></li>
+</ol>
+<p>对于设计、构建和部署微服务系列七篇文章的第一篇，我们介绍了微服务架构风格，讨论了微服务的优势和劣势，尽管微服务有些复杂，但仍然是构建复杂应用的一个明智选择，第二篇文章将讨论使用API网关构建微服务。</p>
+<p>当我们选择把应用构建成一组微服务的时候，我们需要决定应用的客户端如何与这些微服务进行交互。传统单体应用中，往往只是一组（一般是replicated，负载均衡）的节点，而在微服务架构中，每个微服务都会暴露一组细粒度的节点。这篇文章中，我们将检验这种方式如何影响客户端与应用端的通信，并且提出使用API网关的方式来解决这个问题。</p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>假设我们正在为一个商品应用开发一个原生移动客户端，我们应该提供一个产品明细页来展示指定产品的信息。<br>正如下图所示，当我们在亚马逊的安卓移动应用中滚动产品明细页时，它将会呈现给我们：<br><img src="http://upload-images.jianshu.io/upload_images/3912920-04d9729084dae96f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>尽管这是移动应用，产品明细页依然展示给我们很多信息，比如它不仅仅展示了产品的基本信息（比如名称、描述、价格等），还展示了：</p>
+<ul>
+<li>购物车中的条目数</li>
+<li>订单历史记录</li>
+<li>用户点评</li>
+<li>低库存预警</li>
+<li>配送选项</li>
+<li>各项推荐,包括购买本产品还经常一起购买了其它某产品，客户买了这个产品同时还买了其他某产品，购买该产品的用户还浏览了哪些产品</li>
+<li>替代购买选项</li>
+</ul>
+<p>当我们使用单体架构模式的时候，一个移动客户端可能通过发送单一的REST调用请求(GET api.company.com/productdetails/<em>productId</em>) 来获取展示的数据，负载均衡器会把该请求路由到多个相同应用实例的其中一台，应用继续查询不同的数据库表并返回请求数据给客户端。</p>
+<p>对应的，在使用微服务架构模式的时候，需要在产品明细页展示的数据被多个微服务所拥有，下面是一些可能拥有需要展示数据在产品明细页的微服务：</p>
+<ul>
+<li>购物车服务：购物车中的产品条目</li>
+<li>订单服务：订单历史</li>
+<li>目录服务：基本产品信息，比如名称、图片、价格等</li>
+<li>点评服务：用户点评</li>
+<li>库存服务：低库存预警</li>
+<li>配送服务：配送选项、时限以及来自配送提供者API计算出的费用</li>
+<li>推荐服务：建议购买项<br><img src="http://upload-images.jianshu.io/upload_images/3912920-d2475b5d36a0f476.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>我们需要决定移动端如何访问这些服务，先看下面的选项：</li>
+</ul>
+<h1 id="客户端直接与微服务通信"><a href="#客户端直接与微服务通信" class="headerlink" title="客户端直接与微服务通信"></a>客户端直接与微服务通信</h1><p>理论上客户端可以直接与每一个微服务进行通信，每个微服务将会有一个公开的节点（<strong><a href="https://*serviceName*.api.company.name" target="_blank" rel="external">https://*serviceName*.api.company.name</a></strong>)），这个URL将会映射到负载均衡器，然后被分发到可用的实例上被处理，为了获取产品明细，移动客户端需要向上面列出的各个微服务发送请求。</p>
+<p>非常不幸的是，这种方案有诸多挑战和限制，问题之一就是客户端与每个微服务暴露出的细粒度API之间的不匹配，本例子中的客户端需发送七个不同的请求，在一个更加复杂的应用中请求数可能更多，比如亚马逊在渲染产品页的时候可能要调用上百个服务来渲染页面，一个客户端可以在LAN中发送多个请求，但是在公网上就特别低效，那就不用提在移动设备上了，当然，这种方式也使得客户端异常的复杂。</p>
+<p>客户端直接调用微服务的另一个问题是，一些服务可能使用对web并不友好的协议实现。一个服务可能使用Thrift二进制的RPC而另一个服务可能使用AMQP消息协议。这些协议都不是浏览器和防火墙友好的，最好是在应用内部被使用。防火墙之外呢，应用最好使用HTTP或者WebSocket。</p>
+<p>这种方式另一个劣势是使得微服务重构变得困难，随着时间推移，我们可能需要重新划分、组织微服务，比如我们可能合并两个微服务，也可能把某微服务拆分为两个或多个，如果客户端直接与微服务交互的话，对这些微服务进行重构变得异常困难。</p>
+<p>正是由于这些问题，采用客户端直接调用微服务的方式并不明智。</p>
+<h1 id="使用API网关"><a href="#使用API网关" class="headerlink" title="使用API网关"></a>使用API网关</h1><p>通常更好的方式是使用大家都熟知的API网关，API网关是提供系统唯一入口的一台服务器，它和面向对象设计模式中的门面类似：API网关封装了内部的系统架构并向每个客户端提供裁剪的API，它也可能负责诸如用户验证、监控、负载均衡、缓存、请求改造和管理以及静态内容响应等职责。</p>
+<p>下图展示了API网关通常适应的架构：<br><img src="http://upload-images.jianshu.io/upload_images/3912920-df6b13ad41a9ce3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>API网关负责请求路由、组合以及协议转换。所有来自客户端的请求都先经过API网关，然后被路由分配到相应的微服务中，API网关通常调用多个微服务并聚合其结果来处理请求，它可以在HTTP或者WebSocket这些web友好协议与内部使用的web不友好协议间相互转换。</p>
+<p>API网关可以为每个客户提供定制化的API，它通常为移动客户端暴露粗粒度的API，比如提供（<strong>/productdetails?productid=<em>xxx</em></strong>）节点使得移动应用单一请求就能获取所有的产品明细。API网关调用产品信息、推荐、评分等服务，组合这些结果来处理客户端请求。</p>
+<p>一个非常牛的例子就是Netflix API网关，Netflix 流服务在上百种包含电视、机顶盒、智能手机、游戏系统、平板电脑等设备上都可用。起初Netflix想为它们的流服务提供一种 <a href="http://www.programmableweb.com/news/why-rest-keeps-me-night/2012/05/15" target="_blank" rel="external">one‑size‑fits‑all</a> API，然而，他们发现由于设备的不同划分以及独特需求，这样设计是不现实的。现在他们使用API网关通过运行设备相关的适配器代码为客户端提供裁剪的API，适配器通常为每个请求调用平均六到七个后台服务， Netflix API网关现在每天处理上亿请求。</p>
+<h1 id="使用API网关的优势与劣势"><a href="#使用API网关的优势与劣势" class="headerlink" title="使用API网关的优势与劣势"></a>使用API网关的优势与劣势</h1><p>正如你所想，使用API网关有优势也有劣势。一个巨大优势就是它封装了应用的内部结构，而不是让客户端直接调用每个服务，客户端只需要简单的与网关交互即可，另外API网关为不同客户提供定制的API，并且减少了客户端和应用间的网络调用，这也大大简化了客户端代码实现。</p>
+<p>API网关也有一些劣势，它本身是一个新的高可用的组件，需要被开发、部署和管理，同时API网关有可能成为开发的瓶颈。开发者为了暴露新的微服务节点必须更新API网关，把更新网关的流程做的尽量轻量级是很重要的，不然的话，开发者更新网关的时候就要被迫在线等待。尽管它有这些劣势，在实战中，应用使用API网关还是明智的选择！</p>
+<h1 id="实现一个API网关"><a href="#实现一个API网关" class="headerlink" title="实现一个API网关"></a>实现一个API网关</h1><p>现在我们讨论了API网关的动机和一些权衡，现在来考虑一些设计的问题吧：</p>
+<h2 id="性能与扩展性"><a href="#性能与扩展性" class="headerlink" title="性能与扩展性"></a>性能与扩展性</h2><p>只有少数类似Netflix的公司需要每天处理上亿的请求，然而，对大多数应用来讲，API网关的性能和扩展性通常也非常的重要。在一个支持异步非阻塞IO的平台上构建API网关是明智的选择，我们有多种技术可以用来实现可扩展的API网关。基于JVM你可以选择基于NIO的诸如Netty、Vertx、Spring Reactor或JBoss Undertow等框架，Node.js也是一个流行的选项，它是一个构建于Chrome JS引擎的平台，另一选择是使用NGINX Plus，它提供了成熟、可扩展、高性能的web服务器和反向代理，并可以方便的被部署、配置和编程， NGINX Plus 可以管理用户校验、权限控制、请求负载均衡、响应缓存以及应用级别的健康检查和监控。</p>
+<h2 id="使用响应式编程模型"><a href="#使用响应式编程模型" class="headerlink" title="使用响应式编程模型"></a>使用响应式编程模型</h2><p>API网关通过简单路由到相应后台服务来处理请求，通过调用多个后台服务并聚合结果来处理它。对于一些请求，比如产品明细请求，后端对应的服务是彼此独立的，为减少请求时间，API网关应该并行的处理这些请求。然而有时候，请求之间是有依赖关系的，API网关可能在路由请求到后台服务之前先去调用用户校验服务验证请求的合理性，类似的，在获取用户心愿单中的上的产品信息的时候，API网关必须先获取包含那些信息的用户档案再去获取每个产品的信息，另一个有趣的例子就是<a href="http://techblog.netflix.com/2013/02/rxjava-netflix-api.html" target="_blank" rel="external">Netflix Video Grid</a>。</p>
+<p>使用传统的异步回调方式来写API组合代码很快就会把你带进回调地狱。代码将会变得纠缠不清、难以理解也容易出错。更好的方式是使用响应式方法来写声明式风格的API网关代码，比如，响应式抽象包括Scala中的 <a href="http://docs.scala-lang.org/overviews/core/futures.html" target="_blank" rel="external">Future</a> 、Java 8中的<a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html" target="_blank" rel="external">CompletableFuture</a> 以及JavaScript中的<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="external">Promise</a> ，还有微软为.NET开发的<a href="http://reactivex.io/" target="_blank" rel="external">Reactive Extensions</a> (also called Rx or ReactiveX)， Netflix为了API网关的使用为基于JVM规范创造了RxJava，当然还有为JavaScript创造的RxJS ，可以运行在浏览器和Node.js中。使用响应式风格将会使你写出更简单更高效的API网关代码。</p>
+<h2 id="服务调用"><a href="#服务调用" class="headerlink" title="服务调用"></a>服务调用</h2><p>微服务架构的应用是采用进程间通信的分布式系统，存在两种进程间通讯的方式：一种是采用异步基于消息机制的通信，比如使用消息中介产品 JMS 或者AMQP，当然还有 Zeromq服务直接调用的无中介消息产品；另一种方式是使用HTTP或者Thrift这种同步机制进行通信，一个系统应该同时使用同步和异步风格，甚至为每种方式使用不同的实现，因此，API网关也必须支持这些不同的通信机制。</p>
+<h2 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h2><p>API网关需要知道和它通信的每个服务的地址（IP地址和端口），在一个传统应用中，你可能硬编码，但在一个流行的，基于云的微服务应用中，这就是一个大问题了。基础架构服务，比如消息中介，通常有一个静态地址，我们可以在系统环境变量中之指定，然而，获取一个应用服务的地址就不是一件简单的事情了，应用服务拥有动态分配的地址，而且，一组服务实例可能因为自动扩展或升级而动态的变化，因此，API网关应该像系统中的其他服务客户端一样，需要服务发现机制：要么是<a href="http://microservices.io/patterns/server-side-discovery.html" target="_blank" rel="external">服务端发现</a> 或者是 <a href="http://microservices.io/patterns/client-side-discovery.html" target="_blank" rel="external">客户端发现</a>。稍后的文章将会详细介绍服务发现的问题，现在，我们有必要意识到，如果系统使用客户端服务发现的话，API网关应该能够查询服务注册 <a href="http://microservices.io/patterns/service-registry.html" target="_blank" rel="external">Service Registry</a>，服务注册是所有服务实例登记其地址的数据库。</p>
+<h2 id="处理局部故障"><a href="#处理局部故障" class="headerlink" title="处理局部故障"></a>处理局部故障</h2><p>实现API网关时需要强调的另一个问题是局部故障。这个问题在分布式系统中很常见，比如一个服务可能调用另一个响应很慢或者不可用的服务，API网关千万不要在等待已经挂掉服务响应的时候阻塞。当然，如何处理错误取决于具体的应用场景或者具体因为哪个服务挂掉：比如，如果产品明细场景中的推荐服务挂掉了，那么API网关还是应该返回其他的产品信息，保障产品对用户仍然可以使用，推荐列表可以返回空或者预先硬编码的Top 10商品，但是如果产品信息服务挂掉的话，API网关就要返回客户一个错误了。</p>
+<p>API网关如果可能话也可以返回缓存的数据，比如，由于产品价格很少变化，API网关可以在价格服务不可用时使用缓存，数据可能是API网关自己缓存，也可能缓存在诸如Redis和Memcached这样的外部缓存中。通过返回默认值或者缓存值，API网关确保局部故障不会影响用户体验。</p>
+<p><a href="https://github.com/Netflix/Hystrix" target="_blank" rel="external">Netflix Hystrix</a>在写调用远端服务代码时候是非常有用的，Hystrix 会标记超过特定阀值的调用为超时，它还实现了断路器模式来阻止更多请求继续调用没有响应的服务，如果一个服务的出错率超过了指定阀值，它会触发断路器，使得所有的请求快速失败一段时间，Hystrix也允许你定义请求失败时的fallback动作 ，比如读取缓存或者返回一个默认值。如果你使用JVM，那么希望你一定考虑使用Hystrix，如果你不使用JVM，那也要有类似的工具来帮助你。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>对大多数基于微服务的应用来讲，实现API网关是明智的，API网关就是一个应用的单一入口，它还负责路由请求、组合、协议转换等工作，它为每个应用的客户端提供定制化的API，它也可以通过返回默认值或缓存值来处理失败，下篇文章我们讨论服务间的通信问题。</p>
+
           
         
       
