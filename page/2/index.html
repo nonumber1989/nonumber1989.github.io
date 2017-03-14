@@ -236,6 +236,179 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/13/JavaScript/You-Dont-Know-JS-Scope&Closures/" itemprop="url">
+                  You Don't Know JS - Scope & Closures
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-10-13T15:21:55+08:00" content="2016-10-13">
+              2016-10-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>最近开始You Don’t Know JS系列书籍，必然先从Scope和Closure这部分搞起,作为一个水水的javascript写手，还是希望多深入下的，啃这本书，精简总结下吧。</p>
+</blockquote>
+<h2 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h2><blockquote>
+<p>几乎所有编程语言的基础功能是将数值存储到变量之中，稍后获取或者修改值。存储值从变量中拿出的功能给予语言存储 <strong>状态state</strong>。我们比较关心的问题是： 这些变量存储在哪里呢？ 最重要的是，程序又是如何在需要的时候找到这些变量的呢？</p>
+</blockquote>
+<p><code>定义一组规则将变量存储到某处，规定好如何获取这些变量的值，这些规则集合就是我们的主角之一：Scope</code></p>
+<h4 id="Scope-1"><a href="#Scope-1" class="headerlink" title="Scope"></a>Scope</h4><ul>
+<li>Engine ：负责js的编译和执行</li>
+<li>Compiler： Engine的好朋友，负责一些脏活累活，比如语法分析词法分析AST的生成</li>
+<li><p>Scope：Engine的另一个好朋友，负责收集和维护一个有关变量（包括方法的）查询列表，并定义一个规范集合去规定在代码执行阶段的变量存取方式</p>
+<p>var a = 2<br>很多人估计和我一样是这么理解这句话的：为一个变量分配内存，并标记为a，之后把值2存储到a中。<br>然而事实上在js中并非如此：</p>
+<ul>
+<li>编译器碰到变量a，Compiler询问<code>特定</code>Scope的集合中是否存在变量a，不存在就创建一个，存在的话Compiler就忽略继续</li>
+<li>Compiler将会generate code为Engine运行代码做准备，运行时刻才会执行a=2(assignment)，code engine 在执行的时候会先查看当前scope的集合中是否存在a，如果有就拿出来，没有的话继续查找(nest scope) 找到a再赋值2给它，找到顶 找不到就报错</li>
+</ul>
+</li>
+</ul>
+<p><strong>也就是说声明和赋值是两个步骤，而且声明在编译阶段，赋值在执行阶段</strong></p>
+<h4 id="赋值表达式"><a href="#赋值表达式" class="headerlink" title="赋值表达式"></a>赋值表达式</h4><ul>
+<li>LHS<pre><code>a= 2 ;//Scope中先查找定义 再执行复制
+</code></pre></li>
+<li>RHS  <pre><code>console.log(a);//Scope中查询值
+</code></pre></li>
+</ul>
+<h4 id="Nested-Scope"><a href="#Nested-Scope" class="headerlink" title="Nested Scope"></a>Nested Scope</h4><p>   类比楼梯中找东西 第一层找不到找第二次，逐层上移，直到顶层找不到，报错</p>
+<ul>
+<li>ReferenceError  找到楼房顶端了还是找不到</li>
+<li>TypeError  找到了，但是还没赋值</li>
+</ul>
+<h4 id="Lexical-Scope"><a href="#Lexical-Scope" class="headerlink" title="Lexical Scope"></a>Lexical Scope</h4><p><img src="/images/js/scope.png" alt="气泡解释scope "><br>lexical scope 是在方法声明的时候被定义的，也就是说变量所在的scope在写代码的时候就已经确认了,变量的查找规则就像上图所示，但是并不是仅仅只有lexical scope,js也存在其他几种方法对scope进行欺骗 cheating lexical (eval and )</p>
+<h5 id="Lexical-Cheating"><a href="#Lexical-Cheating" class="headerlink" title="Lexical Cheating"></a>Lexical Cheating</h5><ul>
+<li>eval<pre><code>function foo(str,a){
+  eval(str);//cheated, b=3 will shadow b=2
+  console.log(a,b);
+}
+var b = 2;
+foo(&quot;var b = 3;&quot;,1);//1,3
+</code></pre></li>
+<li>eval under strict mode<pre><code>function foo(str){
+  &quot;use strict&quot;;
+   eval(str);
+   console.log(a);//ReferenceError: a is not defined       
+}
+foo(&quot;var a = 2;&quot;);
+</code></pre>eval 在严格模式下只会执行但是不会改变eclosing scope<br><code>尽量在代码中避免eval的使用</code></li>
+<li>with<pre><code>function foo(obj){
+  with(obj){
+    a = 2;
+  }
+}
+var o1 = { a:3 };
+var o2 = { b:3 };
+foo(o1);
+console.log(o1.a);//2
+foo(o2);
+console.log(o2.a);//undefined
+console.log(a);//2, Leaked global
+</code></pre>eval会修改当前的scope 而with会创建一个新的lexical scope</li>
+<li>性能问题 ： 正常情况下采用lexical scope，js的编译器会帮助我们优化代码，提升sope执行过程中查找变量的速度（scopo在写代码的时候就已经定了），但是一旦代码中加入了eval,编译器就会认为运行过程会改变scope，因此根本不会进行代码的优化，性能下降</li>
+</ul>
+<h2 id="Closure"><a href="#Closure" class="headerlink" title="Closure"></a>Closure</h2><h4 id="Closure-1"><a href="#Closure-1" class="headerlink" title="Closure"></a>Closure</h4>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/13/welcome/" itemprop="url">
                   欢迎来到我的博客
                 </a>
@@ -1575,154 +1748,6 @@ Restricts by Qualifiers (ignored if match is found by name)
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/01/JavaScript/AngularJs/AngularJs-Theory/" itemprop="url">
-                  Angular  原理拾遗
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-04-01T17:41:55+08:00" content="2016-04-01">
-              2016-04-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="AngularJs-原理拾遗"><a href="#AngularJs-原理拾遗" class="headerlink" title="AngularJs  原理拾遗"></a>AngularJs  原理拾遗</h2><p>本文摘自网络多篇关于AngularJs的优秀博客，侵删</p>
-<h3 id="AngularJs"><a href="#AngularJs" class="headerlink" title="AngularJs"></a>AngularJs</h3><blockquote>
-<p>当你用浏览器去访问index.html的时候，浏览器依次做了如下一些事情：</p>
-</blockquote>
-<pre><code>1. 加载html，然后解析成DOM；
-2. 加载angular.js脚本；
-3. AngularJS等待**DOMContentLoaded**事件的触发；
-4. AngularJS寻找ng-app指令，根据这个指令确定应用程序的边界；
-5. 使用ng-app中指定的模块配置$injector；
-6. 使用injector创建injector创建**$compile**服务和**$rootScope**；
-7. 使用compile服务编译DOM并把它链接到compile服务编译DOM并把它链接到rootScope上；
-8. ng-init指令对scope里面的变量name进行赋值；
-9. 对表达式{{name}}进行替换，于是乎，显示为“Hello World!”
-</code></pre><hr>
-<blockquote>
-<p>其中第7步,把DOM结构扔给$compile函数处理：</p>
-</blockquote>
-<pre><code>　　1. 找出DOM结构中有变量占位符
-　　2. 匹配找出DOM中包含的所有指令引用
-　　3. 把指令关联到DOM
-　　4. 关联到DOM的多个指令按权重排列**(Priority)**
-　　5. 执行指令中的compile函数（改变DOM结构，返回link函数）
-　　6. 得到的所有link函数组成一个列表作为$compile函数的返回
-</code></pre><h3 id="关于单页面应用SPA-与Angular"><a href="#关于单页面应用SPA-与Angular" class="headerlink" title="关于单页面应用SPA 与Angular"></a>关于单页面应用SPA 与Angular</h3><blockquote>
-<p> 前段框架火得是一塌糊涂，搞得我这个java方向目标的程序猿硬生生的开始玩前端。 Angular呢肯定是玩SPA的，那么SAP又是什么呢？内部又是怎么玩的？为什么我们选择Angular呢？<br>   现在我来大致总结下吧。</p>
-</blockquote>
-<p>  <em>通过与JQuery（当然，人家是个lib）比较，可以发现AngularJS：</em></p>
-<pre><code>1. 代码更简洁 （少写好多js，福利！）
-2. 扩展了html的功能 （directive让html强大起来！）
-3. 实现了model和view的双向绑定 （随时在input里输入，随时通过ng-model绑定到name这个model上）
-</code></pre><p>  <em>其实AngularJS还：</em></p>
-<pre><code>1. 分离了JS逻辑和页面渲染 （本来JS又要忙数据交互，又要忙业务逻辑，又要忙页面渲染，现在html干渲染，js专心玩业务吧）
-2. 为JS提供了MVC框架 （后端大神给后端猿猴们的前端框架啊）
-3. 提供了One Page Application流畅的用户体验 （不像以前，每换一个页面都要重新向后台申请，现在是页面无缝平滑切换）
-4. 提供依赖注入机制 （更支持模块化，Spring的既视感）
-5. 便于写单元测试 （行为和界面分离后，行为很方便测试~质量更有保障~）
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1768,7 +1793,7 @@ Restricts by Qualifiers (ignored if match is found by name)
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

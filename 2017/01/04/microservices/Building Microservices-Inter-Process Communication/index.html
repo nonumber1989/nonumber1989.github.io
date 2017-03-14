@@ -115,7 +115,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3912920-11c7d11329b92789.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3912920-6cb0d76a907b6ec2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3912920-f0467101397a961a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-01-05T07:25:42.267Z">
+<meta property="og:updated_time" content="2017-01-10T01:55:24.938Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="构建微服务之:微服务架构中的进程间通信">
 <meta name="twitter:description" content="原文链接:Building Microservices: Inter-Process Communication in a Microservices Architecture
@@ -357,6 +357,32 @@
 <li>异步：客户端等待响应时不会阻塞，对异步来讲，及时响应并不是必须的。</li>
 </ul>
 <p>下列表格展示了两种方式的不同</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center"><strong>一对一</strong></th>
+<th style="text-align:right"><strong>一对多</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>同步</strong></td>
+<td style="text-align:center">请求/响应</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td><strong>异步</strong></td>
+<td style="text-align:center">通知</td>
+<td style="text-align:right">发布/订阅</td>
+</tr>
+<tr>
+<td><strong>异步</strong></td>
+<td style="text-align:center">请求/异步响应</td>
+<td style="text-align:right">发布/异步响应</td>
+</tr>
+</tbody>
+</table>
 <p>有下面几种一对一的交互方式：</p>
 <ul>
 <li>请求/响应模式： 客户端向服务端发送请求并等待响应，并期望服务端可以及时的返回响应。在一个基于线程的应用中，发出请求的线程可能在等待时阻塞线程的执行。</li>
@@ -547,7 +573,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
