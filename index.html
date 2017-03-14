@@ -173,7 +173,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -236,142 +236,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/13/JavaScript/AngularJs/Some thinking abouit Angular/" itemprop="url">
-                  重拾Angular的一些小思考
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-03-13T17:41:55+08:00" content="2017-03-13">
-              2017-03-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="重拾Angular的一些小思考"><a href="#重拾Angular的一些小思考" class="headerlink" title="重拾Angular的一些小思考"></a>重拾Angular的一些小思考</h1><p>最近重拾Angular，准确的说是从AngularJs到Angular的迁移，已经相当长一段时间没有触碰前端，重走前端之路，多了几分思考和感慨。作为一个“伪前端”，以java为主业，node以辅助，机缘巧合入了前端开发的门，并搞了一些hybrid的移动开发，与勤恳耕耘前端的“专业前端”相比，自是羸弱很多，本文以此角度分享，末尾也将给出一些个人的总结。如有偏颇，网诸位指正。</p>
-<p> 我不是一个狂热的google粉，使用Angular也是误打误撞，进入上一家公司的时候，恰逢一个项目部分重构，前端框架就是Angular（<strong>Angular1.X + KendoUI + Customized Directives + Open Source Directives</strong>） ，当时AngularJs正是如日中天，我也写的津津有味，后台配之RESTful API甚至Happy啊（当然现实并没有那么美好，其中的坑和历史原因的workaround也是挺扯的）。后来也参与了使用Ionic 进行mobile开发的部分工作，也打开了一扇新技术的大门，hybrid概念也风起云涌，大家跃跃欲试，自此 移动、Web、后台之路勉强打通。如今踏入Angular，不免怀念。</p>
-<h2 id="Angular-群雄逐鹿中的高瞻远瞩"><a href="#Angular-群雄逐鹿中的高瞻远瞩" class="headerlink" title="Angular:群雄逐鹿中的高瞻远瞩"></a>Angular:群雄逐鹿中的高瞻远瞩</h2><p>如今前端之火熊熊燃烧，前端的工程化之路欣欣向荣，各大厂、各路牛人乃至ES标准都各显神通：诸如Google的AngularJs、Facebook的React、尤雨溪大神的Vue.js、ES6的推进等无不说明这是一个群雄逐鹿的“大前端时代”。<br>   秦失其鹿，天下共逐之，而赢家并非只有一个。</p>
-<ul>
-<li><p><strong>从AngularJs到Angular :谷歌的高瞻远瞩</strong></p>
-<blockquote>
-<p>对于一个AngularJs的使用者来讲，Angular2的各种消息无疑会有一些打击：全新框架设计、不兼容1.X版本、推荐使用TypeScript开发等，天啊，难道手里的东西要丢掉重新开始？看下如今最红火的几个框架的目标：<br><strong>AngularJS — Superheroic JavaScript MVW Framework</strong><br><strong>Angular: One framework</strong><br><strong>Vue:The Progressive JavaScript Framework</strong><br><strong>React:A JavaScript library for building user interfaces</strong><br>注意，Angular是想做One framework，打通移动、web、桌面，提供一站式服务，相比其他轻量级的解决方案，无疑更具前瞻性（为了这个美梦也是付出着努力啊）。</p>
-</blockquote>
-<p> Vue.js的作者尤雨溪在知乎的回答中也提到，这些框架在当下没有绝对的赢家！ 虽说Vue.js如今火爆，但是领域还是以互联网应用为主，轻量级、灵活；React作为一个Lib着重于View操作；AngularJs依然火爆企业级应用（Angular出来之前我也预测过，与诸位看法一致，Angular新版本并不会导致AngularJs的衰败，AngularJs经历了磨炼之后迎来真正的爆发：越来越多的企业级应用会选择AngularJs，github上55032的start足以表明）。<br>Angular的决策着实影响了Angular的进一步推进，虽然我也认同<strong>Just do one thing and make it best</strong>，但是有一个全面且优秀的方案也在长远来看更是美哉啊！</p>
-</li>
-<li><p><strong>从AngularJs到Angular之掣肘天下，纵横捭阖</strong><br>动态语言一时爽，代码重构火葬场！JavaScript由于历史原因和其设计思想使得写出好的js代码、写出好测的代码变得困难，记得初识javascript，直觉它简单方便，等读了一些js的书籍，踩过js的坑之后方觉灵活伴随的陷阱（甚至有一本神书曰：the good part of JavaScript，捂脸逃…)。当Google和巨硬在Angular上达成合作的时候我是甚为惊叹的！两大厂做后盾，TypeScript加Angular，这是要掣肘天下的节奏啊！！！</p>
-<blockquote>
-<p>TypeScript与ES6的争论我自是不言，但是从一个写java为生，兼做了前端的业余选手来讲，类型无疑是一个好东西！我想不是每个公司都可以招聘到BAT等大厂高水平的前端工程师、也不是每个项目能够严格推行前端的编码规范、做到严格的前后端分离也不是如描绘的那样容易。每个前端的水平不一致、代码风格不一致、代码库越来越庞大、人员更迭等等在JS这个弱类型语言面前被放大。阿里的一前端大牛都抱怨，写node烦人啊！况且一种兼职的伪前端的呢？<br>有了类型有了编译，有了微软大厂（良心讲，微软好些东西设计挺好，若不是当年太过封闭不至于被黑，尤其被Java阵营的人黑！），写代码、重构代码乃至IDE提示都较js有大幅提升啊，不要纸上约束程序员，直接融到他的工具中是最稳妥的方案！</p>
-</blockquote>
-</li>
-</ul>
-<p>Angular与Typescrip的纵横之策，给繁复巨大的企业级应用带来福音，给非专业的前端开发更多的保障，给微软拥抱开源注入强心针，给谷歌推行思想一条更宽广的路。</p>
-<ul>
-<li><strong>从AngularJs到Angular：润物有声，且行且珍惜</strong><br>溜一遍Angular的文档，你会发现，其实AngularJs的思想精髓都还在，或者说更加分明、清晰、优秀！Scope随被移除但思想还在，融入到了Componet中；Controller也顺势变成Componet让组件化意图更加明显；Observe改进性能，并删除了额外的directive；模块机制部分使用ES6并支持懒加载····，开发者呢，其实花费一些时间就能很快上手。Angular并没有放弃AngularJs的东西，在大创新的前提下还是为AngularJS的老开发们打开方便之门的！</li>
-</ul>
-<p>生态环境上，Ionic也紧随步伐，设计基于material design简直不要太漂亮！虽说Angular的其他组件目前确实没有那么红火，但是我相信，在一段时间后将会大量增加（AngularJs到Angular的组件迁移，不算难事啊）。<br>Angular在国内似乎没有那么红火，普通企业级应用在享受AngularJs的便利下，Angular确实会变成一个观望选项，不过我相信当发觉了One Framework的好处以及明了TypeScript的便捷之后，讲很快迎来大的发展！</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>ES6是标准，提供了模块化和类型的概念，我想专业的前端同学还是以ES6为主；Typescript是js的超集，提供了AOT，编译是个好东西啊，虽不是正统标准但是包含这些标准，如我这般伪前端可以入手；关于Bable和TC的争论我暂不论述，毕竟不是一个道路上的玩意儿，再次，大前端时代，没有唯一的赢家！怎么合适怎么来，每个框架有各自的场景，选择趁手兵器即可！</p>
-<p>　</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/04/microservices/microservices/" itemprop="url">
+                <a class="post-title-link" href="/2017/03/14/microservices/microservices/" itemprop="url">
                   Chris Richardson 微服务系列文章 翻译
                 </a>
               
@@ -384,9 +249,9 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-01-04T13:36:23+08:00" content="2017-01-04">
-              2017-01-04
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2017-03-14T10:01:03+08:00" content="2017-03-14">
+              2017-03-14
             </time>
           </span>
 
@@ -396,7 +261,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/microservice/" itemprop="url" rel="index">
@@ -502,7 +367,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/04/microservices/Service Discovery in a Microservices Architecture/" itemprop="url">
+                <a class="post-title-link" href="/2017/03/14/microservices/Service Discovery in a Microservices Architecture/" itemprop="url">
                   微服务中的服务发现
                 </a>
               
@@ -515,9 +380,9 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-01-04T13:36:23+08:00" content="2017-01-04">
-              2017-01-04
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2017-03-14T10:01:03+08:00" content="2017-03-14">
+              2017-03-14
             </time>
           </span>
 
@@ -527,7 +392,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/microservice/" itemprop="url" rel="index">
@@ -664,7 +529,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/04/microservices/Refactoring a Monolith into Microservices/" itemprop="url">
+                <a class="post-title-link" href="/2017/03/14/microservices/Refactoring a Monolith into Microservices/" itemprop="url">
                   重构单体应用到微服务
                 </a>
               
@@ -677,9 +542,9 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-01-04T13:36:23+08:00" content="2017-01-04">
-              2017-01-04
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2017-03-14T10:01:03+08:00" content="2017-03-14">
+              2017-03-14
             </time>
           </span>
 
@@ -689,7 +554,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/microservice/" itemprop="url" rel="index">
@@ -816,176 +681,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/04/microservices/Introduction to Microservices/" itemprop="url">
-                  微服务介绍
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-01-04T13:36:23+08:00" content="2017-01-04">
-              2017-01-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/microservice/" itemprop="url" rel="index">
-                    <span itemprop="name">microservice</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>原文链接:<a href="https://www.nginx.com/blog/introduction-to-microservices/" target="_blank" rel="external"><em>Introduction to Microservices</em></a></strong></p>
-<ol>
-<li><em>微服务介绍(本文)</em></li>
-<li><em><a href="http://www.jianshu.com/p/9e90b2a5df7b" target="_blank" rel="external">构建微服务之使用API网关</a></em></li>
-<li><em><a href="http://www.jianshu.com/p/9c03081bc0d9" target="_blank" rel="external">构建微服务之:微服务架构中的进程内通信</a></em></li>
-<li><em><a href="http://www.jianshu.com/p/1bf9a46efe7a" target="_blank" rel="external">微服务中的服务发现</a></em></li>
-<li><em><a href="http://www.jianshu.com/p/9a440c5ea1db" target="_blank" rel="external">微服务之事件驱动的数据管理</a></em></li>
-<li><em><a href="http://www.jianshu.com/p/31c2a5a8b764" target="_blank" rel="external">选择一种微服务部署策略</a></em></li>
-<li><em><a href="http://www.jianshu.com/p/29f4d788e3bb" target="_blank" rel="external">重构单体应用到微服务</a></em></li>
-</ol>
-<p>微服务现在受到了大量的关注︰ 文章、 博客、 社交媒体和学术会议上的讨论都能看到该词汇的身影。微服务正迅速走向 Gartner Hype cycle 所指的快速发展期。同时，软件社区的一些怀疑论者指出微服务并不是什么新鲜玩意儿。这些唱反调的人说微服务和SOA概念并没有什么不同，旧瓶装新酒而已，顺势炒炒新概念。然而，不管说是夸大也好，怀疑也好，微服务架构模式应用在敏捷开发和交付复杂的企业应用程序的时候还是有巨大优势的 。</p>
-<p>这篇博客是设计、构建和部署微服务七篇博客系列之一。通过该文章将学到一些微服务的方法，还有微服务架构与传统的整体式架构模式的比较。本系列将介绍微服务架构的各种元素，并揭示该架构模式的各种优点与缺点，以此来指导微服务是否适合您的项目，以及如何运用该模式。</p>
-<p>让我们首先看看为什么你应该考虑使用微服务。</p>
-<h2 id="构建整体式应用"><a href="#构建整体式应用" class="headerlink" title="构建整体式应用"></a>构建整体式应用</h2><p>假设现在我们为了与Uber和Hailo竞争来构建一个全新的出租车品牌<strong>taxi-hailing</strong>:经过一系列的预备会议和需求收集，我们决定无论是人工撸还是用Rails，Spring Boot，Play，或Maven之类工具生成也好，最终要创建一个全新的应用！应用应该有如下图六边形一样的模块结构</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/3912920-d319c7769ff1e518.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<p>应用程序的核心是业务逻辑，它了定义服务、 领域对象和事件模块。围绕核心是接口与外部世界的适配器。适配器的例子包括数据库访问组件、 生产消息和消费消息的消息传递组件以及暴露API或实现用户界面的 web 组件。</p>
-<p>尽管在逻辑上模块化，整个应用还是做为一个巨大的整体进行打包和部署的。而且模块的结构往往与选择的编程语言和框架紧密相关。 举个栗子： 多数java程序打成war包部署到Tomcat 、Jetty等应用服务器中；还有一部分被打成自包含的jar包（Spring Boot支持把jetty或者tomcat包进去，以main为入口启动应用）； 同样的，Rails 和 Node.js 应用直接以目录结构的方式部署.</p>
-<p>这种风格开发的应用是非常常见的。我们的IDE和工具致力于构建这样的单一应用，所以我们开发起来也感觉到简单；此类应用测试起来也很方便，你可以很简单的启动这个应用，采用selenium测试UI去完成端到端的测试；单体应用部署起来也不难，把包一拷贝扔服务器里就妥了， 如果要扩展应用，只需要在负载均衡器后面跑多个相同的应用就可以了。工程的初期呢，这个方法工作的还是不错的！</p>
-<h2 id="迈向单体的地狱"><a href="#迈向单体的地狱" class="headerlink" title="迈向单体的地狱"></a>迈向单体的地狱</h2><p>很不幸的是，这种方式还是有巨大的局限性的.。一个成功的应用总会随着时间逐步成长并变得巨大起来。每个敏捷Sprint周期，开发者会实现更多的功能，当然这就意味着又添加了很多行代码。几年之后你会发现，当年你写的那个简单的小小的应用居然变成一个巨大的单体怪物。举一个比较极端的例子吧：最近我和一个开发者聊天，他正在写一个工具来分析数百万行代码的巨大应用中的上千个jar的依赖关系。别的不说，写出这么巨大的怪物肯定花费了很多程序员几年的时间。</p>
-<p>一旦应用变成了巨大复杂的单体，那你的开发团队将痛苦不堪！敏捷开发和交付的一些愿景在这个庞然大物面前都会受挫。最主要的问题就是这玩意儿现在太复杂了！复杂到很难有某个程序员能完全理解它！导致结果就是，正确的修个bug、做个新功能变的费时又费力。更可恨的是，这是一个恶性循环的过程，应用正在逐步的‘死去’ 。如果你的代码库别人都理解不了，那么对代码做点正确的改动是很难的，最终这个怪物更加的可怕更加的难以理解，纠结！</p>
-<p>应用程序的规模大了也会拖慢程序的开发： 程序越大，启动越慢！调查显示一些程序员说他们启动程序要12分钟，我个人还听过有的应用启动要40分钟！程序员开发过程需要周期性的重启应用，这样就浪费了很多时间，效率自然也很低下，不能忍！</p>
-<p>巨大、复杂的单体应用还是持续交付的巨大障碍。现在SaaS应用的宗旨是如果有改动能够每天部署多次。单体应用的中某部分的改动需要需要重新部署整个应用，这样的话持续交付是相当困难的。前面也讲了，启动一次就要那么久 ！另外，改动造成的影响也不是很好被理解，需要大量的手工测试去保证，这样的话持续交付更是难上加难了！</p>
-<p>单体应用在多个模块对资源需求上有冲突时很难进行扩展。比如：一个新模块可能实现了CPU密集型的图片处理逻辑,更适合部署到Amazon EC2 Compute Optimized instances。另一个模块可能需要一个内存数据库，更适合使用EC2 Memory-optimized instances。然而，这些模块必须被一起部署的话，选择硬件的时候就要好好折中一下喽。</p>
-<p>单体应用的另一个问题是稳定性：因为所有的模块都跑在同一进程之中，某模块中的bug，比如内存泄漏是可能拖垮整个应用的！更重要的是，因为负载均衡后面的所有的应用是一样的，bug还可能影响整个应用的可用性！</p>
-<p>最后重要的一点：单体应用很难拥抱新的框架和编程语言。假设你有2百万行用XYZ框架写的代码，如果用ABC框架重写它将会耗费巨大的时间和金钱！哪怕大家都知道用新框架更适合一些（摊手）。这样导致的结果是，在尝试转换新框架新技术的时候存在巨大的障碍，我们不得不继续在选型之初定好的技术架构上前行（哭脸）。</p>
-<p>最后总结下吧，你从拥有一个业务清晰，几个程序员都明白的小程序，逐步的变成了一个可怕的单体应用。回首看这个应用是采用了过时的、效率低下的技术来写的（毕竟技术在进步，抱着老东西闷头陶醉不是什么好事情）！别的不说，招聘都费劲呐！这个单体应用变的难以扩展、变得极不稳定，想敏捷开发？想持续交付？ 恐怕只能呵呵了。</p>
-<p>面对这些，你能做点什么呢？</p>
-<h2 id="微服务-–-处理这些复杂问题！"><a href="#微服务-–-处理这些复杂问题！" class="headerlink" title="微服务 – 处理这些复杂问题！"></a>微服务 – 处理这些复杂问题！</h2><p>很多机构，比如Amazon、eBay、Netflix，已经开始通过拥抱微服务架构去解决上述的问题了。她们不再去构建一个可怕的单体应用，而是拆分成多个更小的、相互连接的微服务！</p>
-<p>服务通常实现了一系列相互独立的功能或特性，比如订单管理、客户管理等等。每一个微服务都具有自身业务逻辑以及各种适配器构成的六角形架构模式，都是一个迷你的小应用。有的微服务会暴露API供其他微服务和客户消费，其他微服务则可能实现Web UI。运行时，每一个实例通常是云平台的一个VM或者一个Docker容器。</p>
-<p>下面是对上述老架构的一个拆分：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/3912920-9762019e56935c8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<p>应用的每个功能区域限制都以微服务的方式来实现了，此外整个应用被拆分成一系列更小的web应用（比如乘客管理、司机管理）。拆分之后更加方便的为特殊用户、设备或者特殊用例进行部署。</p>
-<p>每一个后端服务暴露REST API，绝大部分服务也会消费其他服务提供的API。比如，司机管理服务会使用通知服务告知空闲的司机潜在的行程（来生意了，接单！）；还有UI 服务会调用其他服务后渲染web页面。服务之间也会使用异步的，基于消息的通信模式，服务内的通信将会在后面的文章详述。</p>
-<p>一些REST API 也会暴露给移动端设备方便司机和乘客的使用。当然，这些应用不会直接访问后端各个微服务 ，而是通过一个协调者<strong>API网关</strong>来访问的。 API网关的职责有负载均衡、缓存、访问控制、API计费、监控···，这些事情使用NGINX就OK啦。后面的文章将会讲述API网关的细节。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/3912920-edd018002c577cff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<p>微服务架构模式很契合上图的Y轴扩展方式，上图X轴的扩展表示横向扩展应用，一般就是负载均衡器后面部署几个相同的应用。Z轴扩展表示数据分区,将请求路由到特定的服务器上（比如数据库分库分表，根据主键访问到用户记录对应的数据库）。</p>
-<p>应用一般都会三个维度去扩展。Y轴正是按照我们第一节讲到的，把单体应用拆分为微服务，运行时呢，为了某个服务达到高吞吐和高可用性，可以采用负载均衡，也就是X轴扩展了，特殊应用也会使用Z轴扩展来切分服务。下面的图展示了行程管理采用Docker镜像部署到Amazon EC2的情况：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/3912920-2d3f5e1b1c954c35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<p>运行时，行程管理由多个服务实例组成。每个应用实例实际是一个Docker容器。为了达到高可用，容器会跑在多个云平台VM上，服务实例之前是NGINX这样的负载均衡器来分发请求，负载均衡器也会关注比如缓存、权限访问、服务计费、监控等事宜。</p>
-<p>微服务架构模式极大的影响应用和数据库之间的关系。每个微服务都会有自己的数据库Schema，而不是和其他服务共享一套数据库Shcema。另一个角度看，这种方式对于以往企业级范围的数据模型来讲是很奇怪的，另外，微服务这么搞会造成数据冗余。然而，如果你想从微服务架构获益，那么每个微服务一个数据Schema是很有必要的，因为微服务提倡的就是松耦合啊，下面的图展示了微服务架构下应用的数据架构：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/3912920-609da44e77622fea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<p>每个微服务都有自己的数据库，而且每个服务还能选择适合自己需求的数据库，这就是所谓的多态型持久化架构。比如，司机如果需要查找附近的潜在乘客，那就必须要使用支持高效地理位置查询的数据库。</p>
-<p>表面上看微服务和SOA架构很相似，两种架构都倡导由一系列的服务组成。我们可以把微服务架构模式当成是没有商业web service规范（WS规范咯）以及ESB等打包的套件约束的SOA。基于微服务架构的应用更倾向于简单的、轻量级的REST协议而不是老旧的WS，当然，微服务也会避免去使用笨重的ESB套件而更喜欢去实现一些ESB部分功能的轻量级工具（不要捆绑，不要全家桶！），微服务架构模式也避免SOA中诸如规范化Schema的定义。</p>
-<h2 id="微服务的优势"><a href="#微服务的优势" class="headerlink" title="微服务的优势"></a>微服务的优势</h2><p>微服务架构模式有很多重要的优势。首先，通过把可怕巨大的单体拆分为一系列的服务解决了单体复杂度问题， 拆分后整体功能数量并没有变化，但是应用现在变成了多个方便管理的小应用，每个服务都有一个定义良好的服务边界，通过RPC方式或消息驱动暴露API。微服务架构模式解决了单体应用代码库在实践中极难模块化的难题，拆分后的微服务能够更快的部署，更易理解和维护！</p>
-<p>第二，拆分后的服务可以被专注于某部分服务的团队独立开发。程序员可以基于API约定前提下自由选择合适的技术，当然，很多机构为了避免技术选择混乱也会限制技术的选项。因此，自由意味着程序员可以不再局限于项目初期选择的技术了（撒花）！开始写一个新的微服务的时候，开发者可以使用一些当下流行的技术，更重要的是，因为每个服务现在拆分的很小，使用现有技术重写老的服务成为可能！</p>
-<p>第三，微服务架构模式使得独立部署成为可能，开发者不用再忙碌于协调其他模块的变化再去部署（单体应用，改一个部分可能对其他部分影响，某个更改可能涉及多个模块的协调），微服务的更改可以在测试后尽快的被部署。比如，UI组可以进行A/B测试并且快速迭代而不用等待整个应用部署。微服务架构模式使得持续部署成为可能！</p>
-<p>最后，微服务架构模式使得每个服务可以独立的扩展。我们可以针对某些有容量和可用性要求的微服务进行扩展，为需要的服务部署多个实例而不是复制多个单体去折中获得某项提升！更重要的是，我们可以针对服务需求使用最合适的硬件资源。比如，我们可以把CPU密集型的图片处理服务部署到EC2 Compute Optimized instances，部署内存数据库相关的服务到EC2 Memory-optimized instances。</p>
-<h2 id="微服务的劣势"><a href="#微服务的劣势" class="headerlink" title="微服务的劣势"></a>微服务的劣势</h2><p>正如Fred 30年前的书中所说,“没有银弹！”。和其他技术一样，微服务架构也有其劣势 。劣势之一就是它的名字（捂脸），微服务这个词过分强调了服务的尺寸，实际上还真有几个开发者号召大家写10-100行代码的‘微服务’（这应该不太可能吧）！然而微服务更想表达的是一种工具和途径，微并不是最终的目标（为微服务而微服务，敲响警钟），微服务是为了便利敏捷开发和部署而去有效的拆分应用。</p>
-<p>微服务另一个劣势是因为从单体应用拆分为分布式系统带来的复杂。开发者需要选择或者实现基于消息或者RPC模式的进程间通讯机制，另外开发者也要写额外的代码去处理对于目的服务请求可能存在的请求缓慢或者请求不可用导致的部分失败问题。分布式系统可不是什么火箭科学，它可比单体应用中模块间通过语言层面或者进程内调用复杂的多了！</p>
-<p>微服务另一个挑战就是拆分数据库架构。一个逻辑事务更新多个业务记录是很常见的事情，单体应用实现该事务是比较简单的，毕竟大家使用一个数据库。然而在微服务架构中，你必须要更新多个服务的多个数据库。一般不会使用分布式事务，不仅仅是因为CAP理论，还因为一些流行的NoSQL数据库和Message Queue系统压根也不支持（摊手）。最后还得绕回最终一致性方案，这个方案对开发者来讲也是略有挑战的（实际上我看这个系列的文章并且开始翻译也是因为实际中遇到了这个问题，下面的文章将会提到）。</p>
-<p>测试微服务架构的应用也是更加复杂的。比如，使用Spring Boot这种框架，开发者启动一个单体应用去写一些测试用例、测试其REST API是很平常事情。相反的是，相类似的测试在微服务中的话，你要启动或者至少去mock其依赖的其他的服务才能完成。再次强调，微服务不是火箭科学，很重要的一点是大家不要低估了这样做的复杂度！</p>
-<p>微服务架构模式的另一巨大挑战是实现跨服务的改动。比如，让我们假设你要实现一个需要更改服务A、B、C的功能，而此时A依赖于B，B依赖于C。在传统单体应用中，你可以很简单的去更改对应的模块，集成这些变动然后一起部署它们。然而在微服务架构模式下，你需要小心翼翼的计划和协调每个服务的改动和发布：你需要更新服务C，再更新服务B。然后还要更新服务A。幸运的是，绝大部分时候一个服务的变化仅会影响一个服务，多个服务间需要协调的情况是很少出现的。</p>
-<p>部署一个基于微服务架构的应用是更加复杂的。一个传统单体应用可以简单的部署到负载均衡器后面，因为应用都是相同的，拷贝部署就可以了。每个应用配置好数据库和message broker的地址（主机和端口）就好了。相对应的微服务一般是大量的服务组成的，比如，Hailo存在160个不同的服务，Netflix则有多达600多个不同服务，每个服务还有多个运行实例！将会有更多的变化的部分需要去配置、部署、扩展、监控。此外还需要实现一个服务发现机制让其他服务找到它需要通信的服务的地址。传统的基于Ticket和手动运维的方式是不可能处理好这个级别的复杂扩展的。因此，成功部署一个微服务需要开发者对部署方法有更多控制还要对服务执行高水平的自动化。</p>
-<p>自动化的其中一种方式是使用现有的Paas平台（比如Cloud Foundry）。PaaS平台为开发者提供了便捷的方式去部署他们的微服务，避免了是他们纠缠于购买和配置IT资源的泥潭。同时，配置PaaS系统和网络的专业人员可以确保遵守了最佳实践和公司策略。另一种自动化方式就是开发自己的PaaS平台。一个典型的开端就是先使用集群方案（比如Kubernetes）配合上Docker容器技术，后续的文章将会介绍基于软件的应用部署方案，比如NGINX是如何在微服务层面方便的处理缓存、访问控制、API计费、监控等问题的。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>构建复杂的应用本身就是困难的事情。单体应用架构在针对简单、轻量级的应用的时候是很好的。但是一旦你把那套方案运用在复杂的应用的时候你将会痛苦不堪。尽管微服务架构模式有诸多缺点和实现上的挑战，但对于复杂的、演进的应用来讲是一个更好的选择。</p>
-<p>在后续的文章中我将会详细介绍微服务的几个方面，讨论一些诸如服务发现、服务部署选择以及重构单体应用到微服务的的话题。</p>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>第一篇文章翻译完了，说实话胆颤心惊，第一次作大死，厚着脸皮上吧！！！</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/04/microservices/Event-Driven Data Management for Microservices/" itemprop="url">
+                <a class="post-title-link" href="/2017/03/14/microservices/Event-Driven Data Management for Microservices/" itemprop="url">
                   微服务之事件驱动的数据管理
                 </a>
               
@@ -998,9 +694,9 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-01-04T13:36:23+08:00" content="2017-01-04">
-              2017-01-04
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2017-03-14T10:01:03+08:00" content="2017-03-14">
+              2017-03-14
             </time>
           </span>
 
@@ -1010,7 +706,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/microservice/" itemprop="url" rel="index">
@@ -1157,7 +853,176 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/04/microservices/Choosing a Microservices Deployment Strategy/" itemprop="url">
+                <a class="post-title-link" href="/2017/03/14/microservices/Introduction to Microservices/" itemprop="url">
+                  微服务介绍
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2017-03-14T10:01:03+08:00" content="2017-03-14">
+              2017-03-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/microservice/" itemprop="url" rel="index">
+                    <span itemprop="name">microservice</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>原文链接:<a href="https://www.nginx.com/blog/introduction-to-microservices/" target="_blank" rel="external"><em>Introduction to Microservices</em></a></strong></p>
+<ol>
+<li><em>微服务介绍(本文)</em></li>
+<li><em><a href="http://www.jianshu.com/p/9e90b2a5df7b" target="_blank" rel="external">构建微服务之使用API网关</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/9c03081bc0d9" target="_blank" rel="external">构建微服务之:微服务架构中的进程内通信</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/1bf9a46efe7a" target="_blank" rel="external">微服务中的服务发现</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/9a440c5ea1db" target="_blank" rel="external">微服务之事件驱动的数据管理</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/31c2a5a8b764" target="_blank" rel="external">选择一种微服务部署策略</a></em></li>
+<li><em><a href="http://www.jianshu.com/p/29f4d788e3bb" target="_blank" rel="external">重构单体应用到微服务</a></em></li>
+</ol>
+<p>微服务现在受到了大量的关注︰ 文章、 博客、 社交媒体和学术会议上的讨论都能看到该词汇的身影。微服务正迅速走向 Gartner Hype cycle 所指的快速发展期。同时，软件社区的一些怀疑论者指出微服务并不是什么新鲜玩意儿。这些唱反调的人说微服务和SOA概念并没有什么不同，旧瓶装新酒而已，顺势炒炒新概念。然而，不管说是夸大也好，怀疑也好，微服务架构模式应用在敏捷开发和交付复杂的企业应用程序的时候还是有巨大优势的 。</p>
+<p>这篇博客是设计、构建和部署微服务七篇博客系列之一。通过该文章将学到一些微服务的方法，还有微服务架构与传统的整体式架构模式的比较。本系列将介绍微服务架构的各种元素，并揭示该架构模式的各种优点与缺点，以此来指导微服务是否适合您的项目，以及如何运用该模式。</p>
+<p>让我们首先看看为什么你应该考虑使用微服务。</p>
+<h2 id="构建整体式应用"><a href="#构建整体式应用" class="headerlink" title="构建整体式应用"></a>构建整体式应用</h2><p>假设现在我们为了与Uber和Hailo竞争来构建一个全新的出租车品牌<strong>taxi-hailing</strong>:经过一系列的预备会议和需求收集，我们决定无论是人工撸还是用Rails，Spring Boot，Play，或Maven之类工具生成也好，最终要创建一个全新的应用！应用应该有如下图六边形一样的模块结构</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3912920-d319c7769ff1e518.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>应用程序的核心是业务逻辑，它了定义服务、 领域对象和事件模块。围绕核心是接口与外部世界的适配器。适配器的例子包括数据库访问组件、 生产消息和消费消息的消息传递组件以及暴露API或实现用户界面的 web 组件。</p>
+<p>尽管在逻辑上模块化，整个应用还是做为一个巨大的整体进行打包和部署的。而且模块的结构往往与选择的编程语言和框架紧密相关。 举个栗子： 多数java程序打成war包部署到Tomcat 、Jetty等应用服务器中；还有一部分被打成自包含的jar包（Spring Boot支持把jetty或者tomcat包进去，以main为入口启动应用）； 同样的，Rails 和 Node.js 应用直接以目录结构的方式部署.</p>
+<p>这种风格开发的应用是非常常见的。我们的IDE和工具致力于构建这样的单一应用，所以我们开发起来也感觉到简单；此类应用测试起来也很方便，你可以很简单的启动这个应用，采用selenium测试UI去完成端到端的测试；单体应用部署起来也不难，把包一拷贝扔服务器里就妥了， 如果要扩展应用，只需要在负载均衡器后面跑多个相同的应用就可以了。工程的初期呢，这个方法工作的还是不错的！</p>
+<h2 id="迈向单体的地狱"><a href="#迈向单体的地狱" class="headerlink" title="迈向单体的地狱"></a>迈向单体的地狱</h2><p>很不幸的是，这种方式还是有巨大的局限性的.。一个成功的应用总会随着时间逐步成长并变得巨大起来。每个敏捷Sprint周期，开发者会实现更多的功能，当然这就意味着又添加了很多行代码。几年之后你会发现，当年你写的那个简单的小小的应用居然变成一个巨大的单体怪物。举一个比较极端的例子吧：最近我和一个开发者聊天，他正在写一个工具来分析数百万行代码的巨大应用中的上千个jar的依赖关系。别的不说，写出这么巨大的怪物肯定花费了很多程序员几年的时间。</p>
+<p>一旦应用变成了巨大复杂的单体，那你的开发团队将痛苦不堪！敏捷开发和交付的一些愿景在这个庞然大物面前都会受挫。最主要的问题就是这玩意儿现在太复杂了！复杂到很难有某个程序员能完全理解它！导致结果就是，正确的修个bug、做个新功能变的费时又费力。更可恨的是，这是一个恶性循环的过程，应用正在逐步的‘死去’ 。如果你的代码库别人都理解不了，那么对代码做点正确的改动是很难的，最终这个怪物更加的可怕更加的难以理解，纠结！</p>
+<p>应用程序的规模大了也会拖慢程序的开发： 程序越大，启动越慢！调查显示一些程序员说他们启动程序要12分钟，我个人还听过有的应用启动要40分钟！程序员开发过程需要周期性的重启应用，这样就浪费了很多时间，效率自然也很低下，不能忍！</p>
+<p>巨大、复杂的单体应用还是持续交付的巨大障碍。现在SaaS应用的宗旨是如果有改动能够每天部署多次。单体应用的中某部分的改动需要需要重新部署整个应用，这样的话持续交付是相当困难的。前面也讲了，启动一次就要那么久 ！另外，改动造成的影响也不是很好被理解，需要大量的手工测试去保证，这样的话持续交付更是难上加难了！</p>
+<p>单体应用在多个模块对资源需求上有冲突时很难进行扩展。比如：一个新模块可能实现了CPU密集型的图片处理逻辑,更适合部署到Amazon EC2 Compute Optimized instances。另一个模块可能需要一个内存数据库，更适合使用EC2 Memory-optimized instances。然而，这些模块必须被一起部署的话，选择硬件的时候就要好好折中一下喽。</p>
+<p>单体应用的另一个问题是稳定性：因为所有的模块都跑在同一进程之中，某模块中的bug，比如内存泄漏是可能拖垮整个应用的！更重要的是，因为负载均衡后面的所有的应用是一样的，bug还可能影响整个应用的可用性！</p>
+<p>最后重要的一点：单体应用很难拥抱新的框架和编程语言。假设你有2百万行用XYZ框架写的代码，如果用ABC框架重写它将会耗费巨大的时间和金钱！哪怕大家都知道用新框架更适合一些（摊手）。这样导致的结果是，在尝试转换新框架新技术的时候存在巨大的障碍，我们不得不继续在选型之初定好的技术架构上前行（哭脸）。</p>
+<p>最后总结下吧，你从拥有一个业务清晰，几个程序员都明白的小程序，逐步的变成了一个可怕的单体应用。回首看这个应用是采用了过时的、效率低下的技术来写的（毕竟技术在进步，抱着老东西闷头陶醉不是什么好事情）！别的不说，招聘都费劲呐！这个单体应用变的难以扩展、变得极不稳定，想敏捷开发？想持续交付？ 恐怕只能呵呵了。</p>
+<p>面对这些，你能做点什么呢？</p>
+<h2 id="微服务-–-处理这些复杂问题！"><a href="#微服务-–-处理这些复杂问题！" class="headerlink" title="微服务 – 处理这些复杂问题！"></a>微服务 – 处理这些复杂问题！</h2><p>很多机构，比如Amazon、eBay、Netflix，已经开始通过拥抱微服务架构去解决上述的问题了。她们不再去构建一个可怕的单体应用，而是拆分成多个更小的、相互连接的微服务！</p>
+<p>服务通常实现了一系列相互独立的功能或特性，比如订单管理、客户管理等等。每一个微服务都具有自身业务逻辑以及各种适配器构成的六角形架构模式，都是一个迷你的小应用。有的微服务会暴露API供其他微服务和客户消费，其他微服务则可能实现Web UI。运行时，每一个实例通常是云平台的一个VM或者一个Docker容器。</p>
+<p>下面是对上述老架构的一个拆分：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3912920-9762019e56935c8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>应用的每个功能区域限制都以微服务的方式来实现了，此外整个应用被拆分成一系列更小的web应用（比如乘客管理、司机管理）。拆分之后更加方便的为特殊用户、设备或者特殊用例进行部署。</p>
+<p>每一个后端服务暴露REST API，绝大部分服务也会消费其他服务提供的API。比如，司机管理服务会使用通知服务告知空闲的司机潜在的行程（来生意了，接单！）；还有UI 服务会调用其他服务后渲染web页面。服务之间也会使用异步的，基于消息的通信模式，服务内的通信将会在后面的文章详述。</p>
+<p>一些REST API 也会暴露给移动端设备方便司机和乘客的使用。当然，这些应用不会直接访问后端各个微服务 ，而是通过一个协调者<strong>API网关</strong>来访问的。 API网关的职责有负载均衡、缓存、访问控制、API计费、监控···，这些事情使用NGINX就OK啦。后面的文章将会讲述API网关的细节。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3912920-edd018002c577cff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>微服务架构模式很契合上图的Y轴扩展方式，上图X轴的扩展表示横向扩展应用，一般就是负载均衡器后面部署几个相同的应用。Z轴扩展表示数据分区,将请求路由到特定的服务器上（比如数据库分库分表，根据主键访问到用户记录对应的数据库）。</p>
+<p>应用一般都会三个维度去扩展。Y轴正是按照我们第一节讲到的，把单体应用拆分为微服务，运行时呢，为了某个服务达到高吞吐和高可用性，可以采用负载均衡，也就是X轴扩展了，特殊应用也会使用Z轴扩展来切分服务。下面的图展示了行程管理采用Docker镜像部署到Amazon EC2的情况：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3912920-2d3f5e1b1c954c35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>运行时，行程管理由多个服务实例组成。每个应用实例实际是一个Docker容器。为了达到高可用，容器会跑在多个云平台VM上，服务实例之前是NGINX这样的负载均衡器来分发请求，负载均衡器也会关注比如缓存、权限访问、服务计费、监控等事宜。</p>
+<p>微服务架构模式极大的影响应用和数据库之间的关系。每个微服务都会有自己的数据库Schema，而不是和其他服务共享一套数据库Shcema。另一个角度看，这种方式对于以往企业级范围的数据模型来讲是很奇怪的，另外，微服务这么搞会造成数据冗余。然而，如果你想从微服务架构获益，那么每个微服务一个数据Schema是很有必要的，因为微服务提倡的就是松耦合啊，下面的图展示了微服务架构下应用的数据架构：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3912920-609da44e77622fea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>每个微服务都有自己的数据库，而且每个服务还能选择适合自己需求的数据库，这就是所谓的多态型持久化架构。比如，司机如果需要查找附近的潜在乘客，那就必须要使用支持高效地理位置查询的数据库。</p>
+<p>表面上看微服务和SOA架构很相似，两种架构都倡导由一系列的服务组成。我们可以把微服务架构模式当成是没有商业web service规范（WS规范咯）以及ESB等打包的套件约束的SOA。基于微服务架构的应用更倾向于简单的、轻量级的REST协议而不是老旧的WS，当然，微服务也会避免去使用笨重的ESB套件而更喜欢去实现一些ESB部分功能的轻量级工具（不要捆绑，不要全家桶！），微服务架构模式也避免SOA中诸如规范化Schema的定义。</p>
+<h2 id="微服务的优势"><a href="#微服务的优势" class="headerlink" title="微服务的优势"></a>微服务的优势</h2><p>微服务架构模式有很多重要的优势。首先，通过把可怕巨大的单体拆分为一系列的服务解决了单体复杂度问题， 拆分后整体功能数量并没有变化，但是应用现在变成了多个方便管理的小应用，每个服务都有一个定义良好的服务边界，通过RPC方式或消息驱动暴露API。微服务架构模式解决了单体应用代码库在实践中极难模块化的难题，拆分后的微服务能够更快的部署，更易理解和维护！</p>
+<p>第二，拆分后的服务可以被专注于某部分服务的团队独立开发。程序员可以基于API约定前提下自由选择合适的技术，当然，很多机构为了避免技术选择混乱也会限制技术的选项。因此，自由意味着程序员可以不再局限于项目初期选择的技术了（撒花）！开始写一个新的微服务的时候，开发者可以使用一些当下流行的技术，更重要的是，因为每个服务现在拆分的很小，使用现有技术重写老的服务成为可能！</p>
+<p>第三，微服务架构模式使得独立部署成为可能，开发者不用再忙碌于协调其他模块的变化再去部署（单体应用，改一个部分可能对其他部分影响，某个更改可能涉及多个模块的协调），微服务的更改可以在测试后尽快的被部署。比如，UI组可以进行A/B测试并且快速迭代而不用等待整个应用部署。微服务架构模式使得持续部署成为可能！</p>
+<p>最后，微服务架构模式使得每个服务可以独立的扩展。我们可以针对某些有容量和可用性要求的微服务进行扩展，为需要的服务部署多个实例而不是复制多个单体去折中获得某项提升！更重要的是，我们可以针对服务需求使用最合适的硬件资源。比如，我们可以把CPU密集型的图片处理服务部署到EC2 Compute Optimized instances，部署内存数据库相关的服务到EC2 Memory-optimized instances。</p>
+<h2 id="微服务的劣势"><a href="#微服务的劣势" class="headerlink" title="微服务的劣势"></a>微服务的劣势</h2><p>正如Fred 30年前的书中所说,“没有银弹！”。和其他技术一样，微服务架构也有其劣势 。劣势之一就是它的名字（捂脸），微服务这个词过分强调了服务的尺寸，实际上还真有几个开发者号召大家写10-100行代码的‘微服务’（这应该不太可能吧）！然而微服务更想表达的是一种工具和途径，微并不是最终的目标（为微服务而微服务，敲响警钟），微服务是为了便利敏捷开发和部署而去有效的拆分应用。</p>
+<p>微服务另一个劣势是因为从单体应用拆分为分布式系统带来的复杂。开发者需要选择或者实现基于消息或者RPC模式的进程间通讯机制，另外开发者也要写额外的代码去处理对于目的服务请求可能存在的请求缓慢或者请求不可用导致的部分失败问题。分布式系统可不是什么火箭科学，它可比单体应用中模块间通过语言层面或者进程内调用复杂的多了！</p>
+<p>微服务另一个挑战就是拆分数据库架构。一个逻辑事务更新多个业务记录是很常见的事情，单体应用实现该事务是比较简单的，毕竟大家使用一个数据库。然而在微服务架构中，你必须要更新多个服务的多个数据库。一般不会使用分布式事务，不仅仅是因为CAP理论，还因为一些流行的NoSQL数据库和Message Queue系统压根也不支持（摊手）。最后还得绕回最终一致性方案，这个方案对开发者来讲也是略有挑战的（实际上我看这个系列的文章并且开始翻译也是因为实际中遇到了这个问题，下面的文章将会提到）。</p>
+<p>测试微服务架构的应用也是更加复杂的。比如，使用Spring Boot这种框架，开发者启动一个单体应用去写一些测试用例、测试其REST API是很平常事情。相反的是，相类似的测试在微服务中的话，你要启动或者至少去mock其依赖的其他的服务才能完成。再次强调，微服务不是火箭科学，很重要的一点是大家不要低估了这样做的复杂度！</p>
+<p>微服务架构模式的另一巨大挑战是实现跨服务的改动。比如，让我们假设你要实现一个需要更改服务A、B、C的功能，而此时A依赖于B，B依赖于C。在传统单体应用中，你可以很简单的去更改对应的模块，集成这些变动然后一起部署它们。然而在微服务架构模式下，你需要小心翼翼的计划和协调每个服务的改动和发布：你需要更新服务C，再更新服务B。然后还要更新服务A。幸运的是，绝大部分时候一个服务的变化仅会影响一个服务，多个服务间需要协调的情况是很少出现的。</p>
+<p>部署一个基于微服务架构的应用是更加复杂的。一个传统单体应用可以简单的部署到负载均衡器后面，因为应用都是相同的，拷贝部署就可以了。每个应用配置好数据库和message broker的地址（主机和端口）就好了。相对应的微服务一般是大量的服务组成的，比如，Hailo存在160个不同的服务，Netflix则有多达600多个不同服务，每个服务还有多个运行实例！将会有更多的变化的部分需要去配置、部署、扩展、监控。此外还需要实现一个服务发现机制让其他服务找到它需要通信的服务的地址。传统的基于Ticket和手动运维的方式是不可能处理好这个级别的复杂扩展的。因此，成功部署一个微服务需要开发者对部署方法有更多控制还要对服务执行高水平的自动化。</p>
+<p>自动化的其中一种方式是使用现有的Paas平台（比如Cloud Foundry）。PaaS平台为开发者提供了便捷的方式去部署他们的微服务，避免了是他们纠缠于购买和配置IT资源的泥潭。同时，配置PaaS系统和网络的专业人员可以确保遵守了最佳实践和公司策略。另一种自动化方式就是开发自己的PaaS平台。一个典型的开端就是先使用集群方案（比如Kubernetes）配合上Docker容器技术，后续的文章将会介绍基于软件的应用部署方案，比如NGINX是如何在微服务层面方便的处理缓存、访问控制、API计费、监控等问题的。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>构建复杂的应用本身就是困难的事情。单体应用架构在针对简单、轻量级的应用的时候是很好的。但是一旦你把那套方案运用在复杂的应用的时候你将会痛苦不堪。尽管微服务架构模式有诸多缺点和实现上的挑战，但对于复杂的、演进的应用来讲是一个更好的选择。</p>
+<p>在后续的文章中我将会详细介绍微服务的几个方面，讨论一些诸如服务发现、服务部署选择以及重构单体应用到微服务的的话题。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>第一篇文章翻译完了，说实话胆颤心惊，第一次作大死，厚着脸皮上吧！！！</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/14/microservices/Choosing a Microservices Deployment Strategy/" itemprop="url">
                   选择一种微服务部署策略
                 </a>
               
@@ -1170,9 +1035,9 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-01-04T13:36:23+08:00" content="2017-01-04">
-              2017-01-04
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2017-03-14T10:01:03+08:00" content="2017-03-14">
+              2017-03-14
             </time>
           </span>
 
@@ -1182,7 +1047,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/microservice/" itemprop="url" rel="index">
@@ -1330,7 +1195,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/04/microservices/Building Microservices-Using an API Gateway/" itemprop="url">
+                <a class="post-title-link" href="/2017/03/14/microservices/Building Microservices-Using an API Gateway/" itemprop="url">
                   建微服务之使用API网关
                 </a>
               
@@ -1343,9 +1208,9 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-01-04T13:36:23+08:00" content="2017-01-04">
-              2017-01-04
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2017-03-14T10:01:03+08:00" content="2017-03-14">
+              2017-03-14
             </time>
           </span>
 
@@ -1355,7 +1220,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/microservice/" itemprop="url" rel="index">
@@ -1496,7 +1361,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/04/microservices/Building Microservices-Inter-Process Communication/" itemprop="url">
+                <a class="post-title-link" href="/2017/03/14/microservices/Building Microservices-Inter-Process Communication/" itemprop="url">
                   构建微服务之:微服务架构中的进程间通信
                 </a>
               
@@ -1509,9 +1374,9 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-01-04T13:36:23+08:00" content="2017-01-04">
-              2017-01-04
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2017-03-14T10:01:03+08:00" content="2017-03-14">
+              2017-03-14
             </time>
           </span>
 
@@ -1521,7 +1386,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/microservice/" itemprop="url" rel="index">
@@ -1740,8 +1605,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/15/learning/distributeSystem/" itemprop="url">
-                  学习笔记
+                <a class="post-title-link" href="/2017/03/13/JavaScript/AngularJs/Some thinking abouit Angular/" itemprop="url">
+                  重拾Angular的一些小思考
                 </a>
               
             
@@ -1753,9 +1618,9 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-11-15T17:21:55+08:00" content="2016-11-15">
-              2016-11-15
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2017-03-13T17:41:55+08:00" content="2017-03-13">
+              2017-03-13
             </time>
           </span>
 
@@ -1765,11 +1630,11 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/learning/" itemprop="url" rel="index">
-                    <span itemprop="name">learning</span>
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
                   </a>
                 </span>
 
@@ -1803,7 +1668,181 @@
       
         
           
-            <p>###<br><a href="http://nosqldb.org/p/5458e2aeb7619ae04486b7aa" target="_blank" rel="external">Facebook Haystack Image storage</a></p>
+            <h1 id="重拾Angular的一些小思考"><a href="#重拾Angular的一些小思考" class="headerlink" title="重拾Angular的一些小思考"></a>重拾Angular的一些小思考</h1><p>最近重拾Angular，准确的说是从AngularJs到Angular的迁移，已经相当长一段时间没有触碰前端，重走前端之路，多了几分思考和感慨。作为一个“伪前端”，以java为主业，node以辅助，机缘巧合入了前端开发的门，并搞了一些hybrid的移动开发，与勤恳耕耘前端的“专业前端”相比，自是羸弱很多，本文以此角度分享，末尾也将给出一些个人的总结。如有偏颇，网诸位指正。</p>
+<p> 我不是一个狂热的google粉，使用Angular也是误打误撞，进入上一家公司的时候，恰逢一个项目部分重构，前端框架就是Angular（<strong>Angular1.X + KendoUI + Customized Directives + Open Source Directives</strong>） ，当时AngularJs正是如日中天，我也写的津津有味，后台配之RESTful API甚至Happy啊（当然现实并没有那么美好，其中的坑和历史原因的workaround也是挺扯的）。后来也参与了使用Ionic 进行mobile开发的部分工作，也打开了一扇新技术的大门，hybrid概念也风起云涌，大家跃跃欲试，自此 移动、Web、后台之路勉强打通。如今踏入Angular，不免怀念。</p>
+<h2 id="Angular-群雄逐鹿中的高瞻远瞩"><a href="#Angular-群雄逐鹿中的高瞻远瞩" class="headerlink" title="Angular:群雄逐鹿中的高瞻远瞩"></a>Angular:群雄逐鹿中的高瞻远瞩</h2><p>如今前端之火熊熊燃烧，前端的工程化之路欣欣向荣，各大厂、各路牛人乃至ES标准都各显神通：诸如Google的AngularJs、Facebook的React、尤雨溪大神的Vue.js、ES6的推进等无不说明这是一个群雄逐鹿的“大前端时代”。<br>   秦失其鹿，天下共逐之，而赢家并非只有一个。</p>
+<ul>
+<li><p><strong>从AngularJs到Angular :谷歌的高瞻远瞩</strong></p>
+<blockquote>
+<p>对于一个AngularJs的使用者来讲，Angular2的各种消息无疑会有一些打击：全新框架设计、不兼容1.X版本、推荐使用TypeScript开发等，天啊，难道手里的东西要丢掉重新开始？看下如今最红火的几个框架的目标：<br><strong>AngularJS — Superheroic JavaScript MVW Framework</strong><br><strong>Angular: One framework</strong><br><strong>Vue:The Progressive JavaScript Framework</strong><br><strong>React:A JavaScript library for building user interfaces</strong><br>注意，Angular是想做One framework，打通移动、web、桌面，提供一站式服务，相比其他轻量级的解决方案，无疑更具前瞻性（为了这个美梦也是付出着努力啊）。</p>
+</blockquote>
+<p> Vue.js的作者尤雨溪在知乎的回答中也提到，这些框架在当下没有绝对的赢家！ 虽说Vue.js如今火爆，但是领域还是以互联网应用为主，轻量级、灵活；React作为一个Lib着重于View操作；AngularJs依然火爆企业级应用（Angular出来之前我也预测过，与诸位看法一致，Angular新版本并不会导致AngularJs的衰败，AngularJs经历了磨炼之后迎来真正的爆发：越来越多的企业级应用会选择AngularJs，github上55032的start足以表明）。<br>Angular的决策着实影响了Angular的进一步推进，虽然我也认同<strong>Just do one thing and make it best</strong>，但是有一个全面且优秀的方案也在长远来看更是美哉啊！</p>
+</li>
+<li><p><strong>从AngularJs到Angular之掣肘天下，纵横捭阖</strong><br>动态语言一时爽，代码重构火葬场！JavaScript由于历史原因和其设计思想使得写出好的js代码、写出好测的代码变得困难，记得初识javascript，直觉它简单方便，等读了一些js的书籍，踩过js的坑之后方觉灵活伴随的陷阱（甚至有一本神书曰：the good part of JavaScript，捂脸逃…)。当Google和巨硬在Angular上达成合作的时候我是甚为惊叹的！两大厂做后盾，TypeScript加Angular，这是要掣肘天下的节奏啊！！！</p>
+<blockquote>
+<p>TypeScript与ES6的争论我自是不言，但是从一个写java为生，兼做了前端的业余选手来讲，类型无疑是一个好东西！我想不是每个公司都可以招聘到BAT等大厂高水平的前端工程师、也不是每个项目能够严格推行前端的编码规范、做到严格的前后端分离也不是如描绘的那样容易。每个前端的水平不一致、代码风格不一致、代码库越来越庞大、人员更迭等等在JS这个弱类型语言面前被放大。阿里的一前端大牛都抱怨，写node烦人啊！况且一种兼职的伪前端的呢？<br>有了类型有了编译，有了微软大厂（良心讲，微软好些东西设计挺好，若不是当年太过封闭不至于被黑，尤其被Java阵营的人黑！），写代码、重构代码乃至IDE提示都较js有大幅提升啊，不要纸上约束程序员，直接融到他的工具中是最稳妥的方案！</p>
+</blockquote>
+</li>
+</ul>
+<p>Angular与Typescrip的纵横之策，给繁复巨大的企业级应用带来福音，给非专业的前端开发更多的保障，给微软拥抱开源注入强心针，给谷歌推行思想一条更宽广的路。</p>
+<ul>
+<li><strong>从AngularJs到Angular：润物有声，且行且珍惜</strong><br>溜一遍Angular的文档，你会发现，其实AngularJs的思想精髓都还在，或者说更加分明、清晰、优秀！Scope随被移除但思想还在，融入到了Componet中；Controller也顺势变成Componet让组件化意图更加明显；Observe改进性能，并删除了额外的directive；模块机制部分使用ES6并支持懒加载····，开发者呢，其实花费一些时间就能很快上手。Angular并没有放弃AngularJs的东西，在大创新的前提下还是为AngularJS的老开发们打开方便之门的！</li>
+</ul>
+<p>生态环境上，Ionic也紧随步伐，设计基于material design简直不要太漂亮！虽说Angular的其他组件目前确实没有那么红火，但是我相信，在一段时间后将会大量增加（AngularJs到Angular的组件迁移，不算难事啊）。<br>Angular在国内似乎没有那么红火，普通企业级应用在享受AngularJs的便利下，Angular确实会变成一个观望选项，不过我相信当发觉了One Framework的好处以及明了TypeScript的便捷之后，讲很快迎来大的发展！</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>ES6是标准，提供了模块化和类型的概念，我想专业的前端同学还是以ES6为主；Typescript是js的超集，提供了AOT，编译是个好东西啊，虽不是正统标准但是包含这些标准，如我这般伪前端可以入手；关于Bable和TC的争论我暂不论述，毕竟不是一个道路上的玩意儿，再次，大前端时代，没有唯一的赢家！怎么合适怎么来，每个框架有各自的场景，选择趁手兵器即可！</p>
+<p>　</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/10/JavaScript/Cookie VS. Token/" itemprop="url">
+                  Cookie 还是Token，这是一个问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2017-03-10T15:21:55+08:00" content="2017-03-10">
+              2017-03-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Cookie-还是Token，这是一个问题"><a href="#Cookie-还是Token，这是一个问题" class="headerlink" title="Cookie 还是Token，这是一个问题"></a>Cookie 还是Token，这是一个问题</h1><blockquote>
+<p>  现在的web应用已经不同以往，从传统的JSP、ASP到现在的SPA单页面应用，从以前的集群到现在火热的微服务，web开发似乎每年要搞点新意出来，作为一个小小码农，我觉得需要回归基础与本质，然后从基础与本质出发寻找新鲜的路子来解决问题。<br>    今天就从Cookie和Token这个点出发，思考下如何选择Web认证方式。</p>
+</blockquote>
+<h1 id="Cookie：Web老兵"><a href="#Cookie：Web老兵" class="headerlink" title="Cookie：Web老兵"></a>Cookie：Web老兵</h1><blockquote>
+<p>说到Cookie就要说Session（这里指服务端session，不是泛化的session），作为web世界的老兵，Cookie和Session这对好兄弟解决了http请求无状态的问题。http的request-response一来一往，服务端并不知晓来者是谁，如何让服务器在迷糊状态下记住来者何人，我们需要引入Cookie和Session：举个栗子，小明（对，就是小明）要访问某付费小电影网站网站<a href="我瞎造的你也信?">www.shortAv.info</a>，他输入自己的用户名、密码，此时小电影网站服务器根据输入的用户名密码到数据库load一遍，嗯，没错！是我们的注册付费用户，棒棒哒！然后服务器创建session，</p>
+</blockquote>
+<pre><code>HttpSession session = HttpServletRequest.getSession(true);
+</code></pre><blockquote>
+<p>session可以把用户名、权限、首选项设置等信息存起来（这就是所谓的状态，内存里在会话期间维持一堆信息），同时通过设置Cookie返回sessionId给浏览器端，浏览器拿到Cookie，至此登录完成，浏览器之后的请求都自动带着Cookie（内含sessionId），服务器会根据sessionId拿到session的信息，验明正身，区分下VIP什么的。Cookie和Session通过一个sessionId建立起浏览器和服务器之间的连接。</p>
+</blockquote>
+<pre><code>Cookie cookie = new Cookie(&quot;theKey&quot;,  theValue);
+//cookie.setMaxAge(24*60*60);
+</code></pre><blockquote>
+<p>没有设置MaxAge的Cookie叫做Session Cookie，也就是这个Cookie驻留内存，一旦浏览器关闭就消亡了；设置了MaxAge就是persist Cookie，说白了就是可以存储在文件中被持久化的Cookie，关闭浏览器之后依然存在，有一个保质期。<br>   Cookie加Session就像月老在两个年轻人之间牵的红线，红线就是那个sessionId喽，每次交流都”冥冥之中“通过那根线，做到知己知彼。</p>
+</blockquote>
+<h1 id="Token-：新战线利器"><a href="#Token-：新战线利器" class="headerlink" title="Token ：新战线利器"></a>Token ：新战线利器</h1><blockquote>
+<p>Token这玩意儿其实不是新鲜东西，常见的CSRF token经常和Cookie勾肩搭背玩暧昧，一起保卫web的安全，关于CSRF与token，以后可以再深入讲，此处就偷个懒。既然我要讲的Web认证，那么这个Token就不仅仅是一个随机数、做防御的小机制那么简单了。下面就以<a href="https://jwt.io/" target="_blank" rel="external">jwt-Json Web Token</a>来讲解。</p>
+<p>还是小明，这次他不从电脑上玩了，蹲厕所的时候打开手机APP，还是那个<a href="我瞎造的你也信?">www.shortAv.info</a>网站做的，他输入用户名、密码，post到服务端之后同样根据数据库存储的信息对比下，发现是个validated的用户，这次不返回Cookie也不创建Session了，而是返回一个refreshToken和accessToken给请求者，请求者保存下来，至此”登录成功“，接下来的请求都带着accessToken，服务端只要验证accessToken的正确性（根据密钥）就可以使用token中的信息了，一旦accessToken过期，使用refreshToken换一个新的就是了。小明又可以继续欣赏了，哈哈。</p>
+<p>JWT的payload可以承载诸如用户名，权限等信息，这些信息可以存储在浏览器Local Storage或者Session Storage中，每次请求服务器时可以把JWT放在http header中，服务器端对每个请求的JWT进行解析，知道来着是谁，有何权限。（我知道您有很多问题，比如安全，少安毋躁，建议先了解下JWT）。<br>JWT和服务端资源就像钥匙和锁一样，服务端把东西锁好保护，并根据验证信息给用户发放钥匙（钥匙里带着很多信息，比如你是谁，能开哪个箱子等），以后用户要拿东西，带着钥匙开就是了，每次开，箱子根据钥匙就知道你是谁，能不能开这个箱子。</p>
+</blockquote>
+<h1 id="Cookie-Vs-Token"><a href="#Cookie-Vs-Token" class="headerlink" title="Cookie Vs. Token"></a>Cookie Vs. Token</h1><ul>
+<li>Cookie成熟，配合Session-Cookie的方案容易上手，Token作为一个新鲜方案，需要更多的考量</li>
+<li>Cookie配合Session的机制，使得服务端维护”状态“，这与现在无状态后台设计思路相悖，比如RESTful设计，鼓励无状态；Session的存在也使得后端服务负载均衡相对麻烦，session粘连或者session复制都不是特别好的方案，个人觉得中小型项目，JWT配合RESTful相当方便。</li>
+<li>Cookie存储4K数据，Token的payload可以更多（但是放多了也是麻烦事，毕竟你每次请求带这么大个header也不是个优秀的设计）</li>
+<li>Cookie多用在浏览器Web应用上，Mobile上没用过Cookie，现在Mobile First的设计思路大行其道，一个API即满足浏览器调用还要满足Mobile甚至其他设备调用，Token就比Cookie方便了；而且，如果多终端大量用户调用API，Token的无状态将给服务器减轻巨大的负载压力，毕竟把状态推到了客户端分担了。</li>
+<li>Cookie配合Session的方案，用户信息状态在服务端，服务端有过期时间，而且服务器端可以方便invalidate某个session，而JWT则把信息分摊到客户端，也存在过期时间，但是一旦token被发放，就不好在服务端进行revoke（具体折中的方法在下面提到）</li>
+<li>安全问题，讲真，我不太敢讲这块，因为一些大牛在争论Cookie和Token两方案的安全比较问题，我仅抛出自己的一些思考： Cookie存在CSRF隐患，当然可以通过添加CSRF-Token防御，JWT Token本身就是Token了，脱离了Cookie，自然就不用开了CSRF了；JWT呢，Token一旦暴露，payload的信息均可以被查看，增加了信息泄露的危险，JWT的密钥只能防范内容被篡改；Cookie有httpOnly设置，可以防止js读取Cookie内容，而JWT可以被js操纵，XSS带来的危害对JWT来说更大。但总体来讲，XSS更容易防范。</li>
+</ul>
+<h1 id="补充与总结"><a href="#补充与总结" class="headerlink" title="补充与总结"></a>补充与总结</h1><p>###小补充</p>
+<ul>
+<li>Token只是一种机制，发放给客户端后可以被存储起来，LocalStorage和SessionStorage是比较合适的存储方案，当然，如果你喜欢，放Cookie里也行，但是这时候Cookie就是一个存储载体和传输载体（服务端不需要进行状态维护）</li>
+<li>Token的过期时间一般不要过长，根据实际情况设定，Token过期后需要进行Token置换，可以考量使用refreshToken加accessToken的方案，RefreshToken过期时间可以长一些，而且可以进行revoke（最好别revoke accessToken，否则又走回维护状态的老路了）</li>
+<li>Token的payload信息，比如用户名、头像url等可以存储起来并被前端展示，这比放入全局变量好（私以为）</li>
+</ul>
+<h3 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h3><ul>
+<li>如果API设计成规范的无状态RESTful，考虑使用token</li>
+<li>如果API被不同终端消费，Cookie受限，考量token</li>
+<li>如果采用SPA，而且没有服务端渲染（或者很少），考量token</li>
+<li>如果没有考量这些玩意儿，选择Cookie Session机制吧，哥就是稳</li>
+</ul>
 
           
         
@@ -1877,8 +1916,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1886,7 +1925,7 @@
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               
             </div>
           
@@ -1895,7 +1934,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">17</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -1939,7 +1978,7 @@
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
