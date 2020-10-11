@@ -105,4 +105,4 @@ theme: next
 deploy:
   type: 'git'
   repo: 'https://github.com/nonumber1989/nonumber1989.github.io'
-  branch: 'hexo'
+  branch: 'master'
